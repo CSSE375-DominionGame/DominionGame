@@ -17,7 +17,7 @@ namespace DominionCards
         private ArrayList discard = new ArrayList();
         private Queue<AttackCard> attacks = new Queue<AttackCard>();
 
-        public int actions, buys, money; // TODO set this to public temporarily so code would compile. 
+        public int actions, buys, money;
         public Player()
         {
             actions = 1;
