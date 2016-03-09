@@ -1,16 +1,16 @@
 ﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Framework;
 
 namespace DominionGUI
 {
-    [TestFixture()]
+    [TestClass]
     public class TestAddRandomCards
     {
-        [Test()]
+        [TestMethod]
         public void TestIfCorrectNumberOfCardsAreAddedToGameBoard()
         {
             new SelectNumPlayers();

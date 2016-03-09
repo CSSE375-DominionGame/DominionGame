@@ -1,8 +1,8 @@
 ﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Framework;
 using System.Collections.Generic;
 using System.Collections;
 using RandomGenerateCards;
@@ -10,11 +10,11 @@ using RandomGenerateCards;
 namespace DominionCards
 {
 
-    [TestFixture()]
+    [TestClass]
     class PlayerTest
     {
         /*
-        [Test()]
+        [TestMethod]
         public void TestFiveCardsDrawnEvenIfDeckEmpty()
         {
             Player p = new HumanPlayer();
@@ -28,7 +28,8 @@ namespace DominionCards
             p.drawHand();
             Assert.AreEqual(5, p.getHand().Count);
         }
-        [Test()]
+        
+        [TestMethod]
         public void DeckShufflesWhenHandDrawnFromTooSmallDeck_FiveCardsDrawn()
         {
             Player p = new HumanPlayer();
@@ -42,7 +43,7 @@ namespace DominionCards
             p.drawHand();
             Assert.AreEqual(5, p.getHand().Count);
         }
-        [Test()]
+        [TestMethod]
         public void DeckShufflesWhenHandDrawnFromTooSmallDeck_DiscardEmpty()
         {
             Player p = new HumanPlayer();
@@ -56,7 +57,7 @@ namespace DominionCards
             p.drawHand();
             Assert.AreEqual(0, p.getDiscard().Count);
         }
-        [Test()]
+        [TestMethod]
         public void DeckShufflesWhenHandDrawnFromTooSmallDeck_DeckHasCorrectNumbCards()
         {
             Player p = new HumanPlayer();
@@ -73,7 +74,7 @@ namespace DominionCards
             p.drawHand();
             Assert.AreEqual(expectedShuffledDeckSize, p.getDeck().Count);
         }
-        [Test()]
+        [TestMethod]
         public void testDiscardGoesToDeckWhenCardIsDrawnAndDeckIsEmpty()
         {
             Player p = new HumanPlayer();
@@ -88,7 +89,7 @@ namespace DominionCards
             p.drawCard();
             Assert.AreEqual(discardSize - 1, p.getDeck().Count);
         }
-        [Test()]
+        [TestMethod]
         public void testDiscardGoesAwayWhenDeckIsShuffledDrawingCards()
         {
             Player p = new HumanPlayer();
@@ -103,7 +104,7 @@ namespace DominionCards
             p.drawCard();
             Assert.AreEqual(0, p.getDiscard().Count);
         }
-        [Test()]
+        [TestMethod]
         public void testDrawHandDiscardsOldHand()
         {
             Player p1 = new HumanPlayer();
@@ -112,7 +113,7 @@ namespace DominionCards
             p1.drawHand();
             Assert.AreEqual(hand, p1.getHand());
         }
-        [Test()]
+        [TestMethod]
         public void playingTreasureCardDoesntUseAnAction()
         {
             Player p1 = new HumanPlayer();
@@ -123,7 +124,7 @@ namespace DominionCards
             p1.playCard((Card)hand[0]);
             Assert.AreEqual(a, p1.actionsLeft());
         }
-        [Test()]
+        [TestMethod]
         public void playingTreasureCardDoesntAddBuys()
         {
             Player p1 = new HumanPlayer();
@@ -134,7 +135,7 @@ namespace DominionCards
             p1.playCard((Card)hand[0]);
             Assert.AreEqual(b, p1.actionsLeft());
         }
-        [Test()]
+        [TestMethod]
         public void playingTreasureCardDoesntDrawCards()
         {
             Player p1 = new HumanPlayer();
@@ -145,7 +146,7 @@ namespace DominionCards
             p1.playCard((Card)hand[0]);
             Assert.AreEqual(cards - 1, p1.actionsLeft());
         }
-        [Test()]
+        [TestMethod]
         public void testCountVictoryPointsCountsBasicVictoryCards(){
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
@@ -158,7 +159,7 @@ namespace DominionCards
             deck.Push(new KingdomCards.Province());
             Assert.AreEqual(10, p1.countVictoryPoints());
         }
-        [Test()]
+        [TestMethod]
         public void drawFiveCardsWhenDeckRunsOut()
         {
             Player p1 = new HumanPlayer();
@@ -182,7 +183,7 @@ namespace DominionCards
             ArrayList hand = p1.getHand();
             Assert.AreEqual(5, hand.Count);
         }
-        [Test()]
+        [TestMethod]
         public void drawCardsStillOnDeckFirstWhenDeckRunsOut()
         {
             Player p1 = new HumanPlayer();
@@ -210,7 +211,7 @@ namespace DominionCards
             Assert.AreEqual(0, ((Card)hand[3]).getID());
             Assert.AreEqual(0, ((Card)hand[4]).getID());
         }
-        [Test()]
+        [TestMethod]
         public void testCountVictoryPointsWhenCardsInDiscard(){
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
@@ -224,7 +225,7 @@ namespace DominionCards
             discard.Add(new KingdomCards.Duchy());
             Assert.AreEqual(12, p1.countVictoryPoints());
         }
-        [Test()]
+        [TestMethod]
         public void testCountVictoryPointsWhenCardsInHand(){
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
@@ -239,7 +240,7 @@ namespace DominionCards
             hand.Add(new KingdomCards.Province());
             Assert.AreEqual(13, p1.countVictoryPoints());
         }
-        [Test()]
+        [TestMethod]
         public void playingTreasureCardAddsMoney()
         {
             Player p1 = new HumanPlayer();
@@ -250,7 +251,7 @@ namespace DominionCards
             p1.playCard((Card)hand[0]);
             Assert.AreEqual(m + 2, p1.moneyLeft());
         }
-        [Test()]
+        [TestMethod]
         public void testDrawHandDrawsFiveCards()
         {
             Player p1 = new HumanPlayer();
@@ -259,7 +260,7 @@ namespace DominionCards
             p1.drawHand();
             Assert.AreEqual(5, hand.Count);
         }
-        [Test()]
+        [TestMethod]
         public void testDrawHandRemovesFiveCardsFromDeck()
         {
             Player p1 = new HumanPlayer();
@@ -270,7 +271,7 @@ namespace DominionCards
             Assert.AreEqual(initialDeck - 5, deck.Count);
         }
 
-        [Test()]
+        [TestMethod]
         public void testPlayerStartsWithCorrectNumberOfEstates()
         {
             Player p1 = new HumanPlayer();
@@ -285,7 +286,7 @@ namespace DominionCards
             }
             Assert.AreEqual(3, numbEstates);
         }
-        [Test()]
+        [TestMethod]
         public void testPlayerStartsWithCorrectNumberOfCopper()
         {
             Player p1 = new HumanPlayer();
@@ -300,14 +301,14 @@ namespace DominionCards
             }
             Assert.AreEqual(7, numbCopper);
         }
-        [Test()]
+        [TestMethod]
         public void testPlayerStartsWithCorrectNumberOfCards()
         {
             Player p1 = new HumanPlayer();
             Stack<Card> deck = p1.getDeck();
             Assert.AreEqual(10, deck.Count);
         }
-        [Test()]
+        [TestMethod]
         public void testPlayerStartsWithOnlyEstatesAndCopper()
         {
             Player p1 = new HumanPlayer();
@@ -320,7 +321,7 @@ namespace DominionCards
                 }
             }
         }
-        [Test()]
+        [TestMethod]
         public void testDrawCardMakesDeckSmaller()
         {
             Player p1 = new HumanPlayer();
@@ -329,7 +330,7 @@ namespace DominionCards
             p1.drawCard();
             Assert.AreEqual(initialDeckSize - 1, deck.Count);
         }
-        [Test()]
+        [TestMethod]
         public void testDrawCardMakesHandBigger()
         {
             Player p1 = new HumanPlayer();
@@ -342,7 +343,7 @@ namespace DominionCards
 
             Assert.AreEqual(initialDeckSize + 2, hand.Count);
         }
-        [Test()]
+        [TestMethod]
         public void playingActionCardReducesActionsByOne()
         {
             Player p1 = new HumanPlayer();
@@ -353,7 +354,7 @@ namespace DominionCards
             p1.playCard((Card) hand[0]);
             Assert.AreEqual(a - 1, p1.actionsLeft());
         }
-        [Test()]
+        [TestMethod]
         public void playingCardRemovesCardFromHand()
         {
             Player p1 = new HumanPlayer();
@@ -363,7 +364,7 @@ namespace DominionCards
             p1.playCard((Card) hand[0]);
             Assert.AreEqual(0, p1.getHand().Count);
         }
-        [Test()]
+        [TestMethod]
         public void playingCardWithBuysAddsBuys()
         {
             Player p1 = new HumanPlayer();
@@ -374,7 +375,7 @@ namespace DominionCards
             p1.playCard((Card) hand[0]);
             Assert.AreEqual(b+1, p1.buysLeft());
         }
-        [Test()]
+        [TestMethod]
         public void playingCardWithoutBuysDoesntAddBuys()
         {
             Player p1 = new HumanPlayer();
@@ -385,7 +386,7 @@ namespace DominionCards
             p1.playCard((Card)hand[0]);
             Assert.AreEqual(b, p1.buysLeft());
         }
-        [Test()]
+        [TestMethod]
         public void playingCardWithActionsAddsActions()
         {
             Player p1 = new HumanPlayer();
@@ -396,7 +397,7 @@ namespace DominionCards
             p1.playCard((Card)hand[0]);
             Assert.AreEqual(a+1, p1.actionsLeft());
         }
-        [Test()]
+        [TestMethod]
         public void playingCardWithMoneyAddsMoney()
         {
             Player p1 = new HumanPlayer();
@@ -407,7 +408,7 @@ namespace DominionCards
             p1.playCard((Card)hand[0]);
             Assert.AreEqual(m+2, p1.moneyLeft());
         }
-        [Test()]
+        [TestMethod]
         public void testShuffledDeckContainsSameCards()
         {
             Stack<Card> deck = new Stack<Card>();
@@ -445,7 +446,7 @@ namespace DominionCards
             }
         }
 
-        [Test()]
+        [TestMethod]
         public void testConvertStackToCardStack()
         {
             Stack objStack = new Stack();
@@ -469,7 +470,7 @@ namespace DominionCards
             Assert.AreEqual(expct.Count, dumpStack.Count);
         }
 
-        [Test()]
+        [TestMethod]
         public void playingCardWithoutMoneyDoesntAddMoney()
         {
             Player p1 = new HumanPlayer();
@@ -481,7 +482,7 @@ namespace DominionCards
             p1.playCard((Card)hand[0]);
             Assert.AreEqual(m, p1.moneyLeft());
         }
-        [Test()]
+        [TestMethod]
         public void playingCardThatDrawsCards()
         {
             Player p1 = new HumanPlayer();
@@ -492,7 +493,7 @@ namespace DominionCards
             Assert.AreEqual(2, hand.Count);
         }
 
-        [Test()]
+        [TestMethod]
         public void buyingACard()
         {
             Player p1 = new HumanPlayer();
@@ -504,7 +505,7 @@ namespace DominionCards
             Assert.AreEqual(discard, p1.getDeck());
         }
 
-        [Test()]
+        [TestMethod]
         public void addCardToHand()
         {
             Player p1 = new HumanPlayer();
@@ -524,7 +525,7 @@ namespace DominionCards
             Console.Read();
             Console.WriteLine();
         }
-        [Test()]
+        [TestMethod]
         public void testCountCards()
         {
             Stack<Card> deck = new Stack<Card>();
