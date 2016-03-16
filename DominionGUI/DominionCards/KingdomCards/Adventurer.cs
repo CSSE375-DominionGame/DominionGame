@@ -9,9 +9,10 @@ namespace DominionCards.KingdomCards
 {
     public class Adventurer : ActionCard
     {
-        public Adventurer() : base(0, 0, 0 ,0 , 6, 6) 
+        public Adventurer()
+            : base(0, 0, 0, 0, 6, 6)
         {
-            
+            // Uses ActionCard Constructor
         }
         public override void Play(Player player)
         {
@@ -23,7 +24,7 @@ namespace DominionCards.KingdomCards
                 {
                     player.addCardToHand(c);
                     cardsAdded++;
-                    
+
                 }
                 else
                 {

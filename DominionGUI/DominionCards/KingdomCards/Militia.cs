@@ -14,7 +14,7 @@ namespace DominionCards.KingdomCards
         public Militia()
             : base(0, 2, 0, 0, 4, ID)
         {
-            // TODO implement
+            // Uses ActionCard Constructor
         }
 
         public override String ToString()
@@ -47,9 +47,9 @@ namespace DominionCards.KingdomCards
                 playerAttacked.getHand().Remove(cardSelected);
                 playerAttacked.getDiscard().Add(cardSelected);
             }
-           
-            
-            
+
+
+
         }
     }
 }

@@ -14,7 +14,7 @@ namespace DominionCards.KingdomCards
         public Remodel()
             : base(0, 0, 0, 0, 4, ID)
         {
-            // TODO implement
+            // Uses ActionCard Constructor
         }
 
         public override void Play(Player player)
@@ -25,7 +25,7 @@ namespace DominionCards.KingdomCards
             foreach (Card card in player.getHand())
             {
                 trashableCards.Add(card);
-                
+
             }
             if (trashableCards.Count == 0)
             {

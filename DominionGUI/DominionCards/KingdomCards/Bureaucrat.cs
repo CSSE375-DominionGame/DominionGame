@@ -11,7 +11,7 @@ namespace DominionCards.KingdomCards
         public Bureaucrat()
             : base(0, 0, 0, 0, 4, 7)
         {
-            // do nothing
+            // Uses ActionCard Constructor
         }
         public override void Play(Player player)
         {

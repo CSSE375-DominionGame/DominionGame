@@ -66,7 +66,7 @@
             this.exitButton.Size = new System.Drawing.Size(100, 50);
             this.exitButton.TabIndex = 0;
             this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.exitButtonClick); 
+            this.exitButton.Click += new System.EventHandler(this.exitButtonClick);
             //
             // skip Button
             //
@@ -78,6 +78,7 @@
             this.skipTurnButton.Font = new System.Drawing.Font("Times New Roman", 14, System.Drawing.FontStyle.Regular);
             this.skipTurnButton.Text = "End Phase";
             this.skipTurnButton.Click += new System.EventHandler(this.SkipPhase);
+            this.skipTurnButton.Enabled = false;
 
             // 
             // pictureBox1

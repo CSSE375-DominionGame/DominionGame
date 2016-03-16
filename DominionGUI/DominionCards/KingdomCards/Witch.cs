@@ -13,7 +13,7 @@ namespace DominionCards.KingdomCards
         public Witch()
             : base(2, 0, 0, 0, 5, ID)
         {
-            // TODO implement
+            // Uses AttackCard Constructor
         }
         public override void MakeDelayedAttack(Player playerAttacked)
         {

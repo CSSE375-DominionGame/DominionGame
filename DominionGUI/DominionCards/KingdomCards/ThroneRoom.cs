@@ -14,15 +14,17 @@ namespace DominionCards.KingdomCards
         public ThroneRoom()
             : base(0, 0, 0, 0, 4, ID)
         {
-            // TODO implement
+            // Uses ActionCard Constructor
         }
 
         public override void Play(Player player)
         {
             ArrayList actionCards = new ArrayList();
-            foreach (Card card in player.getHand()){
+            foreach (Card card in player.getHand())
+            {
                 int id = card.getID();
-                if (id > 5 && id != 14){
+                if (id > 5 && id != 14)
+                {
                     actionCards.Add(card);
                 }
             }
@@ -37,7 +39,7 @@ namespace DominionCards.KingdomCards
                 DialogResult result1 = MessageBox.Show("You must select exactly 1 card to play twice.  Try again");
                 cards = player.SelectCards(actionCards, "Choose a card to play twice.", 1);
             }
-            Card cardPlayed = (Card) cards[0];
+            Card cardPlayed = (Card)cards[0];
 
             player.actions += 2;
             player.playCard(cardPlayed);

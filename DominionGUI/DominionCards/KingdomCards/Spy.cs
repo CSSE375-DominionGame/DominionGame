@@ -13,7 +13,7 @@ namespace DominionCards.KingdomCards
         public Spy()
             : base(1, 0, 0, 1, 4, ID)
         {
-            // TODO implement
+            // Uses AttackCard Constructor
         }
 
         public override void Play(Player player)
@@ -28,7 +28,8 @@ namespace DominionCards.KingdomCards
 
         public override void MakeImmediateAttack(Player playerAttacked)
         {
-            if (playerAttacked.getDeck().Count == 0){
+            if (playerAttacked.getDeck().Count == 0)
+            {
                 playerAttacked.setDeck(Player.Shuffle(playerAttacked.getDiscard()));
                 playerAttacked.setDiscard(new System.Collections.ArrayList());
             }

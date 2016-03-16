@@ -12,8 +12,7 @@ namespace DominionCards.KingdomCards
         public Woodcutter()
             : base(0, 2, 1, 0, 3, ID)
         {
-            // TODO implement
-
+            // Uses ActionCard Constructor
         }
         public override String ToString()
         {

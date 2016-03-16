@@ -11,7 +11,7 @@ namespace DominionCards.KingdomCards
         public CouncilRoom()
             : base(4, 0, 1, 0, 5, 11)
         {
-            //does nothing
+            // Uses ActionCard Constructor
         }
 
         public override String ToString()

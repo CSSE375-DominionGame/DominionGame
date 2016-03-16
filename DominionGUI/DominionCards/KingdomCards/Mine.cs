@@ -14,7 +14,7 @@ namespace DominionCards.KingdomCards
         public Mine()
             : base(0, 0, 0, 0, 5, ID)
         {
-            // TODO implement
+            // Uses ActionCard Constructor
         }
 
         public override String ToString()
@@ -28,7 +28,7 @@ namespace DominionCards.KingdomCards
             foreach (Card card in player.getHand())
             {
                 int id = card.getID();
-                if (id ==0 || id == 1)
+                if (id == 0 || id == 1)
                 {
                     treasureCards.Add(card);
                 }

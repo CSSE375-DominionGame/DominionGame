@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace DominionCards.KingdomCards
 {
     public class Library : ActionCard
-    {    
+    {
         private static int ID = 16;
         public Library()
             : base(0, 0, 0, 0, 5, ID)
         {
-            // TODO implement
+            // Uses ActionCard Constructor
         }
         public override String ToString()
         {

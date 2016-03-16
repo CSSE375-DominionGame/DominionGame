@@ -8,9 +8,10 @@ namespace DominionCards.KingdomCards
 {
     public class Duchy : VictoryCard
     {
-        public Duchy() : base (3, 5, 4)
+        public Duchy()
+            : base(3, 5, 4)
         {
-            // NOTHING HAPPENS
+            // Uses VictoryCard Constructor
         }
         public override String ToString()
         {

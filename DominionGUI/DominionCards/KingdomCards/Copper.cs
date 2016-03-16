@@ -8,9 +8,10 @@ namespace DominionCards.KingdomCards
 {
     public class Copper : TreasureCard
     {
-        public Copper() : base (1, 0, 0)
+        public Copper()
+            : base(1, 0, 0)
         {
-            // NOTHING HAPPENS
+            // Uses TreasureCard Constructor
         }
 
         public override String ToString()

@@ -9,9 +9,10 @@ namespace DominionCards.KingdomCards
     public class Gold : TreasureCard
     {
         private static int ID = 2;
-        public Gold() : base (3, 6, ID)
+        public Gold()
+            : base(3, 6, ID)
         {
-            // NOTHING HAPPENS
+            // Uses TreasureCard Constructor
         }
         public override String ToString()
         {

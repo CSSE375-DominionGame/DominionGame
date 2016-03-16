@@ -12,7 +12,7 @@ namespace DominionCards.KingdomCards
         public Festival()
             : base(0, 2, 1, 2, 5, ID)
         {
-            // TODO implement
+            // Uses ActionCard Constructor
         }
 
         public override String ToString()

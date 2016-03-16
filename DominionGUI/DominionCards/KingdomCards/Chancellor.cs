@@ -13,7 +13,7 @@ namespace DominionCards.KingdomCards
         public Chancellor()
             : base(0, 2, 0, 0, 3, 9)
         {
-            // TODO implement
+            // Uses ActionCard Constructor
         }
 
         public override String ToString()

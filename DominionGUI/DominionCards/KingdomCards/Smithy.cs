@@ -13,7 +13,7 @@ namespace DominionCards.KingdomCards
         public Smithy()
             : base(3, 0, 0, 0, 4, ID)
         {
-            // DONE
+            // Uses ActionCard Constructor
         }
         public override String ToString()
         {

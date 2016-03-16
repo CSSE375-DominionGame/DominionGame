@@ -9,9 +9,10 @@ namespace DominionCards.KingdomCards
     public class Province : VictoryCard
     {
         private static int ID = 5;
-        public Province() : base (6, 8, ID)
+        public Province()
+            : base(6, 8, ID)
         {
-            // NOTHING HAPPENS
+            // Uses VictoryCard Constructor
         }
         public override String ToString()
         {

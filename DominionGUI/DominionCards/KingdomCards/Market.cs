@@ -12,7 +12,7 @@ namespace DominionCards.KingdomCards
         public Market()
             : base(1, 1, 1, 1, 5, ID)
         {
-            // DONE
+            // Uses ActionCard Constructor
         }
         public override String ToString()
         {

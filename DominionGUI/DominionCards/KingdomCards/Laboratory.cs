@@ -12,7 +12,7 @@ namespace DominionCards.KingdomCards
         public Laboratory()
             : base(2, 0, 0, 1, 5, ID)
         {
-            // DONE
+            // Uses ActionCard Constructor
         }
         public override String ToString()
         {

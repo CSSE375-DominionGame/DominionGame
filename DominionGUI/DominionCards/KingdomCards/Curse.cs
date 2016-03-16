@@ -10,7 +10,7 @@ namespace DominionCards.KingdomCards
     {
         public Curse() : base(-1, 0, 32)
         {
-            //NOTHING HAPPENS
+            // Uses VictoryCard Constructor
         }
 
         public override String ToString()

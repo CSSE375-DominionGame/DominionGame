@@ -14,7 +14,7 @@ namespace DominionCards.KingdomCards
         public Chapel()
             : base(0, 0, 0, 0, 2, ID)
         {
-            // TODO implement
+            // Uses ActionCard Constructor
         }
 
         public override String ToString()
@@ -27,7 +27,7 @@ namespace DominionCards.KingdomCards
             foreach (Card card in player.getHand())
             {
                 cardsToList.Add(card);
-                
+
             }
             if (cardsToList.Count == 0)
             {
@@ -46,11 +46,11 @@ namespace DominionCards.KingdomCards
                 player.getHand().Remove(toTrash);
             }
 
-            
-            
-            
 
-            
+
+
+
+
         }
     }
 }

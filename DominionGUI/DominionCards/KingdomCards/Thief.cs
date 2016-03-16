@@ -15,12 +15,13 @@ namespace DominionCards.KingdomCards
         public Thief()
             : base(0, 0, 0, 0, 4, ID)
         {
-            cardsTrashed = new ArrayList();
+            // Uses AttackCard Constructor
+            cardsTrashed = new ArrayList(); //Keeps track of this card's own trash
         }
         public override void Play(Player player)
         {
             base.Play(player); // resolves attacks on other players.
-            
+
             if (cardsTrashed.Count == 0)
             {
                 MessageBox.Show("You have no cards to keep from the thief!");
@@ -31,7 +32,7 @@ namespace DominionCards.KingdomCards
             for (int i = 0; i < cards.Count; i++)
             {
                 player.getDiscard().Add(cards[i]);
-            }    
+            }
         }
 
         public override void MakeImmediateAttack(Player playerAttacked)
@@ -40,7 +41,7 @@ namespace DominionCards.KingdomCards
             cards.Add(playerAttacked.getDeck().Pop());
             cards.Add(playerAttacked.getDeck().Pop());
 
-            
+
             if (!((Card)cards[1]).IsTreasure())
             {
                 playerAttacked.getDiscard().Add(cards[1]);

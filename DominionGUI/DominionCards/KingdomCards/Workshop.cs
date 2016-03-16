@@ -14,7 +14,7 @@ namespace DominionCards.KingdomCards
         public Workshop()
             : base(0, 0, 0, 0, 3, ID)
         {
-            // TODO implement
+            // Uses ActionCard Constructor
         }
         public override void Play(Player player)
         {

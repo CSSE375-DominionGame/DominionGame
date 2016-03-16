@@ -14,7 +14,7 @@ namespace DominionCards.KingdomCards
         public MoneyLender()
             : base(0, 0, 0, 0, 4, ID)
         {
-            // TODO implement
+            // Uses ActionCard Constructor
         }
         public override String ToString()
         {

@@ -10,9 +10,10 @@ namespace DominionCards.KingdomCards
 {
     public class Cellar : ActionCard
     {
-        public Cellar() : base(0, 0, 0, 1, 2, 8) 
+        public Cellar()
+            : base(0, 0, 0, 1, 2, 8)
         {
-            // TODO implement
+            // Uses ActionCard Constructor
         }
 
         public override String ToString()
@@ -26,7 +27,7 @@ namespace DominionCards.KingdomCards
             foreach (Card card in player.getHand())
             {
                 discardableCards.Add(card);
-                
+
             }
             if (discardableCards.Count == 0)
             {
