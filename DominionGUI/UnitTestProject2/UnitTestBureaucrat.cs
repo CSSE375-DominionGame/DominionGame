@@ -42,14 +42,14 @@ namespace UnitTestProject2
         }
 
         [TestMethod]
-        public void TestNextCardIsSilverAfterPlayingBeaureauqwertyuiop()
+        public void TestNextCardIsSilverAfterPlayingBeaureau()
         {
             p1.playCard(card);
             ProcessAllAttacks();
             Assert.AreEqual(new Silver(), p1.GetNextCard());
         }
         [TestMethod]
-        public void TestNextCardPlayingBeaureauqwertyuiopDoesNothingToPlayerWithNoVictoryCards()
+        public void TestNextCardPlayingBeaureauDoesNothingToPlayerWithNoVictoryCards()
         {
             p2.setDeck(new Stack<Card>());
             p2.setHand(new ArrayList());
@@ -67,7 +67,7 @@ namespace UnitTestProject2
 
         }
         [TestMethod]
-        public void TestNextCardPlayingBeaureauqwertyuiopRemovesVictoryCardFromHand()
+        public void TestNextCardPlayingBeaureauRemovesVictoryCardFromHand()
         {
             p2.getHand().Clear();
             p3.getHand().Clear();
@@ -84,7 +84,7 @@ namespace UnitTestProject2
 
         }
         [TestMethod]
-        public void TestNextCardPlayingBeaureauqwertyuiopAddsVictoryCardToDeck()
+        public void TestNextCardPlayingBeaureauAddsVictoryCardToDeck()
         {
             p2.addCardToHand(new Estate());
             p3.addCardToHand(new Estate());
