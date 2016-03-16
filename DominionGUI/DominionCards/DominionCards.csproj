@@ -64,13 +64,12 @@
   <ItemGroup>
     <Compile Include="AttackCard.cs" />
     <Compile Include="Card.cs" />
-    <Compile Include="CardCannotBePlayedException.cs" />
-    <Compile Include="CardTEST.cs" />
+    <Compile Include="Exceptions\CardCannotBePlayedException.cs" />
     <Compile Include="ActionCard.cs" />
     <Compile Include="CardCheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="GameBoardInstanceIsNullException.cs" />
+    <Compile Include="Exceptions\GameBoardInstanceIsNullException.cs" />
     <Compile Include="SelectCardsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,9 +112,8 @@
     <Compile Include="KingdomCards\Workshop.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerTest.cs" />
-    <Compile Include="TestAddCards.cs" />
-    <Compile Include="TieException.cs" />
-    <Compile Include="UnplayableCardException.cs" />
+    <Compile Include="Exceptions\TieException.cs" />
+    <Compile Include="Exceptions\UnplayableCardException.cs" />
     <Compile Include="VictoryCard.cs" />
     <Compile Include="TreasureCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

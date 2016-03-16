@@ -42,6 +42,17 @@ namespace UnitTestProject2
                 // exception expected, test passes.
             }
         }
+
+        [TestMethod]
+        public void testThatCardsWorkInDictionaries()
+        {
+            Dictionary<Card, int> dict = new Dictionary<Card, int>();
+            dict.Add(new Copper(), 1);
+            dict.Add(new Village(), 2);
+            Assert.AreEqual(1, dict[new Copper()]);
+            Assert.AreEqual(2, dict[new Village()]);
+        }
+
         [TestMethod]
         public void TestVictoryCardsAreVictoryCards()
         {
@@ -174,7 +185,7 @@ namespace UnitTestProject2
             Assert.AreEqual(0, c.getVictoryPoints());
         }
         [TestMethod]
-        public void testMoneyLenderAddsMoneyIfThereIsCopperAndYes()
+        public void testMoneyLenderAddsMoneyIfThereIsCopper()
         {
             Card c = new MoneyLender();
             Player p = new HumanPlayer();
@@ -192,7 +203,7 @@ namespace UnitTestProject2
             ///////////////////////////////////
         }
         [TestMethod]
-        public void testMoneyLenderDoesNotAddMoneyIfThereIsNoCopperAndYes()
+        public void testMoneyLenderDoesNotAddMoneyIfThereIsNoCopper()
         {
             Card c = new MoneyLender();
             Player p = new HumanPlayer();

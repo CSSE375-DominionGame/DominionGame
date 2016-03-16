@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DominionCards;
 using DominionCards.KingdomCards;
 using System.Collections.Generic;
+using DominionGUI;
 //using Rhino.Mocks;
 //using Rhino.Mocks.Interfaces;
 
@@ -11,6 +12,17 @@ namespace UnitTestProject2
     [TestClass]
     public class UnitTestGameBoard
     {
+        [TestMethod]
+        public void TestIfCorrectNumberOfCardsAreAddedToGameBoard()
+        {
+            GameBoard board = new GameBoard(GetTestCards());
+            for (int i = 0; i < 100; i++)
+            {
+                SelectNumPlayers.INSTANCE.addRandomCards();
+                Assert.AreEqual(10, SelectNumPlayers.INSTANCE.board.cards.Count);
+            }
+        }
+
         [TestMethod]
         public void TestIsBuyPhaseResetsAbortPhase()
         {

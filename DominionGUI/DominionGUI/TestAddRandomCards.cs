@@ -10,15 +10,6 @@ namespace DominionGUI
     [TestClass]
     public class TestAddRandomCards
     {
-        [TestMethod]
-        public void TestIfCorrectNumberOfCardsAreAddedToGameBoard()
-        {
-            new SelectNumPlayers();
-            for (int i = 0; i < 100; i++)
-            {
-                SelectNumPlayers.INSTANCE.addRandomCards();
-                Assert.AreEqual(10, SelectNumPlayers.INSTANCE.board.cards.Count);
-            }
-        }
+       
     }
 }
