@@ -200,8 +200,8 @@ namespace UnitTestProject2
             int moneyBefore = p.moneyLeft();
             p.playCard(c);
             Assert.AreEqual(moneyBefore + 3, p.moneyLeft());
-            ///////////////////////////////////
         }
+
         [TestMethod]
         public void testMoneyLenderDoesNotAddMoneyIfThereIsNoCopper()
         {
@@ -217,7 +217,6 @@ namespace UnitTestProject2
             int moneyBefore = p.moneyLeft();
             p.playCard(c);
             Assert.AreEqual(moneyBefore, p.moneyLeft());
-            ///////////////////////////////////
         }
 
         [TestMethod]
@@ -235,7 +234,6 @@ namespace UnitTestProject2
             int moneyBefore = p.moneyLeft();
             p.playCard(c);
             Assert.AreEqual(moneyBefore, p.moneyLeft());
-            ///////////////////////////////////
         }
         [TestMethod]
         public void testMoneyLenderDoesNotRemoveNoCopper()
@@ -252,7 +250,6 @@ namespace UnitTestProject2
             p.addCardToHand(c);
             p.playCard(c);
             Assert.AreEqual(handBefore, p.getHand().Count);
-            ///////////////////////////////////
         }
         [TestMethod]
         public void testMoneyLenderRemovesCopper()
@@ -270,7 +267,6 @@ namespace UnitTestProject2
             p.addCardToHand(c);
             p.playCard(c);
             Assert.AreEqual(handBefore - 1, p.getHand().Count);
-            ///////////////////////////////////
         }
         [TestMethod]
         public void testMoneyLenderOnlyRemovesOneCopper()
@@ -288,7 +284,6 @@ namespace UnitTestProject2
             p.addCardToHand(c);
             p.playCard(c);
             Assert.AreEqual(handBefore - 1, p.getHand().Count);
-            ///////////////////////////////////
         }
         [TestMethod]
         public void testVictoryReturnsVP()
@@ -318,7 +313,7 @@ namespace UnitTestProject2
         [TestMethod]
         public void testOtherPlayersDrawCardsOnCouncilRoom()
         {
-            Dictionary<Card, int> cards = new Dictionary<Card,int>();
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
             GameBoard board = new GameBoard(cards);
             Card c = new CouncilRoom();
             Player p1 = new HumanPlayer(1);
@@ -723,7 +718,7 @@ namespace UnitTestProject2
         [TestMethod]
         public void testPlayerDraws4CardsOnCouncilRoom()
         {
-            Dictionary<Card, int> cards = new Dictionary<Card,int>();
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
             GameBoard board = new GameBoard(cards);
             Card c = new CouncilRoom();
             Player p1 = new HumanPlayer(1);
@@ -735,6 +730,6 @@ namespace UnitTestProject2
             p1.playCard(c);
             Assert.AreEqual(before + 4, p1.getHand().Count);
         }
-        
+
     }
 }

@@ -6,7 +6,6 @@ using RandomGenerateCards;
 using DominionCards;
 using DominionCards.KingdomCards;
 using System.Threading;
-//using Rhino.Mocks;
 
 namespace UnitTestProject2
 {
@@ -44,8 +43,6 @@ namespace UnitTestProject2
                 Assert.AreEqual("Player " + (i + 1), p.ToString());
             }
         }
-
-
         [TestMethod]
         public void TestEndTurnResetsPlayerActions()
         {
@@ -85,9 +82,8 @@ namespace UnitTestProject2
             int discard = p1.getDiscard().Count;
             int handSize = p1.getHand().Count;
             p1.EndTurn();
-            Assert.AreEqual(discard+handSize, p1.getDiscard().Count);
+            Assert.AreEqual(discard + handSize, p1.getDiscard().Count);
         }
-
         [TestMethod]
         public void TestIsBuyPhaseIsFalseWithNoBuys()
         {
@@ -135,8 +131,6 @@ namespace UnitTestProject2
             board.AddPlayer(p1);
             Assert.IsFalse(p1.buyCard(new Silver()));
         }
-
-
         [TestMethod]
         public void TestThatBuyPhaseBuysMostRecentBoughtCard()
         {
@@ -168,7 +162,6 @@ namespace UnitTestProject2
             Player p1 = new HumanPlayer(1);
             Assert.IsFalse(p1.buyCard(new Province()));
         }
-
         [TestMethod]
         public void TestThatActionPhasePhaseDoesNotPlayCardWithoutEnoughActions()
         {
@@ -184,12 +177,11 @@ namespace UnitTestProject2
             p1.addCardToHand(new Witch());
             p1.addCardToHand(new Copper());
             GameBoard.lastCardPlayed = new Copper();
-            
+
             Thread t = new Thread(p1.actionPhase);
             t.Start();
             GameBoard.lastCardPlayed = new Witch();
-            //Monitor.PulseAll(new PlayButtonSignal());
-            
+
             Assert.IsFalse(p2.getDiscard().Contains(new Witch()));
         }
         [TestMethod]
@@ -207,7 +199,7 @@ namespace UnitTestProject2
             Card witch = new Witch();
             p1.addCardToHand(witch);
             p1.addCardToHand(new Copper());
-            
+
             Thread t = new Thread(new ThreadStart(p1.actionPhase));
             t.Start();
             Console.WriteLine("TEST: thread launched successfully. Entering 5 second sleep.");
@@ -215,8 +207,9 @@ namespace UnitTestProject2
             Console.WriteLine("TEST: woke up. Setting 'CardPlayed' to witch.");
             GameBoard.lastCardPlayed = witch;
             Console.Write("about to enter sync block.....");
-            
-            lock (GameBoard.ActionPhaseLock){
+
+            lock (GameBoard.ActionPhaseLock)
+            {
                 Console.WriteLine("Entering sync block");
                 Monitor.PulseAll(GameBoard.ActionPhaseLock);
                 Console.WriteLine("Button pressed!");
@@ -242,12 +235,13 @@ namespace UnitTestProject2
             Card witch = new Witch();
             p1.addCardToHand(witch);
             p1.addCardToHand(new Copper());
-            
+
             Thread t = new Thread(new ThreadStart(p1.actionPhase));
             t.Start();
 
-            Thread.Sleep(100);            
-            lock (GameBoard.ActionPhaseLock){
+            Thread.Sleep(100);
+            lock (GameBoard.ActionPhaseLock)
+            {
                 Monitor.PulseAll(GameBoard.ActionPhaseLock);
                 Monitor.Wait(GameBoard.ActionPhaseLock);
             }
@@ -373,20 +367,6 @@ namespace UnitTestProject2
             Assert.AreEqual(discardSize, p1.getDiscard().Count);
             Assert.AreEqual(moneyLeft, p1.moneyLeft());
         }
-
-
-        /*[TestMethod]
-        public void TestIsActionPhaseIsTrueWithActionCard()
-        {
-            Dictionary<Card, int> dict = new Dictionary<Card, int>();
-            GameBoard board = new GameBoard(dict);
-            HumanPlayer p1 = new HumanPlayer(1);
-            ArrayList hand = new ArrayList();
-            hand.Add(new Village());
-            p1.setHand(hand);
-
-            Assert.IsTrue(p1.IsActionPhase());
-        }*/
         [TestMethod]
         public void TestIsActionPhaseIsFalseWithoutActionCard()
         {
@@ -399,7 +379,6 @@ namespace UnitTestProject2
 
             Assert.IsFalse(p1.IsActionPhase());
         }
-
         [TestMethod]
         public void TestIsActionPhaseIsFalseWithoutActionsLeft()
         {
@@ -424,7 +403,7 @@ namespace UnitTestProject2
             hand.Add(new Witch());
             p1.actions = 0;
             p1.setHand(hand);
-            
+
             Assert.IsFalse(p1.IsActionPhase());
         }
         [TestMethod]
@@ -494,7 +473,8 @@ namespace UnitTestProject2
             {
                 newDiscard.Add(deck.Pop());
             }
-            for (int i = 0; i < hand.Count; i++){
+            for (int i = 0; i < hand.Count; i++)
+            {
                 newDiscard.Add(hand[i]);
             }
             p1.setHand(new ArrayList());
@@ -545,7 +525,8 @@ namespace UnitTestProject2
             Assert.AreEqual(hand, p1.getHand());
         }
         [TestMethod]
-        public void testCountVictoryPointsCountsBasicVictoryCards(){
+        public void testCountVictoryPointsCountsBasicVictoryCards()
+        {
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
             p1.setDeck(deck);
@@ -669,7 +650,7 @@ namespace UnitTestProject2
 
             deck.Push(new Witch());
             deck.Push(new Gold());
-            
+
             for (int i = 0; i < 5; i++)
             {
                 discard.Add(new Copper());
@@ -686,7 +667,8 @@ namespace UnitTestProject2
             Assert.AreEqual(new Witch(), hand[1]);
         }
         [TestMethod]
-        public void testCountVictoryPointsWhenCardsInDiscard(){
+        public void testCountVictoryPointsWhenCardsInDiscard()
+        {
             Player p1 = new HumanPlayer();
             p1.setHand(new ArrayList());
             Stack<Card> deck = new Stack<Card>();
@@ -701,7 +683,8 @@ namespace UnitTestProject2
             Assert.AreEqual(12, p1.countVictoryPoints());
         }
         [TestMethod]
-        public void testCountVictoryPointsWhenCardsInHand(){
+        public void testCountVictoryPointsWhenCardsInHand()
+        {
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
             ArrayList hand = new ArrayList();
@@ -788,7 +771,7 @@ namespace UnitTestProject2
                     numbEstates++;
                 }
             }
-                Assert.AreEqual(3, numbEstates);
+            Assert.AreEqual(3, numbEstates);
         }
         [TestMethod]
         public void testPlayerStartsWithCorrectNumberOfCopper()
@@ -805,13 +788,13 @@ namespace UnitTestProject2
             }
             for (int i = 0; i < p1.getHand().Count; i++)
             {
-                int id = ((Card) p1.getHand()[i]).getID();
+                int id = ((Card)p1.getHand()[i]).getID();
                 if (id == 0)
                 {
                     numbCopper++;
                 }
             }
-                Assert.AreEqual(7, numbCopper);
+            Assert.AreEqual(7, numbCopper);
         }
         [TestMethod]
         public void testPlayerStartsWithCorrectNumberOfCards()
@@ -865,7 +848,7 @@ namespace UnitTestProject2
             ArrayList hand = new ArrayList();
             hand.Add(new Smithy());
             p1.setHand(hand);
-            p1.playCard((Card) hand[0]);
+            p1.playCard((Card)hand[0]);
             Assert.AreEqual(a - 1, p1.actionsLeft());
         }
         [TestMethod]
@@ -875,7 +858,7 @@ namespace UnitTestProject2
             ArrayList hand = new ArrayList();
             hand.Add(new Woodcutter());
             p1.setHand(hand);
-            p1.playCard((Card) hand[0]);
+            p1.playCard((Card)hand[0]);
             Assert.AreEqual(0, p1.getHand().Count);
         }
         [TestMethod]
@@ -886,8 +869,8 @@ namespace UnitTestProject2
             ArrayList hand = new ArrayList();
             hand.Add(new Woodcutter());
             p1.setHand(hand);
-            p1.playCard((Card) hand[0]);
-            Assert.AreEqual(b+1, p1.buysLeft());
+            p1.playCard((Card)hand[0]);
+            Assert.AreEqual(b + 1, p1.buysLeft());
         }
         [TestMethod]
         public void playingCardWithoutBuysDoesntAddBuys()
@@ -909,7 +892,7 @@ namespace UnitTestProject2
             hand.Add(new Village());
             p1.setHand(hand);
             p1.playCard((Card)hand[0]);
-            Assert.AreEqual(a+1, p1.actionsLeft());
+            Assert.AreEqual(a + 1, p1.actionsLeft());
         }
         [TestMethod]
         public void playingCardWithMoneyAddsMoney()
@@ -918,7 +901,7 @@ namespace UnitTestProject2
             int m = p1.moneyLeft();
             p1.addCardToHand(new Festival());
             p1.playCard(new Festival());
-            Assert.AreEqual(m+2, p1.moneyLeft());
+            Assert.AreEqual(m + 2, p1.moneyLeft());
         }
         [TestMethod]
         public void testShuffledDeckContainsSameCards()
@@ -945,19 +928,6 @@ namespace UnitTestProject2
             foreach (int id in count.Keys)
             {
                 Assert.AreEqual(expct[id], count[id]);
-            }
-        }
-        private static void CompareCounts(Dictionary<Card, int> expect, Dictionary<Card, int> cardCount)
-// TODO MARKED FOR DEMOLITION
-        {
-            foreach (KeyValuePair<Card, int> entry in expect)
-            {
-                //Assert.AreEqual(entry.Value, cardCount[entry.Key]);
-                Console.WriteLine("expected: " + entry.Key.getID() + ", " + entry.Value);
-                if (cardCount.ContainsKey(entry.Key))
-                {
-                    Console.WriteLine("returned: " + entry.Key.getID() + ", " + cardCount[entry.Key]);
-                }
             }
         }
 
@@ -1065,7 +1035,7 @@ namespace UnitTestProject2
             p1.buyCard(purchase);
             Assert.AreEqual((moneyBefore - cost), p1.moneyLeft());
 
-            
+
         }
         [TestMethod]
         public void buyingCheapCardTakesMoneyFromPlayer()
@@ -1091,7 +1061,7 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             Card purchase = new Laboratory();  //5
-            Assert.IsFalse(p1.buyCard(purchase));            
+            Assert.IsFalse(p1.buyCard(purchase));
         }
 
 
@@ -1109,7 +1079,7 @@ namespace UnitTestProject2
             p1.playCard(gold1); //this makes it so that you have enough money to buy the card
             p1.playCard(gold2); //same
             Assert.IsTrue(p1.buyCard(purchase));
-                     
+
         }
 
         [TestMethod]
@@ -1170,8 +1140,8 @@ namespace UnitTestProject2
             Player p3 = new HumanPlayer(3);
             Player p4 = new HumanPlayer(4);
             board.AddPlayer(p1);
-            board.AddPlayer(p2); 
-            board.AddPlayer(p3); 
+            board.AddPlayer(p2);
+            board.AddPlayer(p3);
             board.AddPlayer(p4);
             int p2AttackSize = p2.getAttacks().Count;
             int p3AttackSize = p3.getAttacks().Count;
@@ -1223,7 +1193,7 @@ namespace UnitTestProject2
             Player before = board.turnOrder.Peek();
             p1.playCard(militia);
             Assert.AreSame(before, board.turnOrder.Peek());
-            
+
         }
 
         [TestMethod]
