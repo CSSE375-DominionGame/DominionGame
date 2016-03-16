@@ -427,7 +427,7 @@ namespace DominionGUI
             }
 
             Close();
-            SelectNumPlayers.GetInstance().Dispose();
+            SelectNumPlayers.getInstance().Dispose();
         }
     }
 }

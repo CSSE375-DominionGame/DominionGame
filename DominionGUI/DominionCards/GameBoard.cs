@@ -15,7 +15,7 @@ namespace DominionCards
         public static Card lastCardPlayed, lastCardBought;
         public static bool AbortPhase = false;
         public static bool AbortGame = false;
-        private static GameBoard boardInstance;
+        private static GameBoard boardInstance = null;
         public static Object UpdateGraphicsLock = new Object();
         public static Object ActionPhaseLock = new Object();
         public static Object BuyPhaseLock = new Object();

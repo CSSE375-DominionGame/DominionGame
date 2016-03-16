@@ -22,7 +22,7 @@ namespace DominionGUI
         CheckBox lastChecked;
         private int numberplayers = -1;
 
-        public static  SelectNumPlayers GetInstance(){
+        public static  SelectNumPlayers getInstance(){
             if (INSTANCE == null)
             {
                 // sets this to INSTANCE in constructor
@@ -177,11 +177,6 @@ namespace DominionGUI
             }
             return dict;
         }
-        public void addRandomCards()
-        {
-                var myForm = GraphicsBoard.getinstance();
-                myForm.DrawHand();         
-         } 
     }
             
 

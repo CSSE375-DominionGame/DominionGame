@@ -12,16 +12,6 @@ namespace UnitTestProject2
     [TestClass]
     public class UnitTestGameBoard
     {
-        [TestMethod]
-        public void TestIfCorrectNumberOfCardsAreAddedToGameBoard()
-        {
-            GameBoard board = new GameBoard(GetTestCards());
-            for (int i = 0; i < 100; i++)
-            {
-                SelectNumPlayers.INSTANCE.addRandomCards();
-                Assert.AreEqual(10, SelectNumPlayers.INSTANCE.board.cards.Count);
-            }
-        }
 
         [TestMethod]
         public void TestIsBuyPhaseResetsAbortPhase()
@@ -125,19 +115,6 @@ namespace UnitTestProject2
             cards[new Workshop()] = 10;
             cards[new Market()] = 10;
             return cards;
-        }
-        [TestMethod]
-        public void TestGameBoardNullInstanceThrowsException()
-        {
-            try
-            {
-                GameBoard board = GameBoard.getInstance();
-                Assert.Fail();
-            }
-            catch (GameBoardInstanceIsNullException e)
-            {
-                // This exception is expected, tesst passes.
-            }
         }
 
         [TestMethod]
