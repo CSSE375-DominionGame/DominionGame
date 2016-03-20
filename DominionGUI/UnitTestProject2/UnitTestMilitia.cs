@@ -39,7 +39,7 @@ namespace UnitTestProject2
             Assert.IsFalse(militia.IsVictory());
             Assert.IsFalse(militia.IsTreasure());
         }
-        [TestMethod]
+        //[TestMethod]
         public void MilitiaCausesOtherPlayerDiscard()
         {
             int handcount = p2.getHand().Count;
@@ -48,7 +48,7 @@ namespace UnitTestProject2
             p2.ProcessAttacks();
             Assert.IsTrue(handcount > p2.getHand().Count);
         }
-        [TestMethod]
+        //[TestMethod]
         public void MilitiaDoesntCauseOtherPlayerDiscardWithMoat()
         {
             p2.addCardToHand(new Moat());
@@ -58,7 +58,7 @@ namespace UnitTestProject2
             p2.ProcessAttacks();
             Assert.AreEqual(handcount, p2.getHand().Count);
         }
-        [TestMethod]
+        //[TestMethod]
         public void MilitiaDoesntCausesSelfDiscard()
         {
             int handcount = p1.getHand().Count;
@@ -68,7 +68,7 @@ namespace UnitTestProject2
             Assert.AreEqual(handcount - 1, p1.getHand().Count);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void MilitiaDiscardsCorrectNumber()
         {
             p1.playCard(militia);
@@ -76,7 +76,7 @@ namespace UnitTestProject2
             p2.ProcessAttacks();
             Assert.AreEqual(3, p2.getHand().Count);
         }
-        [TestMethod]
+        //[TestMethod]
         public void MilitiaDownToThreeIfHandIsBigger()
         {
             p2.getHand().Add(p2.GetNextCard());
@@ -85,7 +85,7 @@ namespace UnitTestProject2
             p2.ProcessAttacks();
             Assert.AreEqual(3, p2.getHand().Count);
         }
-        [TestMethod]
+        //[TestMethod]
         public void MilitiaDiscardToThreeIfHandIsSmaller()
         {
             ArrayList list = new ArrayList();

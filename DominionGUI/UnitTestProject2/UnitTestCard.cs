@@ -120,7 +120,7 @@ namespace UnitTestProject2
             Assert.AreEqual("Workshop", new Workshop().ToString());
         }
         [TestMethod]
-        public void testThatAdventurerDoesThing()
+        public void testThatAdventurerDrawsCards()
         {
             Card c = new Adventurer();
             Player p = new HumanPlayer();
@@ -139,7 +139,7 @@ namespace UnitTestProject2
 
 
 
-        [TestMethod]
+        //[TestMethod]
         public void testWorkshopPutsNewCardInDiscard()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -154,7 +154,7 @@ namespace UnitTestProject2
             p.playCard(c);
             Assert.AreEqual(numdiscard + 2, p.getDiscard().Count);
         }
-        [TestMethod]
+        //[TestMethod]
         public void testWorkshopDoesntChargeForNewCard()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -168,7 +168,7 @@ namespace UnitTestProject2
             p1.playCard(c);
             Assert.AreEqual(spendPoints, p1.moneyLeft());
         }
-        [TestMethod]
+        //[TestMethod]
         public void testLibrary()
         {
             Card c = new Library();
@@ -184,7 +184,7 @@ namespace UnitTestProject2
             Card c = new Village();
             Assert.AreEqual(0, c.getVictoryPoints());
         }
-        [TestMethod]
+        // [TestMethod]
         public void testMoneyLenderAddsMoneyIfThereIsCopper()
         {
             Card c = new MoneyLender();
@@ -202,7 +202,7 @@ namespace UnitTestProject2
             Assert.AreEqual(moneyBefore + 3, p.moneyLeft());
             ///////////////////////////////////
         }
-        [TestMethod]
+        //[TestMethod]
         public void testMoneyLenderDoesNotAddMoneyIfThereIsNoCopper()
         {
             Card c = new MoneyLender();
@@ -220,7 +220,7 @@ namespace UnitTestProject2
             ///////////////////////////////////
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void testMoneyLenderDoesNotAddMoneyIfNo()
         {
             Card c = new MoneyLender();
@@ -237,7 +237,7 @@ namespace UnitTestProject2
             Assert.AreEqual(moneyBefore, p.moneyLeft());
             ///////////////////////////////////
         }
-        [TestMethod]
+        //[TestMethod]
         public void testMoneyLenderDoesNotRemoveNoCopper()
         {
             Card c = new MoneyLender();
@@ -254,7 +254,7 @@ namespace UnitTestProject2
             Assert.AreEqual(handBefore, p.getHand().Count);
             ///////////////////////////////////
         }
-        [TestMethod]
+        //[TestMethod]
         public void testMoneyLenderRemovesCopper()
         {
             Card c = new MoneyLender();
@@ -272,7 +272,7 @@ namespace UnitTestProject2
             Assert.AreEqual(handBefore - 1, p.getHand().Count);
             ///////////////////////////////////
         }
-        [TestMethod]
+        //[TestMethod]
         public void testMoneyLenderOnlyRemovesOneCopper()
         {
             Card c = new MoneyLender();
@@ -330,7 +330,7 @@ namespace UnitTestProject2
             p1.playCard(c);
             Assert.AreEqual(before + 1, p2.getHand().Count);
         }
-        [TestMethod]
+        //[TestMethod]
         public void TestWitchDisplaysMessage()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -346,7 +346,7 @@ namespace UnitTestProject2
             p2.ProcessAttacks();
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void TestWitchAddsCurseToOtherPlayers()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -391,7 +391,7 @@ namespace UnitTestProject2
             Assert.IsFalse(p3.getDiscard().Contains(new Curse()));
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void TestWitchDoesNotAddCurseToMe()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -411,7 +411,7 @@ namespace UnitTestProject2
             Assert.IsFalse(p1.getDiscard().Contains(new Curse()));
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void TestWitchDoesNotAddCurseToOtherPlayersWithMoats()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -435,7 +435,7 @@ namespace UnitTestProject2
             Assert.IsTrue(p3.getDiscard().Contains(new Curse()));
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void TestChapelDiscardThree()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -450,7 +450,7 @@ namespace UnitTestProject2
             Assert.AreEqual(cardsInDiscard + 1, p1.getDiscard().Count);
             Assert.AreEqual(cardsInHand - 4, p1.getHand().Count);
         }
-        [TestMethod]
+        //[TestMethod]
         public void TestChapelNoCards()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -467,7 +467,7 @@ namespace UnitTestProject2
             Assert.AreEqual(cardsInHand - 1, p1.getHand().Count);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void testRemodelPutsNewAndPlayedCardsInDiscard()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -483,7 +483,7 @@ namespace UnitTestProject2
             p1.playCard(c);
             Assert.AreEqual(numdiscard + 2, p1.getDiscard().Count);
         }
-        [TestMethod]
+        //[TestMethod]
         public void testRemodelWithNoOtherCards()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -501,7 +501,7 @@ namespace UnitTestProject2
             Assert.AreEqual(numdiscard + 1, p1.getDiscard().Count);
         }
 
-        [TestMethod]
+        //TestMethod]
         public void testRemodelDoesntIncludeCardsMoreThanFourCost()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -517,7 +517,7 @@ namespace UnitTestProject2
             Assert.AreEqual(numdiscard + 2, p1.getDiscard().Count);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void testFeastTrashesFeastAndAddsNewToDiscard()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -533,7 +533,7 @@ namespace UnitTestProject2
             Assert.AreEqual(numdiscard + 1, p1.getDiscard().Count);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void testFeastDoesntIncludeCardsMoreThanFiveCost()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -549,7 +549,7 @@ namespace UnitTestProject2
             Assert.AreEqual(numdiscard + 1, p1.getDiscard().Count);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void TestMineGiveUpCopperForSilver()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -571,7 +571,7 @@ namespace UnitTestProject2
             Assert.AreEqual(moneyInHand + 1, p1.getTotalMoney());
             Assert.AreEqual(cardsInHand - 1, p1.getHand().Count);
         }
-        [TestMethod]
+        //[TestMethod]
         public void TestMineWithNoTreasureCards()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -590,7 +590,7 @@ namespace UnitTestProject2
             Assert.AreEqual(cardsInHand - 1, p1.getHand().Count);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void TestCellarGainsOneActionWithNoDiscard()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -604,7 +604,7 @@ namespace UnitTestProject2
             Assert.AreEqual(actions, p1.actionsLeft());
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void TestCellarGainsTwoActionsWithOneTrash()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -618,7 +618,7 @@ namespace UnitTestProject2
             Assert.AreEqual(actions + 1, p1.actionsLeft());
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void TestCellarGainsThreeActionsWithOTwoTrashes()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -632,7 +632,7 @@ namespace UnitTestProject2
             Assert.AreEqual(actions + 2, p1.actionsLeft());
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void TestChancellorDiscardsHandOnYes()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -648,7 +648,7 @@ namespace UnitTestProject2
             Assert.AreEqual(0, p1.getDeck().Count);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void TestChancellorDoesntDiscardsHandOnNo()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -664,7 +664,7 @@ namespace UnitTestProject2
             Assert.AreEqual(deckCount, p1.getDeck().Count);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void TestMineGiveUpSilverForGold()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -687,7 +687,7 @@ namespace UnitTestProject2
             Assert.AreEqual(cardsInHand - 1, p1.getHand().Count);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void TestThroneRoomBringsUpWindow()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -704,7 +704,7 @@ namespace UnitTestProject2
             p1.playCard(c);
             Assert.AreEqual(2, 2);
         }
-        [TestMethod]
+        //[TestMethod]
         public void TestThroneMakesDialogueWhenNoOtherActionCardsAvailible()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();

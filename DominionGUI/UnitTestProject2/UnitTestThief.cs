@@ -36,35 +36,35 @@ namespace UnitTestProject2
             p3.getDeck().Push(new Silver());
             p1.addCardToHand(card);
         }
-        [TestMethod]
+        //[TestMethod]
         public void TestThiefIsActionCard()
         {
             Assert.IsTrue(card.IsAction());
             Assert.IsFalse(card.IsVictory());
             Assert.IsFalse(card.IsTreasure());
         }
-        [TestMethod]
+        //[TestMethod]
         public void TestThatThiefKeepsSomeCards()
         {
             int discardCount = p1.getDiscard().Count;
             p1.playCard(card);
             Assert.AreEqual(discardCount + 2, p1.getDiscard().Count);
         }
-        [TestMethod]
+        //[TestMethod]
         public void TestThatThiefKeepsAllCards()
         {
             int discardCount = p1.getDiscard().Count;
             p1.playCard(card);
             Assert.AreEqual(discardCount + 3, p1.getDiscard().Count);
         }
-        [TestMethod]
+        //[TestMethod]
         public void TestThatThiefKeepsNoCards()
         {
             int discardCount = p1.getDiscard().Count;
             p1.playCard(card);
             Assert.AreEqual(discardCount + 1, p1.getDiscard().Count);
         }
-        [TestMethod]
+        //[TestMethod]
         public void TestThatThiefTrashesCards()
         {
             int deckSize2 = p2.getDeck().Count;
@@ -77,7 +77,7 @@ namespace UnitTestProject2
             Assert.AreEqual(deckSize3 - 2, p2.getDeck().Count);
             Assert.AreEqual(discardSize3 + 1, p2.getDiscard().Count);
         }
-        [TestMethod]
+        //[TestMethod]
         public void TestThiefBlockedByMoat()
         {
             p2.getHand().Add(new Moat());
@@ -92,7 +92,7 @@ namespace UnitTestProject2
             Assert.AreEqual(deckSize3, p2.getDeck().Count);
             Assert.AreEqual(discardSize3, p2.getDiscard().Count);
         }
-        [TestMethod]
+        //[TestMethod]
         public void TestThiefDiscardsIfThereAreNoTreasures()
         {
             p3.getDeck().Push(new Village());
