@@ -111,7 +111,6 @@
     <Compile Include="KingdomCards\Woodcutter.cs" />
     <Compile Include="KingdomCards\Workshop.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="PlayerTest.cs" />
     <Compile Include="Exceptions\TieException.cs" />
     <Compile Include="Exceptions\UnplayableCardException.cs" />
     <Compile Include="VictoryCard.cs" />
