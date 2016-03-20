@@ -33,6 +33,11 @@ namespace DominionCards
             cards.Add(c, 10);
         }*/
 
+        public static void nullifyInstance()
+        {
+            boardInstance = null;
+        }
+
         public virtual int getCardsLeft(Card c)
         {
             return cards[c];

@@ -17,21 +17,6 @@ namespace UnitTestProject2
             String expected = "Player 1, and Player 3 tied for winner! \n";
             Assert.AreEqual(expected, exc.PrintWinners());
         }
-        [TestMethod]
-        public void TieExceptionReturnsCorrectStringForFourWayTie()
-        {
-            // TODO
-            Player p1 = new HumanPlayer(1);
-            Player p2 = new HumanPlayer(2);
-            Player p3 = new HumanPlayer(3);
-            Player p4 = new HumanPlayer(4);
-            TieException exc = new TieException(p1, p2, 9, 10);
-            exc.BreaksTie(p3);
-            exc.BreaksTie(p4);
-            String expected = "Player 1, Player 2, Player 3 and Player 4 tied for winner! \n";
-            Assert.AreEqual(expected, exc.PrintWinners());
-        }
-
 
         [TestMethod]
         public void BreakTieReturnsTrueIfNewPlayerWins()

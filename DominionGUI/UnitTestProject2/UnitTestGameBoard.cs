@@ -53,8 +53,11 @@ namespace UnitTestProject2
         public void TestGameIsNotOverIfOnlyTwoPilesAreEmpty()
         {
             GameBoard board = new GameBoard(GetTestCards());
+            GameBoard.AbortGame = false;
+            board.GetCards()[new Gold()] = 1;
             board.GetCards()[new Silver()] = 0;
             board.GetCards()[new Copper()] = 0;
+            board.GetCards()[new Province()] = 1;
             Assert.IsFalse(board.GameIsOver());
         }
         [TestMethod]
@@ -85,6 +88,7 @@ namespace UnitTestProject2
         {
             try
             {
+                GameBoard.nullifyInstance();
                 GameBoard.getInstance();
                 Assert.Fail("Should throw exception");
             }
@@ -187,6 +191,7 @@ namespace UnitTestProject2
         {
             try
             {
+                GameBoard.nullifyInstance();
                 GameBoard.getInstance();
                 Assert.Fail();
             }

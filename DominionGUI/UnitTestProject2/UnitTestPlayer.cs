@@ -94,6 +94,7 @@ namespace UnitTestProject2
         [TestMethod]
         public void TestIsBuyPhaseIsTrueWithBuys()
         {
+            GameBoard board = new GameBoard(new Dictionary<Card, int>());
             Player p1 = new HumanPlayer(1);
             Assert.IsTrue(p1.IsBuyPhase());
         }
@@ -130,11 +131,6 @@ namespace UnitTestProject2
             board.GetCards()[new Silver()] = 0;
             board.AddPlayer(p1);
             Assert.IsFalse(p1.buyCard(new Silver()));
-        }
-        [TestMethod]
-        public void TestThatBuyPhaseBuysMostRecentBoughtCard()
-        {
-            Assert.Fail();
         }
         [TestMethod]
         public void IntegrationFailsToBuyCardWithNoneLeft()
@@ -958,7 +954,13 @@ namespace UnitTestProject2
         [TestMethod]
         public void playingCardWithoutMoneyDoesntAddMoney()
         {
+            Stack<Card> deck = new Stack<Card>();
+            deck.Push(new Estate());
+            deck.Push(new Estate());
+            deck.Push(new Estate());
+            deck.Push(new Estate());
             Player p1 = new HumanPlayer();
+            p1.setDeck(deck);
             int m = p1.moneyLeft();
             p1.addCardToHand(new Laboratory());
             p1.playCard(new Laboratory());
@@ -990,6 +992,9 @@ namespace UnitTestProject2
         [TestMethod]
         public void testBuyLowersNumBuysWithEnoughMoney()
         {
+            Dictionary<Card, int> dict = new Dictionary<Card,int>();
+            dict[new Laboratory()] = 1;
+            GameBoard board = new GameBoard(dict);
             Player p1 = new HumanPlayer();
             int originalBuys = p1.buysLeft();
             Card purchase = new Laboratory();  //5
@@ -999,8 +1004,6 @@ namespace UnitTestProject2
             tempHand.Add(gold1);
             tempHand.Add(gold2);
             p1.setHand(tempHand);
-            p1.playCard(gold1); //this makes it so that you have enough money to buy the card
-            p1.playCard(gold2); //same
             p1.buyCard(purchase);
             int buysAfter = p1.buysLeft();
             Assert.AreEqual((originalBuys - 1), buysAfter);
@@ -1020,6 +1023,9 @@ namespace UnitTestProject2
         [TestMethod]
         public void buyingExpensiveCardTakesMoneyFromPlayer()
         {
+            Dictionary<Card, int> dict = new Dictionary<Card, int>();
+            dict[new Laboratory()] = 1;
+            GameBoard board = new GameBoard(dict);
             Player p1 = new HumanPlayer();
             Card purchase = new Laboratory();  //5
             ArrayList tempHand = new ArrayList();
@@ -1028,8 +1034,6 @@ namespace UnitTestProject2
             tempHand.Add(gold1);
             tempHand.Add(gold2);
             p1.setHand(tempHand);
-            p1.playCard(gold1); //this makes it so that you have enough money to buy the card
-            p1.playCard(gold2); //same
             int moneyBefore = p1.moneyLeft();
             int cost = purchase.getPrice();
             p1.buyCard(purchase);
@@ -1040,6 +1044,9 @@ namespace UnitTestProject2
         [TestMethod]
         public void buyingCheapCardTakesMoneyFromPlayer()
         {
+            Dictionary<Card, int> dict = new Dictionary<Card, int>();
+            dict[new Estate()] = 1;
+            GameBoard board = new GameBoard(dict);
             Player p1 = new HumanPlayer();
             Card purchase = new Estate();  //2
             ArrayList tempHand = new ArrayList();
@@ -1048,8 +1055,6 @@ namespace UnitTestProject2
             tempHand.Add(gold1);
             tempHand.Add(gold2);
             p1.setHand(tempHand);
-            p1.playCard(gold1); //this makes it so that you have enough money to buy the card
-            p1.playCard(gold2); //same
             int moneyBefore = p1.moneyLeft();
             int cost = purchase.getPrice();
             p1.buyCard(purchase);
@@ -1068,6 +1073,9 @@ namespace UnitTestProject2
         [TestMethod]
         public void testIfUserHasEnoughMoney()
         {
+            Dictionary<Card, int> dict = new Dictionary<Card, int>();
+            dict[new Laboratory()] = 1;
+            GameBoard board = new GameBoard(dict);
             Player p1 = new HumanPlayer();
             Card purchase = new Laboratory();  //5
             ArrayList tempHand = new ArrayList();
@@ -1076,10 +1084,7 @@ namespace UnitTestProject2
             tempHand.Add(gold1);
             tempHand.Add(gold2);
             p1.setHand(tempHand);
-            p1.playCard(gold1); //this makes it so that you have enough money to buy the card
-            p1.playCard(gold2); //same
             Assert.IsTrue(p1.buyCard(purchase));
-
         }
 
         [TestMethod]
