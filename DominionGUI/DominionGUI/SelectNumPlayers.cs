@@ -101,91 +101,20 @@ namespace DominionGUI
                 checkBox2.Enabled = true;
             }
         }
-        public void createplayers(int numberplayer)
-        {
-            for (int i = 0; i < numberplayer; i++)
-            {
-                this.board.AddPlayer(new DominionCards.HumanPlayer(i + 1));
-            }
-        }
 
         public DominionCards.GameBoard getboard()
         {
             return this.board;
         }
-        /* private void button1_Click(object sender, EventArgs e)
-        {
-            // do nothing?
-        } */
+
         private void RunGame(object sender, EventArgs e)
         {
             var myForm = new FormSupplySetup(this.numberplayers);
             myForm.Update();
             myForm.Show();
             this.Hide();
-
-            //board = new dominioncards.gameboard(createrandomcarddictionary());
-            //createplayers(numberplayers);
-            //var myform = graphicsboard.getinstance();
-            //graphicsboard.waittoupdatelabels();
-            //myform.update();
-            //myform.show();
-        }
-        private Dictionary<DominionCards.Card, int> CreateRandomCardDictionary()
-        {
-            int numberOfVictoryCards;
-            int numberOfCurses;
-            if (numberplayers == 2)
-            {
-                numberOfVictoryCards = 8;
-                numberOfCurses = 10;
-            }
-            else if (numberplayers == 3)
-            {
-                numberOfVictoryCards = 12;
-                numberOfCurses = 20;
-            }
-            else if (numberplayers == 4)
-            {
-                numberOfVictoryCards = 12;
-                numberOfCurses = 30;
-            }
-            else
-            {
-                numberOfVictoryCards = 999;
-                numberOfCurses = 999;
-            }
-
-            Dictionary<DominionCards.Card, int> dict = new Dictionary<DominionCards.Card, int>();
-            List<int> numList = new List<int>();
-            dict.Add(new DominionCards.KingdomCards.Copper(), 60);
-            dict.Add(new DominionCards.KingdomCards.Silver(), 40);
-            dict.Add(new DominionCards.KingdomCards.Gold(), 30);
-            dict.Add(new DominionCards.KingdomCards.Estate(), numberOfVictoryCards);
-            dict.Add(new DominionCards.KingdomCards.Duchy(), numberOfVictoryCards);
-            dict.Add(new DominionCards.KingdomCards.Province(), numberOfVictoryCards);
-            dict.Add(new DominionCards.KingdomCards.Curse(), numberOfCurses);
-
-            numList = RandomGenerateCards.GenerateRandom.GenerateRandomList(25, 10);
-            for (int i = 0; i < 25; i++)
-            {
-                if (numList.Contains(i))
-                {
-                    int numCards = 10;
-                    DominionCards.Card card = (DominionCards.Card)Activator.CreateInstance(cardsadd[i]);
-                    if (card.Equals(new DominionCards.KingdomCards.Gardens()))
-                    {
-                        numCards = numberOfVictoryCards;
-                    }
-
-                    dict.Add(card, numCards);
-                }
-            }
-            return dict;
         }
     }
-
-
 }
 
 
