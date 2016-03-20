@@ -119,12 +119,17 @@ namespace DominionGUI
         } */
         private void RunGame(object sender, EventArgs e)
         {
-            board = new DominionCards.GameBoard(CreateRandomCardDictionary());
-            createplayers(numberplayers);
-            var myForm = GraphicsBoard.getinstance();
-            GraphicsBoard.WaitToUpdateLabels();
+            var myForm = new FormSupplySetup(this.numberplayers);
             myForm.Update();
             myForm.Show();
+            this.Hide();
+
+            //board = new dominioncards.gameboard(createrandomcarddictionary());
+            //createplayers(numberplayers);
+            //var myform = graphicsboard.getinstance();
+            //graphicsboard.waittoupdatelabels();
+            //myform.update();
+            //myform.show();
         }
         private Dictionary<DominionCards.Card, int> CreateRandomCardDictionary()
         {

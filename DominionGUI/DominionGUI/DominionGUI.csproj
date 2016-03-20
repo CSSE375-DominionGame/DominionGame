@@ -65,6 +65,12 @@
     <Compile Include="CardButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="FormSupplySetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSupplySetup.designer.cs">
+      <DependentUpon>FormSupplySetup.cs</DependentUpon>
+    </Compile>
     <Compile Include="KingdomCardSelection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormSupplySetup.resx">
+      <DependentUpon>FormSupplySetup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="KingdomCardSelection.resx">
       <DependentUpon>KingdomCardSelection.cs</DependentUpon>
     </EmbeddedResource>
