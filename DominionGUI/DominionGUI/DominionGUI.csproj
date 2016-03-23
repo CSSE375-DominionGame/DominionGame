@@ -208,10 +208,6 @@
       <Project>{fd137fcd-2cf8-4295-b235-f0519e9d61d6}</Project>
       <Name>DominionCards</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RandomGenerateCards\RandomGenerateCards.csproj">
-      <Project>{49af3923-b952-441e-9670-a3a727d74557}</Project>
-      <Name>RandomGenerateCards</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AdventurerHalfNew.jpg" />

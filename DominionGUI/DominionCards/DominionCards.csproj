@@ -70,6 +70,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Exceptions\GameBoardInstanceIsNullException.cs" />
+    <Compile Include="GenerateRandom.cs" />
     <Compile Include="SelectCardsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,12 +120,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RandomGenerateCards\RandomGenerateCards.csproj">
-      <Project>{49af3923-b952-441e-9670-a3a727d74557}</Project>
-      <Name>RandomGenerateCards</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SelectCardsForm.resx">

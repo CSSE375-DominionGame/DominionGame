@@ -1,18 +1,19 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
-namespace RandomGenerateCards
+namespace DominionCards
 {
     public class GenerateRandom
     {
-        static void Main(string[] args)
+         static void Main(string[] args)
         {
         }
-        /*static Random random = new Random();
+        static Random random = new Random();
+
         public static List<int> GenerateRandomList(int maxvalue,int size)
         {
             int count = size;
@@ -56,9 +57,7 @@ namespace RandomGenerateCards
                 returndeck.Push(inputlist[randomindex[i]]);
             }
                 return returndeck;
-        }*/
+        }
     }
-}
-
-
+    }
 
