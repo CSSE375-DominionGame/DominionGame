@@ -47,7 +47,7 @@ namespace RandomGenerateCards
             return result;
         }
 
-        public static Stack SuffleDeck(ArrayList inputlist)
+        public static Stack ShuffleDeck(ArrayList inputlist)
         {
             Stack returndeck = new Stack(inputlist.Count);
             List<int> randomindex = GenerateRandomList(inputlist.Count, inputlist.Count);

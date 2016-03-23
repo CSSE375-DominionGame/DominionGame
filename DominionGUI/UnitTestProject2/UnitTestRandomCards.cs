@@ -65,7 +65,7 @@ namespace UnitTestProject2
             }
 
 
-            Stack randomdeck = GenerateRandom.SuffleDeck(theList);
+            Stack randomdeck = GenerateRandom.ShuffleDeck(theList);
 
             Boolean israndom = false;
             for (int i = 0; i < olddeck.Count; i++)
@@ -98,7 +98,7 @@ namespace UnitTestProject2
             }
 
 
-            Stack randomdeck = GenerateRandom.SuffleDeck(theList);
+            Stack randomdeck = GenerateRandom.ShuffleDeck(theList);
 
             Boolean israndom = false;
             while (olddeck.Count > 0)
@@ -129,7 +129,7 @@ namespace UnitTestProject2
             }
 
 
-            Stack randomdeck = GenerateRandom.SuffleDeck(theList);
+            Stack randomdeck = GenerateRandom.ShuffleDeck(theList);
 
             Boolean israndom = false;
             while (olddeck.Count > 0)

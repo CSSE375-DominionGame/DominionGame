@@ -281,7 +281,7 @@ namespace DominionCards
         {
             Stack<Card> newDeck; // = new Stack<Card>();
 
-            Stack temp = GenerateRandom.SuffleDeck(discard);
+            Stack temp = GenerateRandom.ShuffleDeck(discard);
             newDeck = ConvertStackToCardStack(temp);
             discard.Clear();
             return newDeck;
