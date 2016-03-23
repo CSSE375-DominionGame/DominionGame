@@ -78,7 +78,6 @@
     <Compile Include="UnitTestSpy.cs" />
     <Compile Include="UnitTestBureaucrat.cs" />
     <Compile Include="UnitTestException.cs" />
-    <Compile Include="UnitTestRandomCards.cs" />
     <Compile Include="UnitTestGameBoard.cs" />
     <Compile Include="UnitTestCard.cs" />
     <Compile Include="UnitTestPlayer.cs" />
