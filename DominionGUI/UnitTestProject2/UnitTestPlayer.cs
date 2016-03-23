@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Collections;
-using RandomGenerateCards;
 using DominionCards;
 using DominionCards.KingdomCards;
 using System.Threading;
@@ -63,7 +62,7 @@ namespace UnitTestProject2
         public void TestEndTurnResetsDrawsNewHand()
         {
             Player p1 = new HumanPlayer();
-            p1.setHand(new ArrayList());
+            p1.setHand(new List<Card>());
             p1.EndTurn();
             Assert.AreEqual(5, p1.getHand().Count);
         }
@@ -110,7 +109,7 @@ namespace UnitTestProject2
         public void TestIsActionPhaseFailsWithNoActionCards()
         {
             Player p1 = new HumanPlayer();
-            p1.setHand(new ArrayList());
+            p1.setHand(new List<Card>());
             p1.actions = 1;
             Assert.IsFalse(p1.IsActionPhase());
         }
@@ -369,7 +368,7 @@ namespace UnitTestProject2
             Dictionary<Card, int> dict = new Dictionary<Card, int>();
             GameBoard board = new GameBoard(dict);
             HumanPlayer p1 = new HumanPlayer(1);
-            ArrayList hand = new ArrayList();
+            List<Card> hand = new List<Card>();
             hand.Add(new Estate());
             p1.setHand(hand);
 
@@ -382,7 +381,7 @@ namespace UnitTestProject2
             GameBoard board = new GameBoard(dict);
             HumanPlayer p1 = new HumanPlayer(1);
             p1.actions = 0;
-            ArrayList hand = new ArrayList();
+            List<Card> hand = new List<Card>();
             hand.Add(new Village());
             p1.setHand(hand);
 
@@ -394,7 +393,7 @@ namespace UnitTestProject2
             Dictionary<Card, int> dict = new Dictionary<Card, int>();
             GameBoard board = new GameBoard(dict);
             HumanPlayer p1 = new HumanPlayer(1);
-            ArrayList hand = new ArrayList();
+            List<Card> hand = new List<Card>();
             hand.Add(new Estate());
             hand.Add(new Witch());
             p1.actions = 0;
@@ -408,7 +407,7 @@ namespace UnitTestProject2
             Dictionary<Card, int> dict = new Dictionary<Card, int>();
             GameBoard board = new GameBoard(dict);
             HumanPlayer p1 = new HumanPlayer(1);
-            ArrayList hand = new ArrayList();
+            List<Card> hand = new List<Card>();
             hand.Add(new Estate());
             hand.Add(new Witch());
             p1.setHand(hand);
@@ -421,7 +420,7 @@ namespace UnitTestProject2
         {
             Player p = new HumanPlayer();
             Stack<Card> deck = p.getDeck();
-            ArrayList newDiscard = new ArrayList();
+            List<Card> newDiscard = new List<Card>();
             while (deck.Count > 0)
             {
                 newDiscard.Add(deck.Pop());
@@ -435,7 +434,7 @@ namespace UnitTestProject2
         {
             Player p = new HumanPlayer();
             Stack<Card> deck = p.getDeck();
-            ArrayList newDiscard = new ArrayList();
+            List<Card> newDiscard = new List<Card>();
             while (deck.Count > 2)
             {
                 newDiscard.Add(deck.Pop());
@@ -449,7 +448,7 @@ namespace UnitTestProject2
         {
             Player p = new HumanPlayer();
             Stack<Card> deck = p.getDeck();
-            ArrayList newDiscard = new ArrayList();
+            List<Card> newDiscard = new List<Card>();
             while (deck.Count > 2)
             {
                 newDiscard.Add(deck.Pop());
@@ -463,8 +462,8 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             Stack<Card> deck = p1.getDeck();
-            ArrayList hand = p1.getHand();
-            ArrayList newDiscard = new ArrayList();
+            List<Card> hand = p1.getHand();
+            List<Card> newDiscard = new List<Card>();
             while (deck.Count > 2)
             {
                 newDiscard.Add(deck.Pop());
@@ -473,7 +472,7 @@ namespace UnitTestProject2
             {
                 newDiscard.Add(hand[i]);
             }
-            p1.setHand(new ArrayList());
+            p1.setHand(new List<Card>());
             p1.setDiscard(newDiscard);
             int discardCount = newDiscard.Count;
             int deckCount = p1.getDeck().Count;
@@ -486,7 +485,7 @@ namespace UnitTestProject2
         {
             Player p = new HumanPlayer();
             Stack<Card> deck = p.getDeck();
-            ArrayList newDiscard = new ArrayList();
+            List<Card> newDiscard = new List<Card>();
             while (deck.Count > 0)
             {
                 newDiscard.Add(deck.Pop());
@@ -501,7 +500,7 @@ namespace UnitTestProject2
         {
             Player p = new HumanPlayer();
             Stack<Card> deck = p.getDeck();
-            ArrayList newDiscard = new ArrayList();
+            List<Card> newDiscard = new List<Card>();
             while (deck.Count > 0)
             {
                 newDiscard.Add(deck.Pop());
@@ -516,7 +515,7 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             p1.drawHand();
-            ArrayList hand = p1.getHand();
+            List<Card> hand = p1.getHand();
             p1.drawHand();
             Assert.AreEqual(hand, p1.getHand());
         }
@@ -526,7 +525,7 @@ namespace UnitTestProject2
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
             p1.setDeck(deck);
-            p1.setHand(new ArrayList());
+            p1.setHand(new List<Card>());
             Assert.AreEqual(0, p1.countVictoryPoints());
             deck.Push(new Estate());
             Assert.AreEqual(1, p1.countVictoryPoints());
@@ -542,7 +541,7 @@ namespace UnitTestProject2
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
             p1.setDeck(deck);
-            p1.setHand(new ArrayList());
+            p1.setHand(new List<Card>());
             for (int i = 0; i < 9; i++)
             {
                 deck.Push(new Militia());
@@ -557,7 +556,7 @@ namespace UnitTestProject2
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
             p1.setDeck(deck);
-            p1.setHand(new ArrayList());
+            p1.setHand(new List<Card>());
             for (int i = 0; i < 8; i++)
             {
                 deck.Push(new Militia());
@@ -572,7 +571,7 @@ namespace UnitTestProject2
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
             p1.setDeck(deck);
-            p1.setHand(new ArrayList());
+            p1.setHand(new List<Card>());
             for (int i = 0; i < 11; i++)
             {
                 deck.Push(new Militia());
@@ -587,7 +586,7 @@ namespace UnitTestProject2
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
             p1.setDeck(deck);
-            p1.setHand(new ArrayList());
+            p1.setHand(new List<Card>());
             for (int i = 0; i < 22; i++)
             {
                 deck.Push(new Militia());
@@ -602,7 +601,7 @@ namespace UnitTestProject2
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
             p1.setDeck(deck);
-            p1.setHand(new ArrayList());
+            p1.setHand(new List<Card>());
             for (int i = 0; i < 9; i++)
             {
                 deck.Push(new Militia());
@@ -617,7 +616,7 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
-            ArrayList discard = new ArrayList();
+            List<Card> discard = new List<Card>();
             p1.setDeck(deck);
             p1.setDiscard(discard);
 
@@ -633,7 +632,7 @@ namespace UnitTestProject2
             }
             p1.drawHand();
 
-            ArrayList hand = p1.getHand();
+            List<Card> hand = p1.getHand();
             Assert.AreEqual(5, hand.Count);
         }
         [TestMethod]
@@ -641,8 +640,8 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
-            ArrayList discard = new ArrayList();
-            ArrayList hand = new ArrayList();
+            List<Card> discard = new List<Card>();
+            List<Card> hand = new List<Card>();
 
             deck.Push(new Witch());
             deck.Push(new Gold());
@@ -666,9 +665,9 @@ namespace UnitTestProject2
         public void testCountVictoryPointsWhenCardsInDiscard()
         {
             Player p1 = new HumanPlayer();
-            p1.setHand(new ArrayList());
+            p1.setHand(new List<Card>());
             Stack<Card> deck = new Stack<Card>();
-            ArrayList discard = p1.getDiscard();
+            List<Card> discard = p1.getDiscard();
             p1.setDeck(deck);
             Assert.AreEqual(0, p1.countVictoryPoints());
             deck.Push(new Province());
@@ -683,7 +682,7 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
-            ArrayList hand = new ArrayList();
+            List<Card> hand = new List<Card>();
             p1.setDeck(deck);
             p1.setHand(hand);
             Assert.AreEqual(0, p1.countVictoryPoints());
@@ -700,7 +699,7 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
-            p1.setHand(new ArrayList());
+            p1.setHand(new List<Card>());
             deck.Push(new Gold());
             p1.setDeck(deck);
             Assert.AreEqual(3, p1.getTotalMoney());
@@ -711,8 +710,8 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
-            p1.setHand(new ArrayList());
-            ArrayList discard = p1.getDiscard();
+            p1.setHand(new List<Card>());
+            List<Card> discard = p1.getDiscard();
             discard.Add(new Gold());
             p1.setDeck(deck);
             Assert.AreEqual(3, p1.getTotalMoney());
@@ -729,7 +728,7 @@ namespace UnitTestProject2
         public void testDrawHandDrawsFiveCards()
         {
             Player p1 = new HumanPlayer();
-            ArrayList hand = p1.getHand();
+            List<Card> hand = p1.getHand();
 
             p1.drawHand();
             Assert.AreEqual(5, hand.Count);
@@ -750,7 +749,7 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             Stack<Card> deck = p1.getDeck();
-            ArrayList hand = p1.getHand();
+            List<Card> hand = p1.getHand();
             int numbEstates = 0;
             while (deck.Count > 0)
             {
@@ -804,7 +803,7 @@ namespace UnitTestProject2
         public void testPlayerStartsWithOnlyEstatesAndCopper()
         {
             Player p1 = new HumanPlayer();
-            ArrayList hand = p1.getHand();
+            List<Card> hand = p1.getHand();
             for (int i = 0; i < hand.Count; i++)
             {
                 if (((Card)hand[i]).getID() != 0 && ((Card)hand[i]).getID() != 3)
@@ -826,7 +825,7 @@ namespace UnitTestProject2
         public void testDrawCardMakesHandBigger()
         {
             Player p1 = new HumanPlayer();
-            ArrayList hand = p1.getHand();
+            List<Card> hand = p1.getHand();
 
             Card c = new Smithy();
             hand.Add(c);
@@ -841,7 +840,7 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             int a = p1.actionsLeft();
-            ArrayList hand = new ArrayList();
+            List<Card> hand = new List<Card>();
             hand.Add(new Smithy());
             p1.setHand(hand);
             p1.playCard((Card)hand[0]);
@@ -851,7 +850,7 @@ namespace UnitTestProject2
         public void playingCardRemovesCardFromHand()
         {
             Player p1 = new HumanPlayer();
-            ArrayList hand = new ArrayList();
+            List<Card> hand = new List<Card>();
             hand.Add(new Woodcutter());
             p1.setHand(hand);
             p1.playCard((Card)hand[0]);
@@ -862,7 +861,7 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             int b = p1.buysLeft();
-            ArrayList hand = new ArrayList();
+            List<Card> hand = new List<Card>();
             hand.Add(new Woodcutter());
             p1.setHand(hand);
             p1.playCard((Card)hand[0]);
@@ -873,7 +872,7 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             int b = p1.buysLeft();
-            ArrayList hand = new ArrayList();
+            List<Card> hand = new List<Card>();
             hand.Add(new Smithy());
             p1.setHand(hand);
             p1.playCard((Card)hand[0]);
@@ -884,7 +883,7 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             int a = p1.actionsLeft();
-            ArrayList hand = new ArrayList();
+            List<Card> hand = new List<Card>();
             hand.Add(new Village());
             p1.setHand(hand);
             p1.playCard((Card)hand[0]);
@@ -970,7 +969,7 @@ namespace UnitTestProject2
         public void playingCardThatDrawsCards()
         {
             Player p1 = new HumanPlayer();
-            ArrayList hand = new ArrayList();
+            List<Card> hand = new List<Card>();
             hand.Add(new Laboratory());
             p1.setHand(hand);
             p1.playCard((Card)hand[0]);
@@ -981,7 +980,7 @@ namespace UnitTestProject2
         public void buyingAddsCardToDiscard()
         {
             Player p1 = new HumanPlayer();
-            ArrayList discard = new ArrayList();
+            List<Card> discard = new List<Card>();
             p1.setDiscard(discard);
             Card laboratory = new Laboratory();
             int discardSize = discard.Count;
@@ -998,7 +997,7 @@ namespace UnitTestProject2
             Player p1 = new HumanPlayer();
             int originalBuys = p1.buysLeft();
             Card purchase = new Laboratory();  //5
-            ArrayList tempHand = new ArrayList();
+            List<Card> tempHand = new List<Card>();
             Card gold1 = new Gold();
             Card gold2 = new Gold();
             tempHand.Add(gold1);
@@ -1028,7 +1027,7 @@ namespace UnitTestProject2
             GameBoard board = new GameBoard(dict);
             Player p1 = new HumanPlayer();
             Card purchase = new Laboratory();  //5
-            ArrayList tempHand = new ArrayList();
+            List<Card> tempHand = new List<Card>();
             Card gold1 = new Gold();
             Card gold2 = new Gold();
             tempHand.Add(gold1);
@@ -1049,7 +1048,7 @@ namespace UnitTestProject2
             GameBoard board = new GameBoard(dict);
             Player p1 = new HumanPlayer();
             Card purchase = new Estate();  //2
-            ArrayList tempHand = new ArrayList();
+            List<Card> tempHand = new List<Card>();
             Card gold1 = new Gold();
             Card gold2 = new Gold();
             tempHand.Add(gold1);
@@ -1078,7 +1077,7 @@ namespace UnitTestProject2
             GameBoard board = new GameBoard(dict);
             Player p1 = new HumanPlayer();
             Card purchase = new Laboratory();  //5
-            ArrayList tempHand = new ArrayList();
+            List<Card> tempHand = new List<Card>();
             Card gold1 = new Gold();
             Card gold2 = new Gold();
             tempHand.Add(gold1);
@@ -1101,7 +1100,7 @@ namespace UnitTestProject2
         public void addCardToHand()
         {
             Player p1 = new HumanPlayer();
-            p1.setHand(new ArrayList());
+            p1.setHand(new List<Card>());
             int handCountBefore = p1.getHand().Count;
             p1.addCardToHand(new Library());
             Assert.AreEqual(handCountBefore + 1, p1.getHand().Count);

@@ -11,12 +11,12 @@ namespace DominionCards.KingdomCards
     public class Thief : AttackCard
     {
         private static int ID = 25;
-        private ArrayList cardsTrashed;
+        private List<Card> cardsTrashed;
         public Thief()
             : base(0, 0, 0, 0, 4, ID)
         {
             // Uses AttackCard Constructor
-            cardsTrashed = new ArrayList(); //Keeps track of this card's own trash
+            cardsTrashed = new List<Card>(); //Keeps track of this card's own trash
         }
         public override void Play(Player player)
         {
@@ -27,29 +27,35 @@ namespace DominionCards.KingdomCards
                 MessageBox.Show("You have no cards to keep from the thief!");
                 return;
             }
-            ArrayList cards = player.SelectCards(cardsTrashed, "Choose card(s) to keep", cardsTrashed.Count);
+            List<Card> cards = player.SelectCards(cardsTrashed, "Choose card(s) to keep", cardsTrashed.Count);
 
             for (int i = 0; i < cards.Count; i++)
             {
-                player.getDiscard().Add(cards[i]);
+                List<Card> currentDiscard = player.getDiscard();
+                currentDiscard.Add(cards[i]);
+                player.setDiscard(currentDiscard);
             }
         }
 
         public override void MakeImmediateAttack(Player playerAttacked)
         {
-            ArrayList cards = new ArrayList();
+            List<Card> cards = new List<Card>();
             cards.Add(playerAttacked.getDeck().Pop());
             cards.Add(playerAttacked.getDeck().Pop());
 
 
             if (!((Card)cards[1]).IsTreasure())
             {
-                playerAttacked.getDiscard().Add(cards[1]);
+                List<Card> currentDiscard = playerAttacked.getDiscard();
+                currentDiscard.Add(cards[1]);
+                playerAttacked.setDiscard(currentDiscard);
                 cards.Remove(cards[1]);
             }
             if (!((Card)cards[0]).IsTreasure())
             {
-                playerAttacked.getDiscard().Add(cards[0]);
+                List<Card> currentDiscard = playerAttacked.getDiscard();
+                currentDiscard.Add(cards[0]);
+                playerAttacked.setDiscard(currentDiscard);
                 cards.Remove(cards[0]);
             }
 
@@ -60,7 +66,7 @@ namespace DominionCards.KingdomCards
                 MessageBox.Show("Player " + playerAttacked.getNumber() + " does not have any cards you can trash.");
                 return;
             }
-            ArrayList cardsToTrash = playerAttacked.SelectCards(cards, "Choose a card to trash", 1);
+            List<Card> cardsToTrash = playerAttacked.SelectCards(cards, "Choose a card to trash", 1);
             while (cardsToTrash.Count != 1)
             {
                 DialogResult result1 = MessageBox.Show("You must select exactly 1 card to trash.  Try again");

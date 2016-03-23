@@ -22,11 +22,11 @@ namespace UnitTestProject2
             Dictionary<Card, int> dict = new Dictionary<Card, int>();
             board = new GameBoard(dict);
             p1 = new HumanPlayer(1);
-            p1.setHand(new ArrayList());
+            p1.setHand(new List<Card>());
             p2 = new HumanPlayer(2);
-            p1.setHand(new ArrayList());
+            p1.setHand(new List<Card>());
             p3 = new HumanPlayer(3);
-            p1.setHand(new ArrayList());
+            p1.setHand(new List<Card>());
             board.AddPlayer(p1);
             board.AddPlayer(p2);
             board.AddPlayer(p3);
@@ -52,11 +52,11 @@ namespace UnitTestProject2
         public void TestNextCardPlayingBeaureauDoesNothingToPlayerWithNoVictoryCards()
         {
             p2.setDeck(new Stack<Card>());
-            p2.setHand(new ArrayList());
+            p2.setHand(new List<Card>());
             p2.addCardToHand(new Copper());
             p2.getDeck().Push(new Militia());
             p3.setDeck(new Stack<Card>());
-            p3.setHand(new ArrayList());
+            p3.setHand(new List<Card>());
             p3.getDeck().Push(new Market());
             p3.addCardToHand(new Copper());
             p1.playCard(card);

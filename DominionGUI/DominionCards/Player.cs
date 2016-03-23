@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
-using RandomGenerateCards;
 using System.Windows.Forms;
 
 namespace DominionCards
@@ -13,8 +12,8 @@ namespace DominionCards
     {
         private int number;
         private Stack<Card> deck = new Stack<Card>();
-        private ArrayList hand = new ArrayList();
-        private ArrayList discard = new ArrayList();
+        private List<Card> hand = new List<Card>();
+        private List<Card> discard = new List<Card>();
         private Queue<AttackCard> attacks = new Queue<AttackCard>();
 
         public int actions, buys, money;
@@ -45,7 +44,7 @@ namespace DominionCards
         {
             if (deck.Count == 0)
             {
-                deck = Shuffle(discard);
+                deck = ShuffleDiscard();
             }
             return deck.Pop();
         }
@@ -75,7 +74,7 @@ namespace DominionCards
 
         public abstract void actionPhase();
         public abstract void buyPhase();
-        public abstract ArrayList SelectCards(ArrayList cards, String name, int numCards);
+        public abstract List<Card> SelectCards(List<Card> cards, String name, int numCards);
 
         public int getTotalMoney()
         {
@@ -119,15 +118,15 @@ namespace DominionCards
             return money;
         }
 
-        public ArrayList getHand()
+        public List<Card> getHand()
         {
             return hand;
         }
-        public void setHand(ArrayList h)
+        public void setHand(List<Card> h)
         {
             hand = h; // THIS METHOD IS FOR TESTING USE
         }
-        public void setDiscard(ArrayList dis)
+        public void setDiscard(List<Card> dis)
         {
             discard = dis; // THIS METHOD IS USED FOR TESTING
         }
@@ -139,7 +138,7 @@ namespace DominionCards
         {
             return deck;
         }
-        public ArrayList getDiscard()
+        public List<Card> getDiscard()
         {
             return discard;
         }
@@ -277,7 +276,7 @@ namespace DominionCards
             card.Play(this);
             return actions;
         }
-        public static Stack<Card> Shuffle(ArrayList discard)
+        /*public static Stack<Card> Shuffle(List<Card> discard)
         {
             Stack<Card> newDeck; // = new Stack<Card>();
 
@@ -285,7 +284,7 @@ namespace DominionCards
             newDeck = ConvertStackToCardStack(temp);
             discard.Clear();
             return newDeck;
-        }
+        }*/
         
         public static Stack<Card> ConvertStackToCardStack(Stack s)
         {
@@ -367,6 +366,23 @@ namespace DominionCards
                 }
             }
             return false;
+        }
+
+        public Stack<Card> ShuffleDiscard()
+        {
+            Random random = new Random();
+            int n = discard.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = random.Next(n + 1);
+                Card val = discard[k];
+                discard[k] = discard[n];
+                discard[n] = val;
+            }
+            Stack<Card> toReturn = new Stack<Card>(discard);
+            discard.Clear();
+            return toReturn;
         }
 
     }

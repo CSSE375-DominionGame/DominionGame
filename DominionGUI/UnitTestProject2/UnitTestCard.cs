@@ -189,7 +189,7 @@ namespace UnitTestProject2
         {
             Card c = new MoneyLender();
             Player p = new HumanPlayer();
-            ArrayList newHand = new ArrayList();
+            List<Card> newHand = new List<Card>();
             newHand.Add(new Estate());
             newHand.Add(new Estate());
             newHand.Add(new Estate());
@@ -207,7 +207,7 @@ namespace UnitTestProject2
         {
             Card c = new MoneyLender();
             Player p = new HumanPlayer();
-            ArrayList newHand = new ArrayList();
+            List<Card> newHand = new List<Card>();
             newHand.Add(new Estate());
             newHand.Add(new Estate());
             newHand.Add(new Estate());
@@ -225,7 +225,7 @@ namespace UnitTestProject2
         {
             Card c = new MoneyLender();
             Player p = new HumanPlayer();
-            ArrayList newHand = new ArrayList();
+            List<Card> newHand = new List<Card>();
             newHand.Add(new Estate());
             newHand.Add(new Estate());
             newHand.Add(new Estate());
@@ -242,7 +242,7 @@ namespace UnitTestProject2
         {
             Card c = new MoneyLender();
             Player p = new HumanPlayer();
-            ArrayList newHand = new ArrayList();
+            List<Card> newHand = new List<Card>();
             newHand.Add(new Estate());
             newHand.Add(new Estate());
             newHand.Add(new Estate());
@@ -259,7 +259,7 @@ namespace UnitTestProject2
         {
             Card c = new MoneyLender();
             Player p = new HumanPlayer();
-            ArrayList newHand = new ArrayList();
+            List<Card> newHand = new List<Card>();
             newHand.Add(new Estate());
             newHand.Add(new Estate());
             newHand.Add(new Estate());
@@ -277,7 +277,7 @@ namespace UnitTestProject2
         {
             Card c = new MoneyLender();
             Player p = new HumanPlayer();
-            ArrayList newHand = new ArrayList();
+            List<Card> newHand = new List<Card>();
             newHand.Add(new Estate());
             newHand.Add(new Estate());
             newHand.Add(new Estate());
@@ -458,7 +458,7 @@ namespace UnitTestProject2
             Card c = new Chapel();
             Player p1 = new HumanPlayer(1);
             board.AddPlayer(p1);
-            p1.setHand(new ArrayList());
+            p1.setHand(new List<Card>());
             p1.addCardToHand(c);
             int cardsInDiscard = p1.getDiscard().Count;
             int cardsInHand = p1.getHand().Count;
@@ -494,7 +494,7 @@ namespace UnitTestProject2
             Card c = new Remodel();
             Player p1 = new HumanPlayer(1);
             board.AddPlayer(p1);
-            p1.setHand(new ArrayList());
+            p1.setHand(new List<Card>());
             p1.addCardToHand(c);
             int numdiscard = p1.getDiscard().Count;
             p1.playCard(c);
@@ -558,7 +558,7 @@ namespace UnitTestProject2
             Card c = new Mine();
             Player p1 = new HumanPlayer(1);
             board.AddPlayer(p1);
-            ArrayList newHand = new ArrayList();
+            List<Card> newHand = new List<Card>();
             newHand.Add(new Copper());
             newHand.Add(new Copper());
             newHand.Add(new Copper());
@@ -580,7 +580,7 @@ namespace UnitTestProject2
             Card c = new Mine();
             Player p1 = new HumanPlayer(1);
             board.AddPlayer(p1);
-            ArrayList newHand = new ArrayList();
+            List<Card> newHand = new List<Card>();
             newHand.Add(c);
             p1.setHand(newHand);
             int cardsInHand = p1.getHand().Count;
@@ -673,7 +673,7 @@ namespace UnitTestProject2
             Card c = new Mine();
             Player p1 = new HumanPlayer(1);
             board.AddPlayer(p1);
-            ArrayList newHand = new ArrayList();
+            List<Card> newHand = new List<Card>();
             newHand.Add(new Silver());
             newHand.Add(new Silver());
             newHand.Add(new Silver());

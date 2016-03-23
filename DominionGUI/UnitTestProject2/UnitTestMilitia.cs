@@ -88,7 +88,7 @@ namespace UnitTestProject2
         //[TestMethod]
         public void MilitiaDiscardToThreeIfHandIsSmaller()
         {
-            ArrayList list = new ArrayList();
+            List<Card> list = new List<Card>();
             list.Add(new Copper());
             list.Add(new Copper());
             list.Add(new Copper());

@@ -28,10 +28,6 @@ namespace DominionCards
             turnOrder = new Queue<Player>();
             boardInstance = this;
         }
-        /*public virtual void addCard(Card c)
-        {
-            cards.Add(c, 10);
-        }*/
 
         public static void nullifyInstance()
         {
@@ -108,7 +104,6 @@ namespace DominionCards
                 int currentMoney = turnOrder.Peek().getTotalMoney();
                 if (tie != null)
                 {
-                    // tie.BreakTie(player) will automatically add the new player to the3 tie if he ties with the tie.
                     if (tie.BreaksTie(turnOrder.Peek()))
                     {
                         currentHightestPlayer = turnOrder.Peek();
@@ -131,7 +126,6 @@ namespace DominionCards
                     {
                         tie = new TieException(currentHightestPlayer, turnOrder.Peek(), currentVP, currentMoney);
                     }
-                    // ELSE, nothing happens.
                 }
 
                 else if (currentVP > highestVP)
@@ -148,7 +142,8 @@ namespace DominionCards
                 throw tie;
             }
             return currentHightestPlayer;
-        }
+        } 
+
         public virtual bool GameIsOver()
         {
             if (AbortGame)

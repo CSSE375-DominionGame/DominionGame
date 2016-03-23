@@ -30,7 +30,7 @@ namespace DominionCards.KingdomCards
 
             if (result.ToLower().Equals("yes"))
             {
-                ArrayList hand = player.getHand();
+                List<Card> hand = player.getHand();
                 for (int i = 0; i < hand.Count; i++)
                 {
                     Card c;

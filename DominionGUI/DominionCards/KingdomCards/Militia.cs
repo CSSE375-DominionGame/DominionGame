@@ -29,13 +29,13 @@ namespace DominionCards.KingdomCards
                 return;
             }
             //pick card(s) to discard
-            ArrayList DiscardableCards = new ArrayList();
+            List<Card> DiscardableCards = new List<Card>();
             foreach (Card card in playerAttacked.getHand())
             {
                 DiscardableCards.Add(card);
 
             }
-            ArrayList cards = playerAttacked.SelectCards(DiscardableCards, "Player " + playerAttacked.getNumber() + ": You were attacked by a militia!!! \n Choose " + numCardsToDiscard + " cards to discard", numCardsToDiscard);
+            List<Card> cards = playerAttacked.SelectCards(DiscardableCards, "Player " + playerAttacked.getNumber() + ": You were attacked by a militia!!! \n Choose " + numCardsToDiscard + " cards to discard", numCardsToDiscard);
             while (cards.Count != numCardsToDiscard)
             {
                 DialogResult result1 = MessageBox.Show("You must discard exactly " + numCardsToDiscard + " cards.  Try again");

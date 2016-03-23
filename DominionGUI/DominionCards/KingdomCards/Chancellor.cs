@@ -31,7 +31,7 @@ namespace DominionCards.KingdomCards
             if (result.ToLower().Equals("yes"))
             {
                 Stack<Card> deck = player.getDeck();
-                ArrayList discard = player.getDiscard();
+                List<Card> discard = player.getDiscard();
                 while (deck.Count > 0)
                 {
                     discard.Add(deck.Pop());

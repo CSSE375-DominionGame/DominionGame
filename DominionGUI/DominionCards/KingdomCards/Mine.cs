@@ -24,7 +24,7 @@ namespace DominionCards.KingdomCards
         public override void Play(Player player)
         {
 
-            ArrayList treasureCards = new ArrayList();
+            List<Card> treasureCards = new List<Card>();
             foreach (Card card in player.getHand())
             {
                 int id = card.getID();
@@ -38,7 +38,7 @@ namespace DominionCards.KingdomCards
                 MessageBox.Show("You have no cards to play with the mine!");
                 return;
             }
-            ArrayList cards = player.SelectCards(treasureCards, "Choose a card to upgrade.", 1);
+            List<Card> cards = player.SelectCards(treasureCards, "Choose a card to upgrade.", 1);
             while (cards.Count != 1)
             {
                 DialogResult result1 = MessageBox.Show("You must select exactly 1 card to upgrade.  Try again");

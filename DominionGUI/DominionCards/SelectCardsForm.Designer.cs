@@ -4,10 +4,10 @@ namespace DominionCards
 {
     partial class SelectCardsForm
     {
-        ArrayList cardsToList;
+        List<Card> cardsToList;
         string instructions;
         int numToSelect;
-        public SelectCardsForm(ArrayList cards, string inst, int num) : base()
+        public SelectCardsForm(List<Card> cards, string inst, int num) : base()
         {
             checkboxes = new List<CardCheckBox>();
             cardsToList = cards;

@@ -18,7 +18,7 @@ namespace DominionCards.KingdomCards
         }
         public override void Play(Player player)
         {
-            ArrayList buyableCards = new ArrayList();
+            List<Card> buyableCards = new List<Card>();
             foreach (Card card in GameBoard.getInstance().cards.Keys)
             {
                 int cost = card.getPrice();
@@ -27,7 +27,7 @@ namespace DominionCards.KingdomCards
                     buyableCards.Add(card);
                 }
             }
-            ArrayList cards = player.SelectCards(buyableCards, "Choose a card to gain.", 1);
+            List<Card> cards = player.SelectCards(buyableCards, "Choose a card to gain.", 1);
             while (cards.Count != 1)
             {
                 DialogResult result1 = MessageBox.Show("You must select exactly 1 card to gain.  Try again");

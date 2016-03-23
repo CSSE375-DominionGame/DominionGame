@@ -23,7 +23,7 @@ namespace DominionCards.KingdomCards
 
         public override void Play(Player player)
         {
-            ArrayList discardableCards = new ArrayList();
+            List<Card> discardableCards = new List<Card>();
             foreach (Card card in player.getHand())
             {
                 discardableCards.Add(card);
@@ -34,7 +34,7 @@ namespace DominionCards.KingdomCards
                 MessageBox.Show("You have no cards to play with the cellar");
                 return;
             }
-            ArrayList cards = player.SelectCards(discardableCards, "Choose cards to trash.", player.getHand().Count);
+            List<Card> cards = player.SelectCards(discardableCards, "Choose cards to trash.", player.getHand().Count);
             //This doesn't need a check to make sure you didn't check too many boxes because you can check all of them
             for (int i = 0; i < cards.Count; i++)
             {

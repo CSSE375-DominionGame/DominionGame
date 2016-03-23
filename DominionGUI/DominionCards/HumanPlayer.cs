@@ -21,9 +21,9 @@ namespace DominionCards
             return selection;
         } */
 
-        public override ArrayList SelectCards(ArrayList cards, String name, int numCards)
+        public override List<Card> SelectCards(List<Card> cards, String name, int numCards)
         {
-            ArrayList copyCards = (ArrayList)cards.Clone();
+            List<Card> copyCards = cards;
             SelectCardsForm form = new SelectCardsForm(copyCards, name, numCards);
             form.GetSelection(); // mutates ArrayList cards
             Console.WriteLine("Player finished selecting cards.");

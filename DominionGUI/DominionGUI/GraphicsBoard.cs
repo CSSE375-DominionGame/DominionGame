@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Collections;
 using System.Threading;
 using DominionGUI.Properties;
+using DominionCards;
 namespace DominionGUI
 {
     public partial class GraphicsBoard : Form
@@ -259,7 +260,7 @@ namespace DominionGUI
         private void SetCurrentPlayerHand()
         {
             DominionCards.Player current = DominionCards.GameBoard.getInstance().turnOrder.Peek();
-            ArrayList playerHand = current.getHand();
+            List<Card> playerHand = current.getHand();
             currentHand = new List<CardButton>(10);
             Console.WriteLine();
             for (int i = 0; i < playerHand.Count; i++)

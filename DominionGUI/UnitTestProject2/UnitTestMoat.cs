@@ -21,11 +21,11 @@ namespace UnitTestProject2
             dict.Add(new Curse(), 10);
             board = new GameBoard(dict);
             p1 = new HumanPlayer(1);
-            p1.setHand(new ArrayList());
+            p1.setHand(new List<Card>());
             p2 = new HumanPlayer(2);
-            p2.setHand(new ArrayList());
+            p2.setHand(new List<Card>());
             p3 = new HumanPlayer(3);
-            p3.setHand(new ArrayList());
+            p3.setHand(new List<Card>());
             board.AddPlayer(p1);
             board.AddPlayer(p2);
             board.AddPlayer(p3);

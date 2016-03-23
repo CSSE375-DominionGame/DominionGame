@@ -19,7 +19,7 @@ namespace DominionCards.KingdomCards
 
         public override void Play(Player player)
         {
-            ArrayList actionCards = new ArrayList();
+            List<Card> actionCards = new List<Card>();
             foreach (Card card in player.getHand())
             {
                 int id = card.getID();
@@ -33,7 +33,7 @@ namespace DominionCards.KingdomCards
                 MessageBox.Show("You have no cards to play with the throne room!");
                 return;
             }
-            ArrayList cards = player.SelectCards(actionCards, "Choose a card to play twice.", 1);
+            List<Card> cards = player.SelectCards(actionCards, "Choose a card to play twice.", 1);
             while (cards.Count != 1)
             {
                 DialogResult result1 = MessageBox.Show("You must select exactly 1 card to play twice.  Try again");

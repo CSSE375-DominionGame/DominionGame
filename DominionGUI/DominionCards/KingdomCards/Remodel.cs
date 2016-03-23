@@ -21,7 +21,7 @@ namespace DominionCards.KingdomCards
         {
 
             //pick a card to trash
-            ArrayList trashableCards = new ArrayList();
+            List<Card> trashableCards = new List<Card>();
             foreach (Card card in player.getHand())
             {
                 trashableCards.Add(card);
@@ -32,7 +32,7 @@ namespace DominionCards.KingdomCards
                 MessageBox.Show("You have no cards to trash with the remodel!");
                 return;
             }
-            ArrayList cards = player.SelectCards(trashableCards, "Choose a card to trash", 1);
+            List<Card> cards = player.SelectCards(trashableCards, "Choose a card to trash", 1);
             while (cards.Count != 1)
             {
                 DialogResult result1 = MessageBox.Show("You must select exactly 1 card to trash.  Try again");
@@ -43,7 +43,7 @@ namespace DominionCards.KingdomCards
             player.getHand().Remove(cardSelected);
 
             //pick a card to gain
-            ArrayList buyableCards = new ArrayList();
+            List<Card> buyableCards = new List<Card>();
             foreach (Card card in GameBoard.getInstance().cards.Keys)
             {
                 int cost = card.getPrice();
@@ -57,7 +57,7 @@ namespace DominionCards.KingdomCards
                 MessageBox.Show("You have no cards to buy with the remodel!");
                 return;
             }
-            ArrayList cards2 = player.SelectCards(buyableCards, "Choose a card to gain.", 1);
+            List<Card> cards2 = player.SelectCards(buyableCards, "Choose a card to gain.", 1);
             while (cards2.Count != 1)
             {
                 DialogResult result1 = MessageBox.Show("You must select exactly 1 card to gain.  Try again");
