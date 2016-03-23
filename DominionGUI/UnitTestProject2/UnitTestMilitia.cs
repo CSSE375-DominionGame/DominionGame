@@ -44,7 +44,6 @@ namespace UnitTestProject2
         {
             int handcount = p2.getHand().Count;
             p1.playCard(militia);
-            // TODO process attack
             p2.ProcessAttacks();
             Assert.IsTrue(handcount > p2.getHand().Count);
         }
