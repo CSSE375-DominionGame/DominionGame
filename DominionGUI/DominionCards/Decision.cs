@@ -23,7 +23,12 @@ namespace DominionCards
             this.text = text;
             this.errorMsg = errorMsg;
         }
-
+        /**
+         * This method should return the list of cards that the player may select from. The player will
+         * select which cards the card's effect will apply to, and the selected cards will be used in the
+         * card
+         */
         public abstract List<Card> getCardSelection();
+        public abstract void applyDecisionTo(List<Card> cardsSelected);
     }
 }
