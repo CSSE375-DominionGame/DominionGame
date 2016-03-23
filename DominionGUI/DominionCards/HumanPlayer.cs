@@ -13,6 +13,13 @@ namespace DominionCards
 {
     public class HumanPlayer : Player
     {
+        /* public ArrayList makeDecision(Decision decision)
+        {
+            ArrayList selection = (ArrayList) decision.getCardSelection(this).Clone();
+            SelectCardsForm form = new SelectCardsForm(selection, decision.getText(), decision.getMaxCards());
+            form.GetSelection(); // ???
+            return selection;
+        } */
 
         public override ArrayList SelectCards(ArrayList cards, String name, int numCards)
         {

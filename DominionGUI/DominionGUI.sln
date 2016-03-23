@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominionGUI", "DominionGUI\DominionGUI.csproj", "{698E31CD-E8FD-463D-85DE-EF6AE65C8E38}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominionCards", "DominionCards\DominionCards.csproj", "{FD137FCD-2CF8-4295-B235-F0519E9D61D6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomGenerateCards", "RandomGenerateCards\RandomGenerateCards.csproj", "{49AF3923-B952-441E-9670-A3A727D74557}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject2\UnitTestProject.csproj", "{95F9FFD3-E330-4E8B-80B1-7DA17F4B5110}"
 EndProject
@@ -25,10 +23,6 @@ Global
 		{FD137FCD-2CF8-4295-B235-F0519E9D61D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD137FCD-2CF8-4295-B235-F0519E9D61D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD137FCD-2CF8-4295-B235-F0519E9D61D6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{49AF3923-B952-441E-9670-A3A727D74557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{49AF3923-B952-441E-9670-A3A727D74557}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{49AF3923-B952-441E-9670-A3A727D74557}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{49AF3923-B952-441E-9670-A3A727D74557}.Release|Any CPU.Build.0 = Release|Any CPU
 		{95F9FFD3-E330-4E8B-80B1-7DA17F4B5110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{95F9FFD3-E330-4E8B-80B1-7DA17F4B5110}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95F9FFD3-E330-4E8B-80B1-7DA17F4B5110}.Release|Any CPU.ActiveCfg = Release|Any CPU

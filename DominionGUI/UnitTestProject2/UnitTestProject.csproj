@@ -92,10 +92,6 @@
       <Project>{698e31cd-e8fd-463d-85de-ef6ae65c8e38}</Project>
       <Name>DominionGUI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RandomGenerateCards\RandomGenerateCards.csproj">
-      <Project>{49af3923-b952-441e-9670-a3a727d74557}</Project>
-      <Name>RandomGenerateCards</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
