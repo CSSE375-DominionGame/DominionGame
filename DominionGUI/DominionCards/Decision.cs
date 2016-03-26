@@ -55,7 +55,7 @@ namespace DominionCards
          * select which cards the card's effect will apply to, and the selected cards will be used in the
          * card
          */
-        public abstract ArrayList getCardSelection(Player player);
+        public abstract List<Card> getCardSelection(Player player);
         public abstract void applyDecisionTo(Player player, List<Card> cardsSelected);
     }
 }

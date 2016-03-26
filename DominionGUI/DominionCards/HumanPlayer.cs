@@ -13,13 +13,24 @@ namespace DominionCards
 {
     public class HumanPlayer : Player
     {
-        /* public ArrayList makeDecision(Decision decision)
+        public List<Card> makeDecision(Decision decision)
         {
-            ArrayList selection = (ArrayList) decision.getCardSelection(this).Clone();
+            List<Card> selection = (List<Card>) copyList(decision.getCardSelection(this));
             SelectCardsForm form = new SelectCardsForm(selection, decision.getText(), decision.getMaxCards());
             form.GetSelection(); // ???
             return selection;
-        } */
+        }
+
+        private static List<Card> copyList(List<Card> list)
+        {
+            List<Card> copy = new List<Card>();
+            foreach (Card c in list)
+            {
+                copy.Add(c);
+            }
+            return copy;
+        }
+
 
         public override List<Card> SelectCards(List<Card> cards, String name, int numCards)
         {
