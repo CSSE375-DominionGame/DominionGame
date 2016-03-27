@@ -12,9 +12,9 @@ namespace DominionCards
         public WorkshopDecision()
             : base(1, 1, "select a card to gain from the workshop!") {}
 
-        public override ArrayList getCardSelection(Player player)
+        public override List<Card> getCardSelection(Player player)
         {
-            ArrayList buyableCards = new ArrayList();
+            List<Card> buyableCards = new List<Card>();
             foreach (Card card in GameBoard.getInstance().cards.Keys)
             {
                 int cost = card.getPrice();
