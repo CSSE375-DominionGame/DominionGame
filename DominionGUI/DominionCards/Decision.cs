@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DominionCards
 {
-    abstract class Decision
+    public abstract class Decision
     {
         private int max, min;
         private Boolean cancelable;
