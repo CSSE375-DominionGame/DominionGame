@@ -12,7 +12,7 @@ namespace DominionCards.KingdomCards
     {
         private static int ID = 26;
         public ThroneRoom()
-            : base(0, 0, 0, 0, 4, ID)
+            : base("Throne Room", 0, 0, 0, 0, 4, ID)
         {
             // Uses ActionCard Constructor
         }

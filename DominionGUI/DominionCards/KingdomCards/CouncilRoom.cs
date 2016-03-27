@@ -9,7 +9,7 @@ namespace DominionCards.KingdomCards
     public class CouncilRoom : ActionCard
     {
         public CouncilRoom()
-            : base(4, 0, 1, 0, 5, 11)
+            : base("Council Room", 4, 0, 1, 0, 5, 11)
         {
             // Uses ActionCard Constructor
         }

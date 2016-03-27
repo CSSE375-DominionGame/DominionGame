@@ -10,7 +10,7 @@ namespace DominionCards.KingdomCards
     {
         private static int ID = 30;
         public Woodcutter()
-            : base(0, 2, 1, 0, 3, ID)
+            : base("Wood cutter", 0, 2, 1, 0, 3, ID)
         {
             // Uses ActionCard Constructor
         }

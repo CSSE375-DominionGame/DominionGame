@@ -10,7 +10,7 @@ namespace DominionCards.KingdomCards
     public class Adventurer : ActionCard
     {
         public Adventurer()
-            : base(0, 0, 0, 0, 6, 6)
+            : base("Adventurer", 0, 0, 0, 0, 6, 6)
         {
             // Uses ActionCard Constructor
         }

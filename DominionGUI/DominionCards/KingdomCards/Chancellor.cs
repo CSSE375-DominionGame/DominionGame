@@ -11,7 +11,7 @@ namespace DominionCards.KingdomCards
     public class Chancellor : ActionCard
     {
         public Chancellor()
-            : base(0, 2, 0, 0, 3, 9)
+            : base("Chancellor", 0, 2, 0, 0, 3, 9)
         {
             // Uses ActionCard Constructor
         }
