@@ -11,7 +11,7 @@ namespace DominionCards.KingdomCards
 
         private static int ID = 23;
         public Smithy()
-            : base(3, 0, 0, 0, 4, ID)
+            : base("Smithy", 3, 0, 0, 0, 4, ID)
         {
             // Uses ActionCard Constructor
         }

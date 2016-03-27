@@ -12,7 +12,7 @@ namespace DominionCards.KingdomCards
     {
         private static int ID = 21;
         public MoneyLender()
-            : base(0, 0, 0, 0, 4, ID)
+            : base("Money Lender", 0, 0, 0, 0, 4, ID)
         {
             // Uses ActionCard Constructor
         }

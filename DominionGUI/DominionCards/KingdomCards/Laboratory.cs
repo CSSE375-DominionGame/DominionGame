@@ -10,7 +10,7 @@ namespace DominionCards.KingdomCards
     {
         private static int ID = 15;
         public Laboratory()
-            : base(2, 0, 0, 1, 5, ID)
+            : base("Laboratory", 2, 0, 0, 1, 5, ID)
         {
             // Uses ActionCard Constructor
         }
