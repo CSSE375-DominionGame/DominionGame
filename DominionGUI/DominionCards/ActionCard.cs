@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DominionCards
 {
-    public abstract class ActionCard : Card
+    public class ActionCard : Card
     {
         public int cards, money, buys, actions;
-        public ActionCard(int extraCards, int extraMoney, int extraBuys, int extraActions, int price, int idNumb)
+        public ActionCard(string cardName, int extraCards, int extraMoney, int extraBuys, int extraActions, int price, int idNumb)
             : base(price, idNumb)
         {
             cards = extraCards;
