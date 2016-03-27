@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="AttackCard.cs" />
     <Compile Include="Card.cs" />
+    <Compile Include="CardFactory.cs" />
     <Compile Include="Exceptions\CardCannotBePlayedException.cs" />
     <Compile Include="ActionCard.cs" />
     <Compile Include="CardCheckBox.cs">
