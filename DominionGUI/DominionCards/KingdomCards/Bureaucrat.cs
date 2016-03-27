@@ -9,7 +9,7 @@ namespace DominionCards.KingdomCards
     public class Bureaucrat : AttackCard
     {
         public Bureaucrat()
-            : base(0, 0, 0, 0, 4, 7)
+            : base("Bureaucrat", 0, 0, 0, 0, 4, 7)
         {
             // Uses ActionCard Constructor
         }

@@ -9,8 +9,8 @@ namespace DominionCards
     public abstract class AttackCard : ActionCard
     {
         Stack<Player> targets;
-        public AttackCard(int extraCards, int extraMoney, int extraBuys, int extraActions, int price, int idNumb)
-            : base(extraCards, extraMoney, extraBuys, extraActions, price, idNumb)
+        public AttackCard(string name, int extraCards, int extraMoney, int extraBuys, int extraActions, int price, int idNumb)
+            : base(name, extraCards, extraMoney, extraBuys, extraActions, price, idNumb)
         {
             // TODO implement this class
         }

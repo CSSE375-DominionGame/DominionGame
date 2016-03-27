@@ -11,7 +11,7 @@ namespace DominionCards.KingdomCards
     {
         private static int ID = 24;
         public Spy()
-            : base(1, 0, 0, 1, 4, ID)
+            : base("Spy", 1, 0, 0, 1, 4, ID)
         {
             // Uses AttackCard Constructor
         }

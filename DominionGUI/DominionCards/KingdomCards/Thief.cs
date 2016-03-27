@@ -13,7 +13,7 @@ namespace DominionCards.KingdomCards
         private static int ID = 25;
         private List<Card> cardsTrashed;
         public Thief()
-            : base(0, 0, 0, 0, 4, ID)
+            : base("Thief", 0, 0, 0, 0, 4, ID)
         {
             // Uses AttackCard Constructor
             cardsTrashed = new List<Card>(); //Keeps track of this card's own trash

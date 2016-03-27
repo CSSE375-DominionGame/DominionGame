@@ -11,7 +11,7 @@ namespace DominionCards.KingdomCards
     {
         private static int ID = 20;
         public Moat()
-            : base(2, 0, 0, 0, 2, ID)
+            : base("Moat", 2, 0, 0, 0, 2, ID)
         {
             // Uses AttackCard Constructor
         }

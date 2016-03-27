@@ -11,7 +11,7 @@ namespace DominionCards.KingdomCards
     {
         private static int ID = 29;
         public Witch()
-            : base(2, 0, 0, 0, 5, ID)
+            : base("Witch", 2, 0, 0, 0, 5, ID)
         {
             // Uses AttackCard Constructor
         }
