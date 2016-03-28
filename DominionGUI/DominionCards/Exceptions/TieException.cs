@@ -20,22 +20,13 @@ namespace DominionCards
             TiedPlayers.Add(p1);
             TiedPlayers.Add(p2);
         }
-        /**
-         * returns true if player broke the tie (beat the players that tied.)
-         * If the given player tied with all the players that were already tied, the player is added to the tie,
-         *   but false is returned.
-         * If the given player loses, false is returned.
-         */
-        public Boolean BreaksTie(Player p)
+
+        public bool BreaksTie(Player p)
         {
             int playerVP = p.countVictoryPoints();
             int playerMoney = p.getTotalMoney();
-            if (playerVP == VictoryPoints && playerMoney == Money)
-            {
-                TiedPlayers.Add(p);
-                return false;
-            }
-            else if(playerVP < VictoryPoints || (playerVP == VictoryPoints && playerMoney < Money))
+            if(playerVP < this.VictoryPoints || 
+                playerVP == this.VictoryPoints && playerMoney <= this.Money)
             {
                 return false;
             }
@@ -43,6 +34,23 @@ namespace DominionCards
             {
                 return true;
             }
+        }
+
+        public bool Ties(Player p)
+        {
+            if (p.countVictoryPoints() == this.VictoryPoints && p.getTotalMoney() == this.Money)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void addPlayer(Player p)
+        {
+            TiedPlayers.Add(p);
         }
 
         public int getArraySize()

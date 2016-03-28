@@ -137,6 +137,10 @@ namespace DominionCards
                 highestMoney = currentMoney;
                 tie = null;
             }
+            else if (tie.Ties(turnOrder.Peek()))
+            {
+                tie.addPlayer(turnOrder.Peek());
+            }
         }
 
         private void newLeader(Player newLeader, int currentVP, int currentMoney)

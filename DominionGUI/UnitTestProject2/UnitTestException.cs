@@ -39,17 +39,7 @@ namespace UnitTestProject2
             TieException exception = new TieException(p1, p2, p1.countVictoryPoints(), p1.getTotalMoney());
             Assert.IsFalse(exception.BreaksTie(p3));
         }
-        [TestMethod]
-        public void BreakTieAddsPlayerToTieIfNewPlayerTies()
-        {
-            Player p1 = new HumanPlayer();
-            Player p2 = new HumanPlayer();
-            Player p3 = new HumanPlayer();
-            TieException exception = new TieException(p1, p2, p1.countVictoryPoints(), p1.getTotalMoney());
-            int arraySize = exception.getArraySize();
-            exception.BreaksTie(p3);
-            Assert.AreEqual(arraySize + 1, exception.getArraySize());
-        }
+
         [TestMethod]
         public void BreakTieDoesNotAddPlayerToTieIfNewPlayerLoses()
         {
