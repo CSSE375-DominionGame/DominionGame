@@ -76,46 +76,52 @@ namespace DominionCards
         public abstract void buyPhase();
         public abstract List<Card> SelectCards(List<Card> cards, String name, int numCards);
 
+        
         public int getTotalMoney()
         {
+            int money = countTreasureInDeck();
+            money += countTreasureInDiscard();
+            money += moneyInHand();
+            return money;
+        }
+
+        private int countTreasureInDiscard()
+        {
             int money = 0;
-            Stack<Card> tempStack = new Stack<Card>();
-            // get money from cards in deck
-            while (deck.Count > 0)
-            {
-                Card card = deck.Pop();
-                tempStack.Push(card);
-                int cardID = card.getID();
-                if (cardID == 0 || cardID == 1 || cardID == 2)
-                {
-                    money += ((TreasureCard)card).getValue();
-                }
-            }
-            while (tempStack.Count > 0)
-            {
-                deck.Push(tempStack.Pop());
-            }
-            // get money for cards in discard
             for (int i = 0; i < discard.Count; i++)
             {
-
                 Card card = (Card)discard[i];
                 if (card.IsTreasure())
                 {
                     money += ((TreasureCard)card).getValue();
                 }
             }
-            // get money for cards in hand
-            for (int i = 0; i < hand.Count; i++)
+            return money;
+        }
+
+        private int countTreasureInDeck()
+        {
+            int money = 0;
+            Stack<Card> tempStack = new Stack<Card>();
+            while (deck.Count > 0)
             {
-                Card card = (Card)hand[i];
-                int cardID = card.getID();
-                if (cardID == 0 || cardID == 1 || cardID == 2)
+                Card card = deck.Pop();
+                tempStack.Push(card);
+                if (card.IsTreasure())
                 {
                     money += ((TreasureCard)card).getValue();
                 }
             }
+            pushStackToDeck(tempStack);
             return money;
+        }
+
+        private void pushStackToDeck(Stack<Card> stack)
+        {
+            while (stack.Count > 0)
+            {
+                deck.Push(stack.Pop());
+            }
         }
 
         public List<Card> getHand()
@@ -156,16 +162,20 @@ namespace DominionCards
         }
         public int moneyLeft()
         {
+            return moneyInHand() + this.money;
+        }
+        private int moneyInHand()
+        {
             int moneyInHand = 0;
             for (int i = 0; i < hand.Count; i++)
             {
-                Card card = (Card) hand[i];
+                Card card = (Card)hand[i];
                 if (card.IsTreasure())
                 {
                     moneyInHand += ((TreasureCard)card).value;
                 }
             }
-                return money + moneyInHand;
+            return moneyInHand;
         }
         public bool IsBuyPhase()
         {
