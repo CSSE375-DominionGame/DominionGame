@@ -35,7 +35,10 @@ namespace DominionCards
                 return true;
             }
         }
-
+        public void addPlayer(Player p)
+        {
+            TiedPlayers.Add(p);
+        }
         public bool Ties(Player p)
         {
             if (p.countVictoryPoints() == this.VictoryPoints && p.getTotalMoney() == this.Money)
@@ -48,10 +51,6 @@ namespace DominionCards
             }
         }
 
-        public void addPlayer(Player p)
-        {
-            TiedPlayers.Add(p);
-        }
 
         public int getArraySize()
         {
