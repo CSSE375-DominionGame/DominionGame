@@ -40,21 +40,6 @@ namespace DominionCards
             return new Feast();
         }
 
-        public ActionCard createNewChapel()
-        {
-            return new Chapel();
-        }
-
-        public ActionCard createNewCouncilRoom()
-        {
-            return new CouncilRoom();
-        }
-
-        public ActionCard createNewFeast()
-        {
-            return new Feast();
-        }
-
         public ActionCard createNewFestival()
         {
             return new Festival();
@@ -83,11 +68,6 @@ namespace DominionCards
         public ActionCard createNewMoneyLender()
         {
             return new MoneyLender();
-        }
-
-        public ActionCard createNewLaboratory()
-        {
-            return new Laboratory();
         }
 
         public ActionCard createNewRemodel()
