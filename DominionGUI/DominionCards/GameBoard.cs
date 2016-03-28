@@ -93,11 +93,12 @@ namespace DominionCards
 
 
         private Player currentHightestPlayer;
+        private TieException tie;
         private int highestVP, highestMoney; // fields used to compartmentalize FindWinningPlayer()
         public Player FindWinningPlayer()
         {
             Player firstCounted = NextPlayer();
-            TieException tie = null;
+            tie = null;
             currentHightestPlayer = firstCounted;
             highestVP = currentHightestPlayer.countVictoryPoints();
             highestMoney = currentHightestPlayer.getTotalMoney();
@@ -107,7 +108,7 @@ namespace DominionCards
                 int currentMoney = turnOrder.Peek().getTotalMoney();
                 if (tie != null)
                 {
-                    handleExistngTie(tie, currentVP, currentMoney);
+                    handleExistngTie(currentVP, currentMoney);
                 }
                 else if (currentVP > highestVP || (currentVP == highestVP && currentMoney > highestMoney))
                 {
@@ -127,7 +128,7 @@ namespace DominionCards
             return currentHightestPlayer;
         }
 
-        private void handleExistngTie(TieException tie, int currentVP, int currentMoney)
+        private void handleExistngTie(int currentVP, int currentMoney)
         {
             if (tie.BreaksTie(turnOrder.Peek()))
             {
