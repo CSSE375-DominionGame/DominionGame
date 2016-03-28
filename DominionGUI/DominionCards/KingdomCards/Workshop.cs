@@ -16,7 +16,7 @@ namespace DominionCards.KingdomCards
         {
             decision = new WorkshopDecision();
         }
-        public override void Play(Player player)
+        /*public override void Play(Player player)
         {
             List<Card> buyableCards = new List<Card>();
             foreach (Card card in GameBoard.getInstance().cards.Keys)
@@ -39,7 +39,7 @@ namespace DominionCards.KingdomCards
 
             player.getDiscard().Add(cardSelected);
             GameBoard.getInstance().GetCards()[cardSelected] -= 1;
-        }
+        }*/
         public override String ToString()
         {
             return "Workshop";

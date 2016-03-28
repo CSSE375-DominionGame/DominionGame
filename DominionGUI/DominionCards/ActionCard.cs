@@ -1,8 +1,10 @@
-﻿using System;
+﻿using DominionCards.Decisions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DominionCards
 {
@@ -17,6 +19,7 @@ namespace DominionCards
             money = extraMoney;
             buys = extraBuys;
             actions = extraActions;
+            decision = new NullDecision();
         }
         public override int getVictoryPoints()
         {
@@ -24,8 +27,31 @@ namespace DominionCards
         }
         public override void Play(Player player)
         {
-            Console.WriteLine("I am just an action card!!");
+            List<Card> cardsSelected = decision.SelectCards(player);
+            while (! this.decision.cardSelectionValid(cardsSelected))
+            {
+                displaySelectionError();
+                cardsSelected = decision.SelectCards(player);
+            }
+            this.decision.applyDecisionTo(player, cardsSelected);
         }
+
+        protected virtual void displaySelectionError()
+        {
+            string msg;
+            if (this.decision.getMaxCards() == this.decision.getMinCards())
+            {
+                msg = String.Format("You must select %d cards. Try again",
+                    this.decision.getMaxCards(), this.decision.getMinCards());
+            }
+            else
+            {
+                msg = String.Format("You must select between %d and %d cards. Try again",
+                    this.decision.getMaxCards(), this.decision.getMinCards());
+            }
+            MessageBox.Show(msg);
+        }
+
         public override bool IsAction()
         {
             return true;

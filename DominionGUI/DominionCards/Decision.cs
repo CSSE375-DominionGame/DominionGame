@@ -50,12 +50,29 @@ namespace DominionCards
             return cancelable;
         }
 
+        public virtual bool cardSelectionValid(List<Card> cards)
+        {
+            if (cards.Count == 0 && cancelable)
+            {
+                return true;
+            }
+            if (cards.Count < min || cards.Count > max)
+            {
+                return false;
+            }
+            return true;
+        }
+
         /**
          * This method should return the list of cards that the player may select from. The player will
          * select which cards the card's effect will apply to, and the selected cards will be used in the
          * card
          */
         public abstract List<Card> getCardSelection(Player player);
+        public virtual List<Card> SelectCards(Player player)
+        {
+            return player.SelectCards(this);
+        }
         public abstract void applyDecisionTo(Player player, List<Card> cardsSelected);
     }
 }
