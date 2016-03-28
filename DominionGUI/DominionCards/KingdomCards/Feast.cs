@@ -35,11 +35,13 @@ namespace DominionCards.KingdomCards
                     buyableCards.Add(card);
                 }
             }
-            List<Card> cards = player.SelectCards(buyableCards, "Choose a card to gain.", 1);
+            //List<Card> cards = player.SelectCards(buyableCards, "Choose a card to gain.", 1);
+            List<Card> cards = player.SelectCards(this.decision);
             while (cards.Count != 1)
             {
                 DialogResult result1 = MessageBox.Show("You must select exactly 1 card to gain.  Try again");
-                cards = player.SelectCards(buyableCards, "Choose a card to gain.", 1);
+                //cards = player.SelectCards(buyableCards, "Choose a card to gain.", 1);
+                cards = player.SelectCards(this.decision);
             }
             Card cardSelected = (Card)cards[0];
             player.getDiscard().Add(cardSelected);

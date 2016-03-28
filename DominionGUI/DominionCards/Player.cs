@@ -74,7 +74,8 @@ namespace DominionCards
 
         public abstract void actionPhase();
         public abstract void buyPhase();
-        public abstract List<Card> SelectCards(List<Card> cards, String name, int numCards);
+        public abstract List<Card> SelectCards(Decision decision);
+        //public abstract List<Card> SelectCards(List<Card> cards, String name, int numCards);
 
         
         public int getTotalMoney()

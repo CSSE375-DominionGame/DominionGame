@@ -27,7 +27,8 @@ namespace DominionCards.KingdomCards
                 MessageBox.Show("You have no cards to keep from the thief!");
                 return;
             }
-            List<Card> cards = player.SelectCards(cardsTrashed, "Choose card(s) to keep", cardsTrashed.Count);
+            //List<Card> cards = player.SelectCards(cardsTrashed, "Choose card(s) to keep", cardsTrashed.Count);
+            List<Card> cards = player.SelectCards(this.decision);
 
             for (int i = 0; i < cards.Count; i++)
             {
@@ -66,11 +67,13 @@ namespace DominionCards.KingdomCards
                 MessageBox.Show("Player " + playerAttacked.getNumber() + " does not have any cards you can trash.");
                 return;
             }
-            List<Card> cardsToTrash = playerAttacked.SelectCards(cards, "Choose a card to trash", 1);
+            //List<Card> cardsToTrash = playerAttacked.SelectCards(cards, "Choose a card to trash", 1);
+            List<Card> cardsToTrash = playerAttacked.SelectCards(this.decision);
             while (cardsToTrash.Count != 1)
             {
                 DialogResult result1 = MessageBox.Show("You must select exactly 1 card to trash.  Try again");
-                cardsToTrash = playerAttacked.SelectCards(cards, "Choose a card to trash.", 1);
+                //cardsToTrash = playerAttacked.SelectCards(cards, "Choose a card to trash.", 1);
+                cardsToTrash = playerAttacked.SelectCards(this.decision);
             }
             Card cardSelected = (Card)cardsToTrash[0];
             cardsTrashed.Add(cardSelected);

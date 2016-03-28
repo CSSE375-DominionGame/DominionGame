@@ -33,11 +33,13 @@ namespace DominionCards.KingdomCards
                 MessageBox.Show("You have no cards to play with the throne room!");
                 return;
             }
-            List<Card> cards = player.SelectCards(actionCards, "Choose a card to play twice.", 1);
+            // List<Card> cards = player.SelectCards(actionCards, "Choose a card to play twice.", 1);
+            List<Card> cards = player.SelectCards(this.decision);
             while (cards.Count != 1)
             {
                 DialogResult result1 = MessageBox.Show("You must select exactly 1 card to play twice.  Try again");
-                cards = player.SelectCards(actionCards, "Choose a card to play twice.", 1);
+                //cards = player.SelectCards(actionCards, "Choose a card to play twice.", 1);
+                cards = player.SelectCards(this.decision);
             }
             Card cardPlayed = (Card)cards[0];
 

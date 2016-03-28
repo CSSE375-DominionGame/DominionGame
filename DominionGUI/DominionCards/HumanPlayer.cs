@@ -13,7 +13,7 @@ namespace DominionCards
 {
     public class HumanPlayer : Player
     {
-        public List<Card> makeDecision(Decision decision)
+        public override List<Card> SelectCards(Decision decision)
         {
             List<Card> selection = (List<Card>) copyList(decision.getCardSelection(this));
             SelectCardsForm form = new SelectCardsForm(selection, decision.getText(), decision.getMaxCards());
@@ -32,7 +32,7 @@ namespace DominionCards
         }
 
 
-        public override List<Card> SelectCards(List<Card> cards, String name, int numCards)
+        /*public override List<Card> SelectCards(List<Card> cards, String name, int numCards)
         {
             List<Card> copyCards = cards;
             SelectCardsForm form = new SelectCardsForm(copyCards, name, numCards);
@@ -43,7 +43,7 @@ namespace DominionCards
                 Console.WriteLine("Card ID " + ((Card)cards[i]).getID() + " selected");
             }
             return copyCards;
-        }
+        }*/
 
         public HumanPlayer()
             : base()

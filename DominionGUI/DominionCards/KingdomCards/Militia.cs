@@ -35,11 +35,13 @@ namespace DominionCards.KingdomCards
                 DiscardableCards.Add(card);
 
             }
-            List<Card> cards = playerAttacked.SelectCards(DiscardableCards, "Player " + playerAttacked.getNumber() + ": You were attacked by a militia!!! \n Choose " + numCardsToDiscard + " cards to discard", numCardsToDiscard);
+            //List<Card> cards = playerAttacked.SelectCards(DiscardableCards, "Player " + playerAttacked.getNumber() + ": You were attacked by a militia!!! \n Choose " + numCardsToDiscard + " cards to discard", numCardsToDiscard);
+            List<Card> cards = playerAttacked.SelectCards(this.decision);
             while (cards.Count != numCardsToDiscard)
             {
                 DialogResult result1 = MessageBox.Show("You must discard exactly " + numCardsToDiscard + " cards.  Try again");
-                cards = playerAttacked.SelectCards(DiscardableCards, "You were attacked by a militia!!! \n Choose " + numCardsToDiscard + " cards to discard", numCardsToDiscard);
+                //cards = playerAttacked.SelectCards(DiscardableCards, "You were attacked by a militia!!! \n Choose " + numCardsToDiscard + " cards to discard", numCardsToDiscard);
+                cards = playerAttacked.SelectCards(this.decision);
             }
             for (int i = 0; i < numCardsToDiscard; i++)
             {
