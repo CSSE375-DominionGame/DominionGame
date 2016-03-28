@@ -91,48 +91,31 @@ namespace DominionCards
             return FindWinningPlayer();
         }
 
+
+        private Player currentHightestPlayer;
+        private int highestVP, highestMoney; // fields used to compartmentalize FindWinningPlayer()
         public Player FindWinningPlayer()
         {
             Player firstCounted = NextPlayer();
-            Player currentHightestPlayer = firstCounted;
             TieException tie = null;
-            int highestVP = currentHightestPlayer.countVictoryPoints();
-            int highestMoney = currentHightestPlayer.getTotalMoney();
+            currentHightestPlayer = firstCounted;
+            highestVP = currentHightestPlayer.countVictoryPoints();
+            highestMoney = currentHightestPlayer.getTotalMoney();
             do
             {
                 int currentVP = turnOrder.Peek().countVictoryPoints();
                 int currentMoney = turnOrder.Peek().getTotalMoney();
                 if (tie != null)
                 {
-                    if (tie.BreaksTie(turnOrder.Peek()))
-                    {
-                        currentHightestPlayer = turnOrder.Peek();
-                        highestVP = currentVP;
-                        highestMoney = currentMoney;
-                        tie = null;
-                    }
+                    handleExistngTie(tie, currentVP, currentMoney);
                 }
-                else if (currentVP == highestVP)
+                else if (currentVP > highestVP || (currentVP == highestVP && currentMoney > highestMoney))
                 {
-                    if (currentMoney > highestMoney)
-                    {
-
-                        currentHightestPlayer = turnOrder.Peek();
-                        highestVP = currentVP;
-                        highestMoney = currentMoney;
-
-                    }
-                    else if (currentMoney == highestMoney)
-                    {
-                        tie = new TieException(currentHightestPlayer, turnOrder.Peek(), currentVP, currentMoney);
-                    }
+                    newLeader(turnOrder.Peek(), currentVP, currentMoney);
                 }
-
-                else if (currentVP > highestVP)
+                else if (currentVP == highestVP && currentMoney == highestMoney)
                 {
-                    currentHightestPlayer = turnOrder.Peek();
-                    highestVP = currentVP;
-                    highestMoney = currentMoney;
+                    tie = new TieException(currentHightestPlayer, turnOrder.Peek(), currentVP, currentMoney);
                 }
                 NextPlayer();
             } while (turnOrder.Peek() != firstCounted);
@@ -142,7 +125,25 @@ namespace DominionCards
                 throw tie;
             }
             return currentHightestPlayer;
-        } 
+        }
+
+        private void handleExistngTie(TieException tie, int currentVP, int currentMoney)
+        {
+            if (tie.BreaksTie(turnOrder.Peek()))
+            {
+                currentHightestPlayer = turnOrder.Peek();
+                highestVP = currentVP;
+                highestMoney = currentMoney;
+                tie = null;
+            }
+        }
+
+        private void newLeader(Player newLeader, int currentVP, int currentMoney)
+        {
+            currentHightestPlayer = turnOrder.Peek();
+            highestMoney = currentMoney;
+            highestVP = currentVP;
+        }
 
         public virtual bool GameIsOver()
         {
