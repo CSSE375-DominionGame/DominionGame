@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DominionCards.Decisions;
 
 namespace DominionCards.KingdomCards
 {
@@ -14,7 +15,7 @@ namespace DominionCards.KingdomCards
         public ThroneRoom()
             : base("Throne Room", 0, 0, 0, 0, 4, ID)
         {
-            // Uses ActionCard Constructor
+            this.decision = new ThroneRoomDecision();
         }
 
         /*public override void Play(Player player)

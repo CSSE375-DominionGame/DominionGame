@@ -65,7 +65,11 @@
     <Compile Include="AttackCard.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="CardFactory.cs" />
+    <Compile Include="Decisions\ChapelDecision.cs" />
+    <Compile Include="Decisions\FeastDecision.cs" />
     <Compile Include="Decisions\NullDecision.cs" />
+    <Compile Include="Decisions\ThroneRoomDecision.cs" />
+    <Compile Include="Decisions\YesNoDecision.cs" />
     <Compile Include="Exceptions\CardCannotBePlayedException.cs" />
     <Compile Include="ActionCard.cs" />
     <Compile Include="CardCheckBox.cs">

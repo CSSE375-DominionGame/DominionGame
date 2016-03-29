@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DominionCards.Decisions;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace DominionCards.KingdomCards
         public Chapel()
             : base("Chapel", 0, 0, 0, 0, 2, ID)
         {
-            // Uses ActionCard Constructor
+            this.decision = new ChapelDecision();
         }
 
         public override String ToString()

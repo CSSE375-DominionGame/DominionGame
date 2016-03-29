@@ -29,6 +29,7 @@ namespace DominionCards
         {
             if (cardsSelected.Count == 1) {
                 player.getDiscard().Add(cardsSelected[0]);
+                GameBoard.getInstance().GetCards()[cardsSelected[0]] -= 1;
             }
             else if (cardsSelected.Count > 1) {
                 Console.WriteLine("too many cards from workshop! TODO - add exception");

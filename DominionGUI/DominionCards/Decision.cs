@@ -13,10 +13,10 @@ namespace DominionCards
         private Boolean cancelable;
         private String text, errorMsg;
 
-        public Decision(int min, int max, String text)
+        public Decision(int min, int max, string text)
             : this(min, max, text, "bad selection - try again", false) {}
         
-        public Decision(int min, int max, String text, String errorMsg, Boolean cancel)
+        public Decision(int min, int max, string text, string errorMsg, bool cancel)
         {
             this.max = max;
             this.min = min;
@@ -74,5 +74,15 @@ namespace DominionCards
             return player.SelectCards(this);
         }
         public abstract void applyDecisionTo(Player player, List<Card> cardsSelected);
+
+        protected static List<Card> copyList(List<Card> list)
+        {
+            List<Card> copy = new List<Card>();
+            foreach (Card c in list)
+            {
+                copy.Add(c);
+            }
+            return copy;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DominionCards.Decisions;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace DominionCards.KingdomCards
         public Feast()
             : base("Feast", 0, 0, 0, 0, 4, ID)
         {
-            // Uses ActionCard Constructor
+            this.decision = new FeastDecision();
         }
         public override String ToString()
         {
