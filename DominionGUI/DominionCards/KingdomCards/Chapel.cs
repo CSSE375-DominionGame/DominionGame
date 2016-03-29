@@ -21,7 +21,7 @@ namespace DominionCards.KingdomCards
         {
             return "Chapel";
         }
-        public override void Play(Player player)
+        /*public override void Play(Player player)
         {
             List<Card> cardsToList = new List<Card>();
             foreach (Card card in player.getHand())
@@ -53,6 +53,6 @@ namespace DominionCards.KingdomCards
 
 
 
-        }
+        }*/
     }
 }

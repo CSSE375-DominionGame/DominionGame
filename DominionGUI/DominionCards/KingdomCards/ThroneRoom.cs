@@ -17,7 +17,7 @@ namespace DominionCards.KingdomCards
             // Uses ActionCard Constructor
         }
 
-        public override void Play(Player player)
+        /*public override void Play(Player player)
         {
             List<Card> actionCards = new List<Card>();
             foreach (Card card in player.getHand())
@@ -48,7 +48,7 @@ namespace DominionCards.KingdomCards
             player.addCardToHand(cardPlayed);
             player.getDiscard().Remove(cardPlayed);
             player.playCard(cardPlayed);
-        }
+        }*/
         public override String ToString()
         {
             return "Throne Room";

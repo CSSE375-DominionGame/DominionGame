@@ -18,7 +18,7 @@ namespace DominionCards.KingdomCards
             // Uses AttackCard Constructor
             cardsTrashed = new List<Card>(); //Keeps track of this card's own trash
         }
-        public override void Play(Player player)
+        /*public override void Play(Player player)
         {
             base.Play(player); // resolves attacks on other players.
 
@@ -36,7 +36,7 @@ namespace DominionCards.KingdomCards
                 currentDiscard.Add(cards[i]);
                 player.setDiscard(currentDiscard);
             }
-        }
+        }*/
 
         public override void MakeImmediateAttack(Player playerAttacked)
         {

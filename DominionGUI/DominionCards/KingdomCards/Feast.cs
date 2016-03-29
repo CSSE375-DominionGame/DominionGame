@@ -21,7 +21,7 @@ namespace DominionCards.KingdomCards
             return "Feast";
         }
 
-        public override void Play(Player player)
+        /*public override void Play(Player player)
         {
             //trash the feast
             player.getDiscard().Remove(new Feast());
@@ -48,7 +48,7 @@ namespace DominionCards.KingdomCards
             GameBoard.getInstance().GetCards()[cardSelected] -= 1;
 
 
-        }
+        }*/
         private int checkCounter;
 
 

@@ -17,7 +17,7 @@ namespace DominionCards.KingdomCards
             // Uses ActionCard Constructor
         }
 
-        public override void Play(Player player)
+        /*public override void Play(Player player)
         {
 
             //pick a card to trash
@@ -72,7 +72,8 @@ namespace DominionCards.KingdomCards
             GameBoard.getInstance().GetCards()[cardSelected2] -= 1;
 
 
-        }
+        }*/
+
         public override String ToString()
         {
             return "Remodel";

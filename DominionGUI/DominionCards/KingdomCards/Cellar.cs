@@ -21,7 +21,7 @@ namespace DominionCards.KingdomCards
             return "Cellar";
         }
 
-        public override void Play(Player player)
+        /*public override void Play(Player player)
         {
             List<Card> discardableCards = new List<Card>();
             foreach (Card card in player.getHand())
@@ -44,6 +44,6 @@ namespace DominionCards.KingdomCards
                 player.getHand().Remove(cardSelected);
                 player.getDiscard().Add(cardSelected);
             }
-        }
+        }*/
     }
 }

@@ -21,7 +21,7 @@ namespace DominionCards.KingdomCards
         {
             return "Mine";
         }
-        public override void Play(Player player)
+        /*public override void Play(Player player)
         {
 
             List<Card> treasureCards = new List<Card>();
@@ -70,6 +70,6 @@ namespace DominionCards.KingdomCards
                 player.getHand().Remove(cardSelected);
                 GameBoard.getInstance().GetCards()[new Gold()] -= 1;
             }
-        }
+        }*/
     }
 }
