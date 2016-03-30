@@ -13,12 +13,19 @@ namespace DominionCards
 {
     public class HumanPlayer : Player
     {
+        public override List<Card> SelectCards(Decision decision, List<Card> choices)
+        {
+            SelectCardsForm form = new SelectCardsForm(choices, decision.getText(), decision.getMaxCards());
+            form.GetSelection(); // this must mutate choices
+            return choices;
+        }
         public override List<Card> SelectCards(Decision decision)
         {
-            List<Card> selection = (List<Card>) copyList(decision.getCardSelection(this));
-            SelectCardsForm form = new SelectCardsForm(selection, decision.getText(), decision.getMaxCards());
-            form.GetSelection(); // ???
-            return selection;
+            // TODO get rid of dis shiz
+            List<Card> choices = decision.getCardSelection(this);
+            SelectCardsForm form = new SelectCardsForm(choices, decision.getText(), decision.getMaxCards());
+            form.GetSelection(); // this must mutate choices
+            return choices;
         }
 
         private static List<Card> copyList(List<Card> list)
