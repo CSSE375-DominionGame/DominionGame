@@ -13,6 +13,11 @@ namespace DominionCards
 {
     public class HumanPlayer : Player
     {
+        public static readonly int limboPhaseInt = 0;
+        public static readonly int actionPhaseInt = 1;
+        public static readonly int buyPhaseInt = 2;
+        public static readonly int endPhaseInt = 3;
+
         public override List<Card> SelectCards(Decision decision, List<Card> choices)
         {
             SelectCardsForm form = new SelectCardsForm(choices, decision.getText(), decision.getMaxCards());
@@ -69,9 +74,9 @@ namespace DominionCards
             {
                 GameBoard.lastCardPlayed = null;
                 Console.WriteLine("PLAYER: Action Phase called on player " + getNumber());
-                GameBoard.gamePhase = 1;
+                GameBoard.gamePhase = actionPhaseInt;
                 Monitor.Wait(GameBoard.ActionPhaseLock);
-                GameBoard.gamePhase = 2;
+                GameBoard.gamePhase = buyPhaseInt;
                 Console.WriteLine("PLAYER: Button pulse recieved.");
                 Card cardPlayed = GameBoard.lastCardPlayed;
                 try
@@ -100,9 +105,9 @@ namespace DominionCards
             lock (GameBoard.BuyPhaseLock)
             {
                 Console.WriteLine("PLAYER: Action Phase called on player " + getNumber());
-                GameBoard.gamePhase = 3;
+                GameBoard.gamePhase = endPhaseInt;
                 Monitor.Wait(GameBoard.BuyPhaseLock);
-                GameBoard.gamePhase = 0;
+                GameBoard.gamePhase = limboPhaseInt;
                 Console.WriteLine("PLAYER: Button pulse recieved.");
                 Card cardBought = GameBoard.lastCardBought;
                 try
