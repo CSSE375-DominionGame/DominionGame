@@ -5,7 +5,7 @@ using DominionCards;
 using System.Collections;
 using DominionCards.KingdomCards;
 
-namespace UnitTestProject2
+namespace UnitTestProject
 {
     [TestClass]
     public class UnitTestSpy

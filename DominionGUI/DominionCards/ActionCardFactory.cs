@@ -7,7 +7,7 @@ using DominionCards.KingdomCards;
 
 namespace DominionCards
 {
-    class ActionCardFactory
+    public class ActionCardFactory
     {
         private static readonly int CELLAR_ID = 8;
         private static readonly int CHANCELLOR_ID = 9;
@@ -23,6 +23,8 @@ namespace DominionCards
         private static readonly int VILLAGE_ID = 28;
         private static readonly int WOODCUTTER_ID = 30;
         private static readonly int WORKSHOP_ID = 31;
+
+        public ActionCardFactory() { } 
 
         public ActionCard createNewAdventurer()
         {
@@ -104,9 +106,9 @@ namespace DominionCards
             return new ActionCard("Village", 1, 0, 0, 2, 3, VILLAGE_ID);
         }
 
-        public ActionCard createNewWoodCutter()
+        public ActionCard createNewWoodcutter()
         {
-            return new ActionCard("Wood cutter", 0, 2, 1, 0, 3, WOODCUTTER_ID);
+            return new ActionCard("Woodcutter", 0, 2, 1, 0, 3, WOODCUTTER_ID);
         }
 
         public ActionCard createNewWorkshop()

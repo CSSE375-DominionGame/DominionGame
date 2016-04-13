@@ -7,7 +7,7 @@ using DominionGUI;
 //using Rhino.Mocks;
 //using Rhino.Mocks.Interfaces;
 
-namespace UnitTestProject2
+namespace UnitTestProject
 {
     [TestClass]
     public class UnitTestGameBoard

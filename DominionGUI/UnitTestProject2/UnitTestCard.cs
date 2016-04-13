@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using DominionCards;
 using DominionCards.KingdomCards;
 
-namespace UnitTestProject2
+namespace UnitTestProject
 {
     [TestClass]
     public class UnitTestCard
