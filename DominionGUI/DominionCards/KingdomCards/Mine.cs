@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DominionCards.Decisions;
 
 namespace DominionCards.KingdomCards
 {
@@ -15,6 +16,7 @@ namespace DominionCards.KingdomCards
             : base("Mine", 0, 0, 0, 0, 5, ID)
         {
             // Uses ActionCard Constructor
+            decision = new MineDecision();
         }
 
         public override String ToString()

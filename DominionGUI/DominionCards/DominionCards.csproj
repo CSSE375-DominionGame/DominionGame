@@ -68,6 +68,7 @@
     <Compile Include="Decisions\CellarDecision.cs" />
     <Compile Include="Decisions\ChapelDecision.cs" />
     <Compile Include="Decisions\FeastDecision.cs" />
+    <Compile Include="Decisions\MineDecision.cs" />
     <Compile Include="Decisions\NullDecision.cs" />
     <Compile Include="Decisions\ThroneRoomDecision.cs" />
     <Compile Include="Decisions\YesNoDecision.cs" />
