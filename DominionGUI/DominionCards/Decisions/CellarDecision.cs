@@ -12,7 +12,12 @@ namespace DominionCards.Decisions
 
         public override List<Card> getCardSelection(Player player)
         {
-            return player.getHand();
+            List<Card> handCopy = new List<Card>();
+            foreach (Card c in player.getHand())
+            {
+                handCopy.Add(c);
+            }
+            return handCopy;
         }
 
         public override void applyDecisionTo(Player player, List<Card> cardsSelected)
