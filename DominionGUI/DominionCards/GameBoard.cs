@@ -10,8 +10,8 @@ namespace DominionCards
 {
     public class GameBoard
     {
-        public static int gamePhase = 0; // 0 - between phases. 1 - action phase. 2 - buy phase.
-
+        public static int gamePhase;
+        public static readonly int limboPhaseInt = 0;
         public static Card lastCardPlayed, lastCardBought;
         public static bool AbortPhase = false;
         public static bool AbortGame = false;
@@ -58,7 +58,6 @@ namespace DominionCards
         {
             if (turnOrder.Contains(p))
             {
-                Console.WriteLine("that player has already been added!");
                 return false;
             }
             turnOrder.Enqueue(p);
@@ -70,7 +69,6 @@ namespace DominionCards
             {
                 Player p = PlayGame();
                 string winnerMessage = "Player " + p.getNumber() + " won!";
-                Console.WriteLine(winnerMessage);
                 System.Windows.Forms.MessageBox.Show(winnerMessage);
             }
             catch (TieException e)
@@ -84,7 +82,7 @@ namespace DominionCards
         {
             while (!GameIsOver())
             {
-                gamePhase = 0;
+                gamePhase = limboPhaseInt;
                 turnOrder.Peek().TakeTurn();
                 NextPlayer();
             }

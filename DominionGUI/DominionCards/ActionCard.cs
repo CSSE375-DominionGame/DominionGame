@@ -41,13 +41,20 @@ namespace DominionCards
             string msg;
             if (this.decision.getMaxCards() == this.decision.getMinCards())
             {
-                msg = String.Format("You must select %d cards. Try again",
-                    this.decision.getMaxCards(), this.decision.getMinCards());
+                if (this.decision.getMaxCards() == 1)
+                {
+                    msg = String.Format("You must select 1 card. Try again");
+                }
+                else
+                {
+                    msg = String.Format("You must select {0} cards. Try again",
+                        this.decision.getMaxCards());
+                }
             }
             else
             {
-                msg = String.Format("You must select between %d and %d cards. Try again",
-                    this.decision.getMaxCards(), this.decision.getMinCards());
+                msg = String.Format("You must select between {0} and {1} cards. Try again",
+                    this.decision.getMinCards(), this.decision.getMaxCards());
             }
             MessageBox.Show(msg);
         }

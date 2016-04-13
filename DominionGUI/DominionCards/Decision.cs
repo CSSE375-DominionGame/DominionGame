@@ -69,11 +69,11 @@ namespace DominionCards
          * card
          */
         public abstract List<Card> getCardSelection(Player player);
+        public abstract void applyDecisionTo(Player player, List<Card> cardsSelected);
         public virtual List<Card> SelectCards(Player player)
         {
             return player.SelectCards(this);
         }
-        public abstract void applyDecisionTo(Player player, List<Card> cardsSelected);
 
         protected static List<Card> copyList(List<Card> list)
         {

@@ -43,20 +43,6 @@ namespace DominionCards
             return copy;
         }
 
-
-        /*public override List<Card> SelectCards(List<Card> cards, String name, int numCards)
-        {
-            List<Card> copyCards = cards;
-            SelectCardsForm form = new SelectCardsForm(copyCards, name, numCards);
-            form.GetSelection(); // mutates ArrayList cards
-            Console.WriteLine("Player finished selecting cards.");
-            for (int i = 0; i < cards.Count; i++)
-            {
-                Console.WriteLine("Card ID " + ((Card)cards[i]).getID() + " selected");
-            }
-            return copyCards;
-        }*/
-
         public HumanPlayer()
             : base()
         {
@@ -73,17 +59,14 @@ namespace DominionCards
             lock (GameBoard.ActionPhaseLock)
             {
                 GameBoard.lastCardPlayed = null;
-                Console.WriteLine("PLAYER: Action Phase called on player " + getNumber());
                 GameBoard.gamePhase = actionPhaseInt;
                 Monitor.Wait(GameBoard.ActionPhaseLock);
                 GameBoard.gamePhase = buyPhaseInt;
-                Console.WriteLine("PLAYER: Button pulse recieved.");
                 Card cardPlayed = GameBoard.lastCardPlayed;
                 try
                 {
                     if (cardPlayed == null)
                     {
-                        Console.WriteLine("Action Phase terminated.");
                         Monitor.PulseAll(GameBoard.ActionPhaseLock);
                         return;
                     }
@@ -94,27 +77,21 @@ namespace DominionCards
                     MessageBox.Show(e.Message);
                 }
                 Monitor.PulseAll(GameBoard.ActionPhaseLock);
-                Console.WriteLine("PLAYER: finished playing card, pulse sent.");
-                Console.WriteLine("Playing a card with ID " + cardPlayed.getID());
-            }
+                }
         }
         public override void buyPhase()
         {
             GameBoard.lastCardBought = null;
-            Console.WriteLine("Buy Phase called on player " + getNumber());
             lock (GameBoard.BuyPhaseLock)
             {
-                Console.WriteLine("PLAYER: Action Phase called on player " + getNumber());
                 GameBoard.gamePhase = endPhaseInt;
                 Monitor.Wait(GameBoard.BuyPhaseLock);
                 GameBoard.gamePhase = limboPhaseInt;
-                Console.WriteLine("PLAYER: Button pulse recieved.");
                 Card cardBought = GameBoard.lastCardBought;
                 try
                 {
                     if (cardBought == null)
                     {
-                        Console.WriteLine("Buy Phase terminated.");
                         Monitor.PulseAll(GameBoard.BuyPhaseLock);
                         return;
                     }
@@ -140,9 +117,7 @@ namespace DominionCards
                 }
                 Monitor.PulseAll(GameBoard.BuyPhaseLock);
                 
-                Console.WriteLine("PLAYER: finished playing card, pulse sent.");
-                Console.WriteLine("Buying a card with ID " + cardBought.getID());
-            }
+                }
 
         }
     }

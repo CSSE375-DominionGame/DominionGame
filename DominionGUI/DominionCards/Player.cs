@@ -30,6 +30,8 @@ namespace DominionCards
             {
                 discard.Add(new KingdomCards.Copper());
             }
+            System.Threading.Thread.Sleep(new Random().Next(100));
+            deck = ShuffleDiscard();
             drawHand();
         }
         public void setNumber(int numb)
@@ -316,20 +318,11 @@ namespace DominionCards
                 GameBoard.gamePhase = 2;
             }
             GameBoard.SignalToUpdateGraphics();
-            Console.WriteLine("\nplayer" + getNumber() + " taking turn.");
-            Console.Write("Player has cards ");
-            for (int i = 0; i < getHand().Count; i++)
-            {
-                Console.Write(((Card)getHand()[i]).getID() + " ");
-            }
-            Console.WriteLine(" in his hand");
-            MessageBox.Show("It is player " + getNumber() + "'s turn. \n   Action Phase.");
             while (IsActionPhase())
             {
                 actionPhase();
                 GameBoard.SignalToUpdateGraphics();
             }
-            MessageBox.Show("Buy phase!\nBuy some cards.");
             while (IsBuyPhase())
             {
                 buyPhase();

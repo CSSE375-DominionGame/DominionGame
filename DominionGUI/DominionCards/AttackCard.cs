@@ -3,24 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DominionCards.Decisions;
 
 namespace DominionCards
 {
     public abstract class AttackCard : ActionCard
     {
-        Stack<Player> targets;
+        private Stack<Player> targets;
+        protected Decision attackDecision;
+        protected bool attackDelayed;
         public AttackCard(string name, int extraCards, int extraMoney, int extraBuys, int extraActions, int price, int idNumb)
             : base(name, extraCards, extraMoney, extraBuys, extraActions, price, idNumb)
         {
+            attackDecision = new NullDecision();
             // TODO implement this class
         }
         public virtual void MakeDelayedAttack(Player playerAttacked)
         {
-            // does nothing. May or may not be overriden.
+            if (attackDelayed)
+            {
+                List<Card> cardsSelected = attackDecision.SelectCards(playerAttacked);
+                while (!this.attackDecision.cardSelectionValid(cardsSelected))
+                {
+                    displaySelectionError();
+                    cardsSelected = attackDecision.SelectCards(playerAttacked);
+                }
+                this.attackDecision.applyDecisionTo(playerAttacked, cardsSelected);
+            }
         }
         public virtual void MakeImmediateAttack(Player playerAttacked)
         {
-            // does nothing. May or may not be overriden.
+            if (! attackDelayed)
+            {
+                List<Card> cardsSelected = attackDecision.SelectCards(playerAttacked);
+                while (!this.attackDecision.cardSelectionValid(cardsSelected))
+                {
+                    displaySelectionError();
+                    cardsSelected = attackDecision.SelectCards(playerAttacked);
+                }
+                this.attackDecision.applyDecisionTo(playerAttacked, cardsSelected);
+            }
         }
         public void EnqueueAttacks(Player p)
         {
