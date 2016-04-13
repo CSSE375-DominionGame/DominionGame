@@ -325,13 +325,11 @@ namespace DominionCards
                 Console.Write(((Card)getHand()[i]).getID() + " ");
             }
             Console.WriteLine(" in his hand");
-            MessageBox.Show("It is player " + getNumber() + "'s turn. \n   Action Phase.");
             while (IsActionPhase())
             {
                 actionPhase();
                 GameBoard.SignalToUpdateGraphics();
             }
-            MessageBox.Show("Buy phase!\nBuy some cards.");
             while (IsBuyPhase())
             {
                 buyPhase();
