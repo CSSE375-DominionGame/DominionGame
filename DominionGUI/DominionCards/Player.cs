@@ -254,31 +254,8 @@ namespace DominionCards
         }
         public int playCard(Card c)
         {
-            // finds the card that was played in the player's hand, then removes it.
-            int handSize = hand.Count;
-            if (c.IsVictory())
-            {
-                throw new CardCannotBePlayedException("you cannot play victory cards!!");
-            }
-            if (c.IsTreasure())
-            {
-                throw new CardCannotBePlayedException("You cannot play treasure cards!!");
-            }
-
-            for (int i = 0; i < hand.Count; i++)
-            {
-                if (hand[i].Equals(c))
-                {
-                    hand.Remove(c);
-                    discard.Add(c);
-                    break;
-                }
-            }
-            // makse sure a card was removed.
-            if (handSize - 1 != hand.Count)
-            {
-                throw new Exception("Tried to play a card not in your hand!!!"); // USE A BETTER EXCEPTION
-            }
+            EnsureCardIsPlayable(c);
+            RemoveCardFromHand(c);
             ActionCard card = (ActionCard) c;
             actions--;
             for (int i = 0; i < card.cards; i++)
@@ -291,15 +268,37 @@ namespace DominionCards
             card.Play(this);
             return actions;
         }
-        /*public static Stack<Card> Shuffle(List<Card> discard)
-        {
-            Stack<Card> newDeck; // = new Stack<Card>();
 
-            Stack temp = GenerateRandom.ShuffleDeck(discard);
-            newDeck = ConvertStackToCardStack(temp);
-            discard.Clear();
-            return newDeck;
-        }*/
+        public void EnsureCardIsPlayable(Card c)
+        {
+            if (c.IsVictory())
+            {
+                throw new CardCannotBePlayedException("you cannot play victory cards!!");
+            }
+            if (c.IsTreasure())
+            {
+                throw new CardCannotBePlayedException("You cannot play treasure cards!!");
+            }
+        }
+
+        public void RemoveCardFromHand(Card c)
+        {
+            int handSize = hand.Count;
+            for (int i = 0; i < hand.Count; i++)
+            {
+                if (hand[i].Equals(c))
+                {
+                    hand.Remove(c);
+                    discard.Add(c);
+                    break;
+                }
+            }
+
+            if (handSize - 1 != hand.Count)
+            {
+                throw new Exception("Tried to play a card not in your hand!!!");
+            }
+        }
         
         public static Stack<Card> ConvertStackToCardStack(Stack s)
         {
