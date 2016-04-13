@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DominionCards.Decisions
 {
-    class MilitiaDecision : Decision
+    public class MilitiaDecision : Decision
     {
         public MilitiaDecision()
             : base(3, 3, "Select 3 cards to Keep!") {} // do nothing

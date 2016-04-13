@@ -76,8 +76,8 @@ namespace DominionCards
 
         public abstract void actionPhase();
         public abstract void buyPhase();
-        public abstract List<Card> SelectCards(Decision decision, List<Card> choices);
-        public abstract List<Card> SelectCards(Decision decision); // TODO get rid of dis shiz
+        public abstract List<Card> SelectCards(IDecision decision, List<Card> choices);
+        public abstract List<Card> SelectCards(IDecision decision); // TODO get rid of dis shiz
 
         //public abstract List<Card> SelectCards(List<Card> cards, String name, int numCards);
 

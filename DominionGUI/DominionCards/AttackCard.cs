@@ -10,7 +10,7 @@ namespace DominionCards
     public abstract class AttackCard : ActionCard
     {
         private Stack<Player> targets;
-        protected Decision attackDecision;
+        protected IDecision attackDecision;
         protected bool attackDelayed;
         public AttackCard(string name, int extraCards, int extraMoney, int extraBuys, int extraActions, int price, int idNumb)
             : base(name, extraCards, extraMoney, extraBuys, extraActions, price, idNumb)

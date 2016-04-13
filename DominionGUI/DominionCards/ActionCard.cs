@@ -11,7 +11,7 @@ namespace DominionCards
     public class ActionCard : Card
     {
         public int cards, money, buys, actions;
-        protected Decision decision;
+        protected IDecision decision;
         public ActionCard(string cardName, int extraCards, int extraMoney, int extraBuys, int extraActions, int price, int idNumb)
             : base(price, idNumb)
         {
