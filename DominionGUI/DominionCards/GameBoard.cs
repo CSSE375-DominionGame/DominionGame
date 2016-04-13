@@ -90,16 +90,16 @@ namespace DominionCards
         }
 
 
-        private Player currentHightestPlayer;
+        private Player currentHighestPlayer;
         private TieException tie;
         private int highestVP, highestMoney; // fields used to compartmentalize FindWinningPlayer()
         public Player FindWinningPlayer()
         {
             Player firstCounted = NextPlayer();
             tie = null;
-            currentHightestPlayer = firstCounted;
-            highestVP = currentHightestPlayer.countVictoryPoints();
-            highestMoney = currentHightestPlayer.getTotalMoney();
+            currentHighestPlayer = firstCounted;
+            highestVP = currentHighestPlayer.countVictoryPoints();
+            highestMoney = currentHighestPlayer.getTotalMoney();
             do
             {
                 int currentVP = turnOrder.Peek().countVictoryPoints();
@@ -114,7 +114,7 @@ namespace DominionCards
                 }
                 else if (currentVP == highestVP && currentMoney == highestMoney)
                 {
-                    tie = new TieException(currentHightestPlayer, turnOrder.Peek(), currentVP, currentMoney);
+                    tie = new TieException(currentHighestPlayer, turnOrder.Peek(), currentVP, currentMoney);
                 }
                 NextPlayer();
             } while (turnOrder.Peek() != firstCounted);
@@ -123,14 +123,14 @@ namespace DominionCards
             {
                 throw tie;
             }
-            return currentHightestPlayer;
+            return currentHighestPlayer;
         }
 
         private void handleExistngTie(int currentVP, int currentMoney)
         {
             if (tie.BreaksTie(turnOrder.Peek()))
             {
-                currentHightestPlayer = turnOrder.Peek();
+                currentHighestPlayer = turnOrder.Peek();
                 highestVP = currentVP;
                 highestMoney = currentMoney;
                 tie = null;
@@ -143,7 +143,7 @@ namespace DominionCards
 
         private void newLeader(Player newLeader, int currentVP, int currentMoney)
         {
-            currentHightestPlayer = turnOrder.Peek();
+            currentHighestPlayer = turnOrder.Peek();
             highestMoney = currentMoney;
             highestVP = currentVP;
         }
