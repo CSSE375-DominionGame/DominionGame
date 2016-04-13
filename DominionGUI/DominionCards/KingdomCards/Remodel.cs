@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DominionCards.Decisions;
 
 namespace DominionCards.KingdomCards
 {
@@ -12,9 +13,9 @@ namespace DominionCards.KingdomCards
     {
         private static int ID = 22;
         public Remodel()
-            : base("Remodel", 0, 0, 0, 0, 4, ID)
+            : base("Remodel", 0, 0, 0, 0, 1, ID)
         {
-            // Uses ActionCard Constructor
+            decision = new RemodelDecision();
         }
 
         /*public override void Play(Player player)
