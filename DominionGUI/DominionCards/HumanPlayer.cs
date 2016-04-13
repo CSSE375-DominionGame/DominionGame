@@ -21,6 +21,7 @@ namespace DominionCards
         public override List<Card> SelectCards(Decision decision, List<Card> choices)
         {
             SelectCardsForm form = new SelectCardsForm(choices, decision.getText(), decision.getMaxCards());
+            form.TopMost = true;
             form.GetSelection(); // this must mutate choices
             return choices;
         }
