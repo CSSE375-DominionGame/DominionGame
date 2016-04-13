@@ -30,6 +30,8 @@ namespace DominionCards
             {
                 discard.Add(new KingdomCards.Copper());
             }
+            System.Threading.Thread.Sleep(new Random().Next(100));
+            deck = ShuffleDiscard();
             drawHand();
         }
         public void setNumber(int numb)
