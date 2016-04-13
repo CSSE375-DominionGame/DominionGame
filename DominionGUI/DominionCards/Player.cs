@@ -318,13 +318,6 @@ namespace DominionCards
                 GameBoard.gamePhase = 2;
             }
             GameBoard.SignalToUpdateGraphics();
-            Console.WriteLine("\nplayer" + getNumber() + " taking turn.");
-            Console.Write("Player has cards ");
-            for (int i = 0; i < getHand().Count; i++)
-            {
-                Console.Write(((Card)getHand()[i]).getID() + " ");
-            }
-            Console.WriteLine(" in his hand");
             while (IsActionPhase())
             {
                 actionPhase();

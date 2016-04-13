@@ -58,7 +58,6 @@ namespace DominionCards
         {
             if (turnOrder.Contains(p))
             {
-                Console.WriteLine("that player has already been added!");
                 return false;
             }
             turnOrder.Enqueue(p);
@@ -70,7 +69,6 @@ namespace DominionCards
             {
                 Player p = PlayGame();
                 string winnerMessage = "Player " + p.getNumber() + " won!";
-                Console.WriteLine(winnerMessage);
                 System.Windows.Forms.MessageBox.Show(winnerMessage);
             }
             catch (TieException e)
