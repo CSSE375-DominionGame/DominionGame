@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DominionCards.Decisions;
 
 namespace DominionCards.KingdomCards
 {
@@ -14,14 +15,15 @@ namespace DominionCards.KingdomCards
         public Militia()
             : base("Militia", 0, 2, 0, 0, 4, ID)
         {
-            // Uses ActionCard Constructor
+            attackDecision = new MilitiaDecision();
+            attackDelayed = true;
         }
 
         public override String ToString()
         {
             return "Militia";
         }
-        public override void MakeDelayedAttack(Player playerAttacked)
+        /*public override void MakeDelayedAttack(Player playerAttacked)
         {
             int numCardsToDiscard = playerAttacked.getHand().Count - 3;
             if (numCardsToDiscard <= 0)
@@ -52,6 +54,6 @@ namespace DominionCards.KingdomCards
 
 
 
-        }
+        }*/
     }
 }
