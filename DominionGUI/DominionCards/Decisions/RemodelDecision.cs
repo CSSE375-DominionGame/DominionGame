@@ -15,7 +15,7 @@ namespace DominionCards.Decisions
 
         public override List<Card> getCardSelection(Player player)
         {
-            return player.getHand();
+            return Decision.copyList(player.getHand());
         }
 
         public override void applyDecisionTo(Player player, List<Card> cardsSelected)
@@ -49,7 +49,7 @@ namespace DominionCards.Decisions
                 return;
             }
 
-            List<Card> upgradedCards = player.SelectCards(this, buyableCards);
+            List<Card> upgradedCards = player.SelectCards(new NullDecision(), buyableCards);
             Card upgradedCard = (Card)upgradedCards[0];
 
             player.getDiscard().Add(upgradedCard);

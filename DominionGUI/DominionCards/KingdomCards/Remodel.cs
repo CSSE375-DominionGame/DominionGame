@@ -13,7 +13,7 @@ namespace DominionCards.KingdomCards
     {
         private static int ID = 22;
         public Remodel()
-            : base("Remodel", 0, 0, 0, 0, 1, ID)
+            : base("Remodel", 0, 0, 0, 0, 4, ID)
         {
             decision = new RemodelDecision();
         }
