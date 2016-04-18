@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace DominionCards.Decisions
 {
-    class MineDecision : Decision
+    class MineDecision : DefaultDecision
     {
         public MineDecision() : base(0, 1, "Select a Treasure Card to Upgrade") { }
 

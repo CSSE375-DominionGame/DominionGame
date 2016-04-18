@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace DominionCards
 {
-    public abstract class Decision : IDecision
+    public abstract class DefaultDecision : IDecision
     {
         private int max, min;
         private Boolean cancelable;
         private String text, errorMsg;
 
-        public Decision(int min, int max, string text)
+        public DefaultDecision(int min, int max, string text)
             : this(min, max, text, "bad selection - try again", false) {}
         
-        public Decision(int min, int max, string text, string errorMsg, bool cancel)
+        public DefaultDecision(int min, int max, string text, string errorMsg, bool cancel)
         {
             this.max = max;
             this.min = min;

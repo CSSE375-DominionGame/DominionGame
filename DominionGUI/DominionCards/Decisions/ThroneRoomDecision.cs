@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DominionCards.Decisions
 {
-    class ThroneRoomDecision : Decision
+    class ThroneRoomDecision : DefaultDecision
     {
         private static readonly string MSG = "";
         private static readonly string ERR_MSG = "";

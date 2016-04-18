@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DominionCards
 {
-    class WorkshopDecision : Decision
+    class WorkshopDecision : DefaultDecision
     {
         public WorkshopDecision()
             : base(1, 1, "select a card to gain from the workshop!") {}

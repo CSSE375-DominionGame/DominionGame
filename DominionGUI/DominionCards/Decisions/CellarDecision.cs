@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DominionCards.Decisions
 {
-    class CellarDecision : Decision
+    class CellarDecision : DefaultDecision
     {
         public CellarDecision() : base(0, Int32.MaxValue, "select cards to discard with a Cellar") { }
 

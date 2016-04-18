@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DominionCards.Decisions
 {
 
-    class ChapelDecision : Decision
+    class ChapelDecision : DefaultDecision
     {
         private static readonly string MSG = "select up to 4 cards to trash.";
         private static readonly string ERR_MSG = "you selected too many cards.";
@@ -17,7 +17,7 @@ namespace DominionCards.Decisions
 
         public override List<Card> getCardSelection(Player player)
         {
-            return Decision.copyList(player.getHand());
+            return DefaultDecision.copyList(player.getHand());
         }
 
         public override void applyDecisionTo(Player player, List<Card> cardsSelected)

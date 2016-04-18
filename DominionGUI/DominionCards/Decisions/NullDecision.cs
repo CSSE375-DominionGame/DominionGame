@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DominionCards.Decisions
 {
-    class NullDecision : Decision
+    class NullDecision : DefaultDecision
     {
         public NullDecision()
             : base(0, 0, "") { }

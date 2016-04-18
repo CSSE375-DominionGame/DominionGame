@@ -8,14 +8,15 @@ using DominionCards.Decisions;
 
 namespace DominionCards.Decisions
 {
-    class RemodelDecision : Decision
+    class RemodelDecision : DefaultDecision
     {
 
-        public RemodelDecision() : base(0, 1, "Remodel a Card") { }
+        public RemodelDecision()
+            : base(0, 1, "Remodel a Card") { }
 
         public override List<Card> getCardSelection(Player player)
         {
-            return Decision.copyList(player.getHand());
+            return DefaultDecision.copyList(player.getHand());
         }
 
         public override void applyDecisionTo(Player player, List<Card> cardsSelected)
