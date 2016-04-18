@@ -81,7 +81,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Exceptions\GameBoardInstanceIsNullException.cs" />
-    <Compile Include="Decisions\Decision.cs" />
+    <Compile Include="Decisions\DefaultDecision.cs" />
     <Compile Include="Decisions\IDecision.cs" />
     <Compile Include="SelectCardsForm.cs">
       <SubType>Form</SubType>

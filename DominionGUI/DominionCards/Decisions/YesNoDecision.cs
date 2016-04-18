@@ -50,15 +50,35 @@ namespace DominionCards.Decisions
             }
         }
 
-        public abstract List<Card> getYesCards(Player player);
-        public virtual List<Card> getNoCards(Player player)
+        public List<Card> getYesCards(Player player)
+        {
+            List<Card> list = new List<Card>();
+            list.Add(null);
+            return list;
+        }
+        public List<Card> getNoCards(Player player)
         {
             return new List<Card>();
         }
 
         public abstract bool cardSelectionValid(List<Card> cards);
         //public abstract List<Card> getCardSelection(Player player);
-        public abstract void applyDecisionTo(Player player, List<Card> cardsSelected);
+        protected abstract void doYes(Player player, List<Card> cardsSelected);
+        protected virtual void doNo(Player player, List<Card> cardsSelected)
+        {
+            // do nothing
+        }
+        public void applyDecisionTo(Player player, List<Card> cardsSelected)
+        {
+            if (cardsSelected.Count == 0)
+            {
+                doNo(player, cardsSelected);
+            }
+            else
+            {
+                doYes(player, cardsSelected);
+            }
+        }
         /*public List<Card> MakeDecision(Player player)
         {
             return player.MakeDecision(this);

@@ -17,26 +17,12 @@ namespace DominionCards.Decisions
             return true;
         }
 
-        /*public override List<Card> getCardSelection(Player player)
+        protected override void doYes(Player player, List<Card> cardsSelected)
         {
-            
-        }*/
-        public override void applyDecisionTo(Player player, List<Card> cardsSelected)
-        {
-            if (cardsSelected.Count != 0)
+            while (player.getDeck().Count > 0)
             {
-                while (player.getDeck().Count > 0)
-                {
-                    player.getDiscard().Add(player.getDeck().Pop());
-                }
+                player.getDiscard().Add(player.getDeck().Pop());
             }
-        }
-
-        public override List<Card> getYesCards(Player player)
-        {
-            List<Card> list = new List<Card>();
-            list.Add(null);
-            return list;
         }
     }
 }
