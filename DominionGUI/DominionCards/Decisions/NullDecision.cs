@@ -20,6 +20,11 @@ namespace DominionCards.Decisions
             return true;
         }
 
+        public override List<Card> SelectByGraphic(Player player)
+        {
+            return new List<Card>();
+        }
+
         public override List<Card> getCardSelection(Player player)
         {
             return new List<Card>();

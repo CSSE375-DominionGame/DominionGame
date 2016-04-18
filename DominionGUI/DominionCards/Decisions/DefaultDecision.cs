@@ -71,7 +71,7 @@ namespace DominionCards
         public abstract List<Card> getCardSelection(Player player);
         public abstract void applyDecisionTo(Player player, List<Card> cardsSelected);
 
-        public List<Card> SelectByGraphic(Player player)
+        public virtual List<Card> SelectByGraphic(Player player)
         {
             List<Card> choices = getCardSelection(player);
             SelectCardsForm form = new SelectCardsForm(choices, this.text, this.max);
