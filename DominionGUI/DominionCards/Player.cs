@@ -19,9 +19,22 @@ namespace DominionCards
         public int actions, buys, money;
         public Player()
         {
+            resetStats();
+            populateStartingDeck();
+            System.Threading.Thread.Sleep(new Random().Next(100));
+            deck = ShuffleDiscard();
+            drawHand();
+        }
+
+        private void resetStats()
+        {
             actions = 1;
             buys = 1;
             money = 0;
+        }
+
+        private void populateStartingDeck()
+        {
             for (int i = 0; i < 3; i++)
             {
                 discard.Add(new KingdomCards.Estate());
@@ -30,9 +43,6 @@ namespace DominionCards
             {
                 discard.Add(new KingdomCards.Copper());
             }
-            System.Threading.Thread.Sleep(new Random().Next(100));
-            deck = ShuffleDiscard();
-            drawHand();
         }
         public void setNumber(int numb)
         {
@@ -346,9 +356,7 @@ namespace DominionCards
         }
         public void EndTurn()
         {
-            money = 0;
-            actions = 1;
-            buys = 1;
+            resetStats();
             drawHand();
         }
         public bool IsActionPhase()

@@ -57,11 +57,12 @@ namespace DominionCards.Decisions
         }
 
         public abstract bool cardSelectionValid(List<Card> cards);
-        public abstract List<Card> getCardSelection(Player player);
+        //public abstract List<Card> getCardSelection(Player player);
         public abstract void applyDecisionTo(Player player, List<Card> cardsSelected);
-        public List<Card> MakeDecision(Player player)
+        /*public List<Card> MakeDecision(Player player)
         {
             return player.MakeDecision(this);
-        }
+        }*/
+
     }
 }

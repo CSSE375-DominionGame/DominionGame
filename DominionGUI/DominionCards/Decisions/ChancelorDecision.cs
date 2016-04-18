@@ -17,15 +17,10 @@ namespace DominionCards.Decisions
             return true;
         }
 
-        public override List<Card> getCardSelection(Player player)
+        /*public override List<Card> getCardSelection(Player player)
         {
-            List<Card> selection = new List<Card>();
-            foreach (Card c in player.getDeck())
-            {
-                selection.Add(c);
-            }
-            return selection;
-        }
+            
+        }*/
         public override void applyDecisionTo(Player player, List<Card> cardsSelected)
         {
             foreach (Card c in cardsSelected)
@@ -37,12 +32,12 @@ namespace DominionCards.Decisions
 
         public override List<Card> getYesCards(Player player)
         {
-            List<Card> cards = new List<Card>();
+            List<Card> selection = new List<Card>();
             foreach (Card c in player.getDeck())
             {
-                cards.Add(c);
+                selection.Add(c);
             }
-            return cards;
+            return selection;
         }
     }
 }

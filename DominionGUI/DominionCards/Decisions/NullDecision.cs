@@ -11,9 +11,9 @@ namespace DominionCards.Decisions
         public NullDecision()
             : base(0, 0, "") { }
 
-        public override List<Card> MakeDecision(Player player) {
+        /*public override List<Card> MakeDecision(Player player) {
             return new List<Card>();
-        }
+        }*/
 
         public override bool cardSelectionValid(List<Card> cards)
         {

@@ -10,12 +10,12 @@ namespace DominionCards
     {
         int getMaxCards();
         int getMinCards();
-        List<Card> getCardSelection(Player player);
+        //List<Card> getCardSelection(Player player);
         List<Card> SelectByGraphic(Player player);
         string getText();
         Boolean isCancelable();
         bool cardSelectionValid(List<Card> cards);
         void applyDecisionTo(Player player, List<Card> cardsSelected);
-        List<Card> MakeDecision(Player player);
+        //List<Card> MakeDecision(Player player);
     }
 }

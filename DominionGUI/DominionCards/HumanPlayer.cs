@@ -24,6 +24,17 @@ namespace DominionCards
             form.GetSelection(); // this must mutate choices
             return choices;
         }*/
+        public HumanPlayer()
+            : base()
+        {
+            setNumber(1);
+            // TODO implement
+        }
+        public HumanPlayer(int playerNumber)
+            : base()
+        {
+            setNumber(playerNumber);
+        }
         public override List<Card> MakeDecision(IDecision decision)
         {
             return decision.SelectByGraphic(this);
@@ -37,18 +48,6 @@ namespace DominionCards
                 copy.Add(c);
             }
             return copy;
-        }
-
-        public HumanPlayer()
-            : base()
-        {
-            setNumber(1);
-            // TODO implement
-        }
-        public HumanPlayer(int playerNumber)
-            : base()
-        {
-            setNumber(playerNumber);
         }
         public override void actionPhase()
         {

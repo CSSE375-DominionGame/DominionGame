@@ -78,10 +78,10 @@ namespace DominionCards
             form.GetSelection(); // this must mutate choices
             return choices;
         }
-        public virtual List<Card> MakeDecision(Player player)
+        /*public virtual List<Card> MakeDecision(Player player)
         {
             return player.MakeDecision(this);
-        }
+        }*/
 
         protected static List<Card> copyList(List<Card> list)
         {
