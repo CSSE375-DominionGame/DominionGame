@@ -38,7 +38,7 @@ namespace DominionCards
 
         public ActionCard createNewChancellor()
         {
-            return new ActionCard("Chancellor", 0, 2, 0, 0, 3, CHANCELLOR_ID);
+            return new Chancellor();
         }
 
         public ActionCard createNewChapel()

@@ -8,7 +8,7 @@ using DominionCards;
 
 namespace UnitTestProject.Mocks
 {
-    class PlayerMockSelectNo : PlayerMockYesNo
+    public class PlayerMockSelectNo : PlayerMockYesNo
     {
         public override List<Card> MakeDecision(IDecision decision)
         {
