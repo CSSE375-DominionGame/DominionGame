@@ -66,6 +66,7 @@
     <Compile Include="AttackCard.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="Decisions\CellarDecision.cs" />
+    <Compile Include="Decisions\ChancelorDecision.cs" />
     <Compile Include="Decisions\ChapelDecision.cs" />
     <Compile Include="Decisions\FeastDecision.cs" />
     <Compile Include="Decisions\MilitiaDecision.cs" />
@@ -80,8 +81,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Exceptions\GameBoardInstanceIsNullException.cs" />
-    <Compile Include="Decision.cs" />
-    <Compile Include="IDecision.cs" />
+    <Compile Include="Decisions\Decision.cs" />
+    <Compile Include="Decisions\IDecision.cs" />
     <Compile Include="SelectCardsForm.cs">
       <SubType>Form</SubType>
     </Compile>

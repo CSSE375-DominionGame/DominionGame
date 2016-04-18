@@ -70,9 +70,17 @@ namespace DominionCards
          */
         public abstract List<Card> getCardSelection(Player player);
         public abstract void applyDecisionTo(Player player, List<Card> cardsSelected);
-        public virtual List<Card> SelectCards(Player player)
+
+        public List<Card> SelectByGraphic(Player player)
         {
-            return player.SelectCards(this);
+            List<Card> choices = getCardSelection(player);
+            SelectCardsForm form = new SelectCardsForm(choices, this.text, this.max);
+            form.GetSelection(); // this must mutate choices
+            return choices;
+        }
+        public virtual List<Card> MakeDecision(Player player)
+        {
+            return player.MakeDecision(this);
         }
 
         protected static List<Card> copyList(List<Card> list)

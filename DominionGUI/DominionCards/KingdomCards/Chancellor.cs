@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DominionCards.Decisions;
 
 namespace DominionCards.KingdomCards
 {
@@ -13,7 +14,7 @@ namespace DominionCards.KingdomCards
         public Chancellor()
             : base("Chancellor", 0, 2, 0, 0, 3, 9)
         {
-            // Uses ActionCard Constructor
+            decision = new ChancelorDecision();
         }
 
         public override String ToString()

@@ -49,12 +49,13 @@ namespace DominionCards.Decisions
                 return;
             }
 
-            List<Card> upgradedCards = player.SelectCards(new NullDecision(), buyableCards);
+            //TODO fix this
+            /*List<Card> upgradedCards = player.SelectCards(new NullDecision(), buyableCards);
             Card upgradedCard = (Card)upgradedCards[0];
 
             player.getDiscard().Add(upgradedCard);
             player.getHand().Remove(trashCardSelected);
-            GameBoard.getInstance().GetCards()[upgradedCard] -= 1;
+            GameBoard.getInstance().GetCards()[upgradedCard] -= 1;*/
         }
     }
 }

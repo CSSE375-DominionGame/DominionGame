@@ -18,19 +18,15 @@ namespace DominionCards
         public static readonly int buyPhaseInt = 2;
         public static readonly int endPhaseInt = 3;
 
-        public override List<Card> SelectCards(IDecision decision, List<Card> choices)
+        /*public override List<Card> SelectCards(IDecision decision, List<Card> choices)
         {
             SelectCardsForm form = new SelectCardsForm(choices, decision.getText(), decision.getMaxCards());
             form.GetSelection(); // this must mutate choices
             return choices;
-        }
-        public override List<Card> SelectCards(IDecision decision)
+        }*/
+        public override List<Card> MakeDecision(IDecision decision)
         {
-            // TODO get rid of dis shiz
-            List<Card> choices = decision.getCardSelection(this);
-            SelectCardsForm form = new SelectCardsForm(choices, decision.getText(), decision.getMaxCards());
-            form.GetSelection(); // this must mutate choices
-            return choices;
+            return decision.SelectByGraphic(this);
         }
 
         private static List<Card> copyList(List<Card> list)

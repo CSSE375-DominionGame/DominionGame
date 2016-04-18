@@ -68,12 +68,12 @@ namespace DominionCards.KingdomCards
                 return;
             }
             //List<Card> cardsToTrash = playerAttacked.SelectCards(cards, "Choose a card to trash", 1);
-            List<Card> cardsToTrash = playerAttacked.SelectCards(this.decision);
+            List<Card> cardsToTrash = playerAttacked.MakeDecision(this.decision);
             while (cardsToTrash.Count != 1)
             {
                 DialogResult result1 = MessageBox.Show("You must select exactly 1 card to trash.  Try again");
                 //cardsToTrash = playerAttacked.SelectCards(cards, "Choose a card to trash.", 1);
-                cardsToTrash = playerAttacked.SelectCards(this.decision);
+                cardsToTrash = playerAttacked.MakeDecision(this.decision);
             }
             Card cardSelected = (Card)cardsToTrash[0];
             cardsTrashed.Add(cardSelected);

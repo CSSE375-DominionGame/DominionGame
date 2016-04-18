@@ -22,11 +22,11 @@ namespace DominionCards
         {
             if (attackDelayed)
             {
-                List<Card> cardsSelected = attackDecision.SelectCards(playerAttacked);
+                List<Card> cardsSelected = attackDecision.MakeDecision(playerAttacked);
                 while (!this.attackDecision.cardSelectionValid(cardsSelected))
                 {
                     displaySelectionError();
-                    cardsSelected = attackDecision.SelectCards(playerAttacked);
+                    cardsSelected = attackDecision.MakeDecision(playerAttacked);
                 }
                 this.attackDecision.applyDecisionTo(playerAttacked, cardsSelected);
             }
@@ -35,11 +35,11 @@ namespace DominionCards
         {
             if (! attackDelayed)
             {
-                List<Card> cardsSelected = attackDecision.SelectCards(playerAttacked);
+                List<Card> cardsSelected = attackDecision.MakeDecision(playerAttacked);
                 while (!this.attackDecision.cardSelectionValid(cardsSelected))
                 {
                     displaySelectionError();
-                    cardsSelected = attackDecision.SelectCards(playerAttacked);
+                    cardsSelected = attackDecision.MakeDecision(playerAttacked);
                 }
                 this.attackDecision.applyDecisionTo(playerAttacked, cardsSelected);
             }

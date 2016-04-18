@@ -27,11 +27,11 @@ namespace DominionCards
         }
         public override void Play(Player player)
         {
-            List<Card> cardsSelected = decision.SelectCards(player);
+            List<Card> cardsSelected = decision.MakeDecision(player);
             while (! this.decision.cardSelectionValid(cardsSelected))
             {
                 displaySelectionError();
-                cardsSelected = decision.SelectCards(player);
+                cardsSelected = decision.MakeDecision(player);
             }
             this.decision.applyDecisionTo(player, cardsSelected);
         }
