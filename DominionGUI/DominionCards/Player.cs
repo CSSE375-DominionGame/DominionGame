@@ -87,7 +87,7 @@ namespace DominionCards
         public abstract void actionPhase();
         public abstract void buyPhase();
         //public abstract List<Card> SelectCards(IDecision decision, List<Card> choices);
-        public abstract void MakeDecision(IDecision decision);
+        public abstract List<Card> MakeDecision(IDecision decision);
 
         //public abstract List<Card> SelectCards(List<Card> cards, String name, int numCards);
 

@@ -35,37 +35,9 @@ namespace DominionCards
         {
             setNumber(playerNumber);
         }
-        public override void MakeDecision(IDecision decision)
+        public override List<Card> MakeDecision(IDecision decision)
         {
-            List<Card> cardsSelected = decision.SelectByGraphic(this);
-            while (!decision.cardSelectionValid(cardsSelected))
-            {
-                displaySelectionError(decision);
-                cardsSelected = decision.SelectByGraphic(this);
-            }
-            decision.applyDecisionTo(this, cardsSelected);
-        }
-        private void displaySelectionError(IDecision decision)
-        {
-            string msg;
-            if (decision.getMaxCards() == decision.getMinCards())
-            {
-                if (decision.getMaxCards() == 1)
-                {
-                    msg = String.Format("You must select 1 card. Try again");
-                }
-                else
-                {
-                    msg = String.Format("You must select {0} cards. Try again",
-                        decision.getMaxCards());
-                }
-            }
-            else
-            {
-                msg = String.Format("You must select between {0} and {1} cards. Try again",
-                    decision.getMinCards(), decision.getMaxCards());
-            }
-            MessageBox.Show(msg);
+            return decision.SelectByGraphic(this);
         }
 
         private static List<Card> copyList(List<Card> list)
