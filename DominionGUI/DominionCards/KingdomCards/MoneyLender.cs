@@ -15,7 +15,7 @@ namespace DominionCards.KingdomCards
         public MoneyLender()
             : base("Money Lender", 0, 0, 0, 0, 4, ID)
         {
-            decision = new MoneyLenderDecision();
+            //decision = new MoneyLenderDecision();
         }
         public override String ToString()
         {

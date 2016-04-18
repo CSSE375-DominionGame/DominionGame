@@ -10,7 +10,7 @@ namespace DominionCards
     {
         int getMaxCards();
         int getMinCards();
-        //List<Card> getCardSelection(Player player);
+        List<Card> getCardSelection(Player player);
         List<Card> SelectByGraphic(Player player);
         string getText();
         Boolean isCancelable();

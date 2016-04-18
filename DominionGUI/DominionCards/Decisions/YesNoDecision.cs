@@ -62,7 +62,10 @@ namespace DominionCards.Decisions
         }
 
         public abstract bool cardSelectionValid(List<Card> cards);
-        //public abstract List<Card> getCardSelection(Player player);
+        public virtual List<Card> getCardSelection(Player player)
+        {
+            throw new NotImplementedException();
+        }
         protected abstract void doYes(Player player, List<Card> cardsSelected);
         protected virtual void doNo(Player player, List<Card> cardsSelected)
         {
