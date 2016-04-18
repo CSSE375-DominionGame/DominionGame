@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Windows.Forms;
+using DominionCards.Decisions;
 
 namespace DominionCards.KingdomCards
 {
@@ -14,7 +15,7 @@ namespace DominionCards.KingdomCards
         public MoneyLender()
             : base("Money Lender", 0, 0, 0, 0, 4, ID)
         {
-            // Uses ActionCard Constructor
+            decision = new MoneyLenderDecision();
         }
         public override String ToString()
         {
