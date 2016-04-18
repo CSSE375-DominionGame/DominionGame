@@ -71,9 +71,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Mocks\PlayerDefaultDecisionMock.cs" />
     <Compile Include="Mocks\PlayerMockSelectNo.cs" />
     <Compile Include="Mocks\PlayerMockSelectYes.cs" />
-    <Compile Include="Mocks\PlayerMockYesNo.cs" />
+    <Compile Include="Mocks\PlayerDecisionMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTestChancellor.cs" />
     <Compile Include="UnitTestActionCardFactory.cs" />

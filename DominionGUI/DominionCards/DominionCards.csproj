@@ -71,6 +71,7 @@
     <Compile Include="Decisions\FeastDecision.cs" />
     <Compile Include="Decisions\MilitiaDecision.cs" />
     <Compile Include="Decisions\MineDecision.cs" />
+    <Compile Include="Decisions\MoneyLenderDecision.cs" />
     <Compile Include="Decisions\NullDecision.cs" />
     <Compile Include="Decisions\RemodelDecision.cs" />
     <Compile Include="Decisions\ThroneRoomDecision.cs" />
