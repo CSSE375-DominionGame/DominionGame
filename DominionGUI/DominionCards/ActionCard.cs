@@ -27,36 +27,7 @@ namespace DominionCards
         }
         public override void Play(Player player)
         {
-            List<Card> cardsSelected = player.MakeDecision(decision);
-            while (! this.decision.cardSelectionValid(cardsSelected))
-            {
-                displaySelectionError();
-                cardsSelected = player.MakeDecision(decision);
-            }
-            this.decision.applyDecisionTo(player, cardsSelected);
-        }
-
-        protected virtual void displaySelectionError()
-        {
-            string msg;
-            if (this.decision.getMaxCards() == this.decision.getMinCards())
-            {
-                if (this.decision.getMaxCards() == 1)
-                {
-                    msg = String.Format("You must select 1 card. Try again");
-                }
-                else
-                {
-                    msg = String.Format("You must select {0} cards. Try again",
-                        this.decision.getMaxCards());
-                }
-            }
-            else
-            {
-                msg = String.Format("You must select between {0} and {1} cards. Try again",
-                    this.decision.getMinCards(), this.decision.getMaxCards());
-            }
-            MessageBox.Show(msg);
+            player.MakeDecision(decision);
         }
 
         public override bool IsAction()
