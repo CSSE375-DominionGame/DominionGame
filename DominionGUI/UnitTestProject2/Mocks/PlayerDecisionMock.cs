@@ -8,13 +8,11 @@ using System.Threading.Tasks;
 
 namespace UnitTestProject
 {
-    public abstract class PlayerMockYesNo : Player
+    public abstract class PlayerDecisionMock : Player
     {
-        public PlayerMockYesNo()
+        public PlayerDecisionMock()
             : base()
-        {
-
-        }
+        { }
 
         public override void actionPhase()
         {
