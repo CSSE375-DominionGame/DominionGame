@@ -23,21 +23,20 @@ namespace DominionCards.Decisions
         }*/
         public override void applyDecisionTo(Player player, List<Card> cardsSelected)
         {
-            foreach (Card c in cardsSelected)
+            if (cardsSelected.Count != 0)
             {
-                player.getDiscard().Add(c);
+                while (player.getDeck().Count > 0)
+                {
+                    player.getDiscard().Add(player.getDeck().Pop());
+                }
             }
-            player.getDeck().Clear();
         }
 
         public override List<Card> getYesCards(Player player)
         {
-            List<Card> selection = new List<Card>();
-            foreach (Card c in player.getDeck())
-            {
-                selection.Add(c);
-            }
-            return selection;
+            List<Card> list = new List<Card>();
+            list.Add(null);
+            return list;
         }
     }
 }

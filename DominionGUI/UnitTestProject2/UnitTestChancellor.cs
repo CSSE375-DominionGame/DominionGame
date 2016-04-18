@@ -61,7 +61,7 @@ namespace UnitTestProject
             int discardSize = yesMan.getDiscard().Count;
             int deckSize = yesMan.getDeck().Count;
             yesMan.playCard(toPlay);
-            Assert.AreEqual(discardSize + deckSize, yesMan.getDiscard().Count);
+            Assert.AreEqual(discardSize + deckSize + 1, yesMan.getDiscard().Count);
         }
 
         [TestMethod]
@@ -69,7 +69,7 @@ namespace UnitTestProject
         {
             int discardSize = noMan.getDiscard().Count;
             noMan.playCard(toPlay);
-            Assert.AreEqual(discardSize, noMan.getDiscard().Count);
+            Assert.AreEqual(discardSize + 1, noMan.getDiscard().Count);
         }
 
         // [TestMethod]
