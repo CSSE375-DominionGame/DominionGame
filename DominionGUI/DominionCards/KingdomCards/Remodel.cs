@@ -15,7 +15,14 @@ namespace DominionCards.KingdomCards
         public Remodel()
             : base("Remodel", 0, 0, 0, 0, 4, ID)
         {
-            decision = new RemodelDecision();
+            decision = getRemodelDecision();
+        }
+
+        private IDecision getRemodelDecision()
+        {
+            CompositeDecision dec1 = new CompositeDecision(new RemodelBuyDecision(), null);
+            CompositeDecision dec2 = new CompositeDecision(new RemodelTrashDecision(), dec1);
+            return dec2;
         }
 
         /*public override void Play(Player player)

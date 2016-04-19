@@ -10,13 +10,13 @@ namespace DominionCards.Decisions
     public class CompositeDecision : IDecision
     {
         private CompositeDecision next;
-        private IDecision leaf;
-        public CompositeDecision(IDecision decision, CompositeDecision next)
+        private LeafDecision leaf;
+        public CompositeDecision(LeafDecision decision, CompositeDecision next)
         {
             this.leaf = decision;
             this.next = next;
         }
-        public CompositeDecision(IDecision decision)
+        public CompositeDecision(LeafDecision decision)
         {
             this.leaf = decision;
             this.next = null;
@@ -24,19 +24,21 @@ namespace DominionCards.Decisions
 
         public int getMaxCards()
         {
-            // return leaf.getMaxCards();
-            throw new NotImplementedException("CompositeDecision.getMax(...)");
+            return leaf.getMaxCards();
         }
 
         public int getMinCards()
         {
-            // return leaf.getMinCards();
-            throw new NotImplementedException("CompositeDecision.getMin(...)");
+            return leaf.getMinCards();
         }
 
         public List<Card> SelectByGraphic(Player player)
         {
             return CompositeSelect(player, getCardSelection(player));
+        }
+        public void setCardInput(List<Card> cardInput)
+        {
+            leaf.setCardInput(cardInput);
         }
 
         protected virtual List<Card> CompositeSelect(Player player, List<Card> cards) {
@@ -45,40 +47,39 @@ namespace DominionCards.Decisions
                 cards = getCardSelection(player);
             }
             cards = player.MakeDecision(leaf);
+            leaf.applyDecisionTo(player, cards);
             if (next != null)
             {
-                cards = next.CompositeSelect(player, cards);
+                next.setCardInput(cards);
+                cards = player.MakeDecision(next);
             }
             return cards;
         }
 
         public string getText()
         {
-            // return leaf.getText();
-            throw new NotImplementedException("CompositeDecision.getText(...)");
+            return leaf.getText();
         }
 
         public bool isCancelable()
         {
-            // return leaf.isCancelable();
-            throw new NotImplementedException("CompositeDecision.isCancelable(...)");
+            return leaf.isCancelable();
         }
 
         public bool cardSelectionValid(List<Card> cards)
         {
-            // return leaf.cardSelectionValid(cards);
-            throw new NotImplementedException("CompositeDecision.cardSelectionValid(...)");
+            return leaf.cardSelectionValid(cards);
         }
 
         public void applyDecisionTo(Player player, List<Card> cardsSelected)
         {
+            // do nothing
             // leaf.applyDecisionTo(player, cardsSelected);
-            throw new NotImplementedException("CompositeDecision.applyDecisionTo(...)");
         }
 
         public List<Card> getCardSelection(Player player)
         {
-            throw new NotImplementedException("This decision is not intended to be made first.");
+            return leaf.getCardSelection(player);
         }
     }
 }

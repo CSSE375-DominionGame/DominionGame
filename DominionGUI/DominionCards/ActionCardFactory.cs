@@ -88,7 +88,7 @@ namespace DominionCards
 
         public ActionCard createNewRemodel()
         {
-            return new ActionCard("Remodel", 0, 0, 0, 0, 4, REMODEL_ID);
+            return new Remodel(); //new ActionCard("Remodel", 0, 0, 0, 0, 4, REMODEL_ID);
         }
 
         public ActionCard createNewSmithy()
