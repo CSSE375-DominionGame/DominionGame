@@ -31,7 +31,7 @@ namespace DominionCards.Decisions
 
         private string getDecisionMessage(Card c)
         {
-            return "You drew a " + c.GetName() + ", if it is an Action Card you may chose to discard it.";
+            return "You drew a " + c.ToString() + ", if it is an Action Card you may chose to discard it.";
         }
 
 
