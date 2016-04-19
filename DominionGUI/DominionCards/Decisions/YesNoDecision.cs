@@ -35,7 +35,7 @@ namespace DominionCards.Decisions
         {
             return false;
         }
-        public List<Card> SelectByGraphic(Player player)
+        public virtual List<Card> SelectByGraphic(Player player)
         {
             DialogResult result1 = MessageBox.Show("You played a chancellor. Would you like to discard your hand now?",
                 "You played a Chancellor",

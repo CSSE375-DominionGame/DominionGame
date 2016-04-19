@@ -24,6 +24,26 @@ namespace DominionCards
         private static readonly int WOODCUTTER_ID = 30;
         private static readonly int WORKSHOP_ID = 31;
 
+
+        public static string getCardName(int id)
+        {
+            if (id == CELLAR_ID) { return "Cellar"; }
+            else if (id == CHANCELLOR_ID) { return "Chancellor"; }
+            else if (id == CHAPEL_ID) { return "Chapel"; }
+            else if (id == FEAST_ID) { return "Feast"; }
+            else if (id == FESTIVAL_ID) { return "Festival"; }
+            else if (id == LABORATORY_ID) { return "Laboratory"; }
+            else if (id == MINE_ID) { return "Mine"; }
+            else if (id == MARKET_ID) { return "Market"; }
+            else if (id == REMODEL_ID) { return "Remodel"; }
+            else if (id == SMITHY_ID) { return "Smithy"; }
+            else if (id == THRONEROOM_ID) { return "Throneroom"; }
+            else if (id == VILLAGE_ID) { return "Village"; }
+            else if (id == WOODCUTTER_ID) { return "Woodcutter"; }
+            else if (id == WORKSHOP_ID) { return "Workshop"; }
+            else {return "UNKNONW CARD";}
+        }
+
         public ActionCardFactory() { } 
 
         public ActionCard createNewAdventurer()

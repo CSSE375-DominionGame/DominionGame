@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionCardFactory.cs" />
+    <Compile Include="AiPlayer.cs" />
     <Compile Include="AttackCard.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="Decisions\CellarDecision.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Decisions\CompositeDecision.cs" />
     <Compile Include="Decisions\FeastDecision.cs" />
     <Compile Include="Decisions\LeafDecision.cs" />
+    <Compile Include="Decisions\LibraryDecision.cs" />
     <Compile Include="Decisions\MilitiaDecision.cs" />
     <Compile Include="Decisions\MineDecision.cs" />
     <Compile Include="Decisions\NullDecision.cs" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DominionCards.Decisions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,13 +13,13 @@ namespace DominionCards.KingdomCards
         public Library()
             : base("Library", 0, 0, 0, 0, 5, ID)
         {
-            // Uses ActionCard Constructor
+            decision = new LibraryDecision();
         }
         public override String ToString()
         {
             return "Library";
         }
-        public override void Play(Player player)
+        /*public override void Play(Player player)
         {
             int handSize = player.getHand().Count;
             while (handSize < 7)
@@ -35,6 +36,6 @@ namespace DominionCards.KingdomCards
                 }
             }
 
-        }
+        }*/
     }
 }
