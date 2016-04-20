@@ -135,10 +135,6 @@ namespace DominionCards
             return moneyInHand;
         }
 
-        public void addMoneyToHand(int amount)
-        {
-            this.money += amount;
-        }
         public bool IsBuyPhase()
         {
             if (GameBoard.AbortPhase || GameBoard.AbortGame)
