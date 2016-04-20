@@ -20,7 +20,6 @@ namespace DominionCards
         }
         public int getValue()
         {
-            Console.WriteLine("returning value of treasure card");
             return value;
         }
         public override bool IsTreasure()

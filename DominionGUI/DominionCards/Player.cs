@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections;
 using System.Windows.Forms;
 
 namespace DominionCards
@@ -74,22 +74,10 @@ namespace DominionCards
                 hand.Add(GetNextCard());
             }
         }
-        /*private void drawCardsFromPartialDeck()
-        {
-            throw new NotImplementedException("Your deck ran out while drawing cards!!!");
-        }*/
-        /*public void endTurn()
-        {
-            // this method should discard remaining hand, and draw new cards, then reset actions and buys to 1.
-            // TODO implement this.
-        }*/
 
         public abstract void actionPhase();
         public abstract void buyPhase();
-        //public abstract List<Card> SelectCards(IDecision decision, List<Card> choices);
         public abstract List<Card> MakeDecision(IDecision decision);
-
-        //public abstract List<Card> SelectCards(List<Card> cards, String name, int numCards);
 
         
         public int getTotalMoney()
@@ -329,7 +317,7 @@ namespace DominionCards
             ProcessAttacks();
             if (!IsActionPhase())
             {
-                GameBoard.gamePhase = 2;
+                GameBoard.setGamePhase(2);
             }
             GameBoard.SignalToUpdateGraphics();
             while (IsActionPhase())
