@@ -67,17 +67,24 @@ namespace DominionCards
         }
         public void GameRunner()
         {
+            String toDisplay;
+            toDisplay = getVictoryMessage();
+            System.Windows.Forms.MessageBox.Show(toDisplay);
+        }
+
+        private string getVictoryMessage()
+        {
+            String toDisplay;
             try
             {
                 Player p = PlayGame();
-                string winnerMessage = "Player " + p.getNumber() + " won!";
-                System.Windows.Forms.MessageBox.Show(winnerMessage);
+                toDisplay = "Player " + p.getNumber() + " won!";
             }
             catch (TieException e)
             {
-                String str = e.PrintWinners();
-                System.Windows.Forms.MessageBox.Show(str + " are tied.");
+                toDisplay = e.PrintWinners() + " are tied";
             }
+            return toDisplay;
         }
 
         public virtual Player PlayGame()
