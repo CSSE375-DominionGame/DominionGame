@@ -48,9 +48,6 @@
       <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\NUnit.VisualStudio.TestAdapter.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Rhino.Mocks">
-      <HintPath>..\..\..\..\Lab4\CSSE376Mocking\Rhino.Mocks.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -140,12 +137,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RandomGenerateCards\RandomGenerateCards.csproj">
-      <Project>{49af3923-b952-441e-9670-a3a727d74557}</Project>
-      <Name>RandomGenerateCards</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SelectCardsForm.resx">
