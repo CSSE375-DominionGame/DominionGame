@@ -9,9 +9,9 @@ using System.Threading;
 
 namespace DominionCards
 {
-    public class AiPlayer : Player
+    public class DumbAiPlayer : Player
     {
-        public AiPlayer(int playerNumber)
+        public DumbAiPlayer(int playerNumber)
             : base()
         {
             setNumber(1);

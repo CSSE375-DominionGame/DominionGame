@@ -22,7 +22,7 @@ namespace UnitTestProject
         [TestInitialize]
         public void Setup()
         {
-            ai = new AiPlayer(1);
+            ai = new DumbAiPlayer(1);
             attacker = new HumanPlayer(2);
             Dictionary<Card, int> cards = new Dictionary<Card,int>();
             fact = new ActionCardFactory();

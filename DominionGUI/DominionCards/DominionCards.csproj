@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionCardFactory.cs" />
-    <Compile Include="AiPlayer.cs" />
+    <Compile Include="DumbAiPlayer.cs" />
     <Compile Include="AttackCard.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="Decisions\Concrete\CellarDecision.cs" />
