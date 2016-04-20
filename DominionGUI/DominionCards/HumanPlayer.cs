@@ -16,6 +16,7 @@ namespace DominionCards
         public static readonly int actionPhaseInt = 1;
         public static readonly int buyPhaseInt = 2;
         public static readonly int endPhaseInt = 3;
+        public static NullCard nullCard = new NullCard();
 
         /*public override List<Card> SelectCards(IDecision decision, List<Card> choices)
         {
@@ -42,14 +43,14 @@ namespace DominionCards
         {
             lock (GameBoard.ActionPhaseLock)
             {
-                GameBoard.setLastCardPlayed(null);
+                GameBoard.setLastCardPlayed(nullCard);
                 GameBoard.setGamePhase(actionPhaseInt);
                 Monitor.Wait(GameBoard.ActionPhaseLock);
                 GameBoard.setGamePhase(buyPhaseInt);
                 Card cardPlayed = GameBoard.getLastCardPlayed();
                 try
                 {
-                    if (cardPlayed == null)
+                    if (cardPlayed == nullCard)
                     {
                         Monitor.PulseAll(GameBoard.ActionPhaseLock);
                         return;
@@ -65,7 +66,7 @@ namespace DominionCards
         }
         public override void buyPhase()
         {
-            GameBoard.setLastCardBought(null);
+            GameBoard.setLastCardBought(nullCard);
             lock (GameBoard.BuyPhaseLock)
             {
                 GameBoard.setGamePhase(endPhaseInt);
@@ -74,7 +75,7 @@ namespace DominionCards
                 Card cardBought = GameBoard.getLastCardBought();
                 try
                 {
-                    if (cardBought == null)
+                    if (cardBought == nullCard)
                     {
                         Monitor.PulseAll(GameBoard.BuyPhaseLock);
                         return;
