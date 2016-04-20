@@ -19,6 +19,15 @@ namespace UnitTestProject
         }
 
         [TestMethod]
+        public void TestActionCardErrorMessage()
+        {
+            ActionCard militia = new Militia();
+            Assert.AreEqual("You must select 0 cards. Try again" ,militia.getSelectionErrorMessage());
+            ActionCard mine = new Mine();
+            Assert.AreEqual("You must select between 0 and 1 cards. Try again", mine.getSelectionErrorMessage());
+        }
+
+        [TestMethod]
         public void TestCardDoesNotEqualNonCard()
         {
             Assert.IsFalse(new Copper().Equals(1));

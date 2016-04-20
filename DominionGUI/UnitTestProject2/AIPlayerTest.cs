@@ -22,7 +22,7 @@ namespace UnitTestProject
         [TestInitialize]
         public void Setup()
         {
-            ai = new DumbAiPlayer(1);
+            ai = new DumbAiPlayer(1,0);
             attacker = new HumanPlayer(2);
             Dictionary<Card, int> cards = new Dictionary<Card,int>();
             fact = new ActionCardFactory();
@@ -42,6 +42,18 @@ namespace UnitTestProject
 
             atkCard = fact.createNewMilitia();
             attacker.getHand().Add(atkCard);
+        }
+
+
+        [TestMethod]
+        public void TestCreatingAI()
+        {
+            Assert.IsNotNull(new DumbAiPlayer(1));
+            Assert.IsNotNull(new DumbAiPlayer(1,100));
+            Assert.IsNotNull(new DumbAiPlayer(1, 200));
+            Assert.IsNotNull(new DumbAiPlayer(1, 300));
+            Assert.IsNotNull(new DumbAiPlayer(1, 400));
+            Assert.IsNotNull(new DumbAiPlayer(1, 1));
         }
 
         [TestMethod]

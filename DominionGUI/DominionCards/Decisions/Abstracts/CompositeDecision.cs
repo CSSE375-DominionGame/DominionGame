@@ -36,7 +36,7 @@ namespace DominionCards.Decisions
         {
             return CompositeSelect(player, getCardSelection(player));
         }
-        public void setCardInput(List<Card> cardInput)
+        protected void setCardInput(List<Card> cardInput)
         {
             leaf.setCardInput(cardInput);
         }
