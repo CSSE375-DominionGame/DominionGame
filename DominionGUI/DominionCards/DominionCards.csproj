@@ -89,6 +89,7 @@
     <Compile Include="Exceptions\GameBoardInstanceIsNullException.cs" />
     <Compile Include="Decisions\Abstracts\DefaultDecision.cs" />
     <Compile Include="Decisions\IDecision.cs" />
+    <Compile Include="GamePhaseEnd.cs" />
     <Compile Include="SelectCardsForm.cs">
       <SubType>Form</SubType>
     </Compile>

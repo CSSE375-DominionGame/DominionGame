@@ -19,6 +19,7 @@ namespace DominionCards
         public static Object UpdateGraphicsLock = new Object();
         public static Object ActionPhaseLock = new Object();
         public static Object BuyPhaseLock = new Object();
+        private GamePhaseEnd endPhase = new GamePhaseEnd();
 
         public Queue<Player> turnOrder;
         public Dictionary<Card, int> cards;
@@ -99,12 +100,15 @@ namespace DominionCards
             Player firstCounted = NextPlayer();
             tie = null;
             currentHighestPlayer = firstCounted;
-            highestVP = currentHighestPlayer.countVictoryPoints();
-            highestMoney = currentHighestPlayer.getTotalMoney();
+            endPhase.setEndPhase(currentHighestPlayer);
+            highestVP = endPhase.countVictoryPoints();
+            highestMoney = endPhase.getTotalMoney();
             do
             {
-                int currentVP = turnOrder.Peek().countVictoryPoints();
-                int currentMoney = turnOrder.Peek().getTotalMoney();
+                Player currentPlayer = turnOrder.Peek();
+                endPhase.setEndPhase(currentPlayer);
+                int currentVP = endPhase.countVictoryPoints();
+                int currentMoney = endPhase.getTotalMoney();
                 if (tie != null)
                 {
                     handleExistngTie(currentVP, currentMoney);

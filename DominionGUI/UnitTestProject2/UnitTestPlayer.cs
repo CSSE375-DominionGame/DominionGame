@@ -11,6 +11,14 @@ namespace UnitTestProject
     [TestClass]
     public class UnitTestPlayer
     {
+        GamePhaseEnd endPhase;
+
+        [TestInitialize]
+        public void setupGameTest()
+        {
+            endPhase = new GamePhaseEnd();
+        }
+
         private static Dictionary<Card, int> GetTestCards()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -526,13 +534,14 @@ namespace UnitTestProject
             Stack<Card> deck = new Stack<Card>();
             p1.setDeck(deck);
             p1.setHand(new List<Card>());
-            Assert.AreEqual(0, p1.countVictoryPoints());
+            endPhase.setEndPhase(p1);
+            Assert.AreEqual(0, endPhase.countVictoryPoints());
             deck.Push(new Estate());
-            Assert.AreEqual(1, p1.countVictoryPoints());
+            Assert.AreEqual(1, endPhase.countVictoryPoints());
             deck.Push(new Duchy());
-            Assert.AreEqual(4, p1.countVictoryPoints());
+            Assert.AreEqual(4, endPhase.countVictoryPoints());
             deck.Push(new Province());
-            Assert.AreEqual(10, p1.countVictoryPoints());
+            Assert.AreEqual(10, endPhase.countVictoryPoints());
         }
 
         [TestMethod]
@@ -547,7 +556,8 @@ namespace UnitTestProject
                 deck.Push(new Militia());
             }
             deck.Push(new Gardens());
-            Assert.AreEqual(1, p1.countVictoryPoints());
+            endPhase.setEndPhase(p1);
+            Assert.AreEqual(1, endPhase.countVictoryPoints());
         }
 
         [TestMethod]
@@ -562,7 +572,8 @@ namespace UnitTestProject
                 deck.Push(new Militia());
             }
             deck.Push(new Gardens());
-            Assert.AreEqual(0, p1.countVictoryPoints());
+            endPhase.setEndPhase(p1);
+            Assert.AreEqual(0, endPhase.countVictoryPoints());
         }
 
         [TestMethod]
@@ -577,7 +588,8 @@ namespace UnitTestProject
                 deck.Push(new Militia());
             }
             deck.Push(new Gardens());
-            Assert.AreEqual(1, p1.countVictoryPoints());
+            endPhase.setEndPhase(p1);
+            Assert.AreEqual(1, endPhase.countVictoryPoints());
         }
 
         [TestMethod]
@@ -592,7 +604,8 @@ namespace UnitTestProject
                 deck.Push(new Militia());
             }
             deck.Push(new Gardens());
-            Assert.AreEqual(2, p1.countVictoryPoints());
+            endPhase.setEndPhase(p1);
+            Assert.AreEqual(2, endPhase.countVictoryPoints());
         }
 
         [TestMethod]
@@ -608,7 +621,8 @@ namespace UnitTestProject
             }
             deck.Push(new Gardens());
             deck.Push(new Gardens());
-            Assert.AreEqual(2, p1.countVictoryPoints());
+            endPhase.setEndPhase(p1);
+            Assert.AreEqual(2, endPhase.countVictoryPoints());
         }
 
         [TestMethod]
@@ -669,13 +683,14 @@ namespace UnitTestProject
             Stack<Card> deck = new Stack<Card>();
             List<Card> discard = p1.getDiscard();
             p1.setDeck(deck);
-            Assert.AreEqual(0, p1.countVictoryPoints());
+            endPhase.setEndPhase(p1);
+            Assert.AreEqual(0, endPhase.countVictoryPoints());
             deck.Push(new Province());
-            Assert.AreEqual(6, p1.countVictoryPoints());
+            Assert.AreEqual(6, endPhase.countVictoryPoints());
             deck.Push(new Duchy());
-            Assert.AreEqual(9, p1.countVictoryPoints());
+            Assert.AreEqual(9, endPhase.countVictoryPoints());
             discard.Add(new Duchy());
-            Assert.AreEqual(12, p1.countVictoryPoints());
+            Assert.AreEqual(12, endPhase.countVictoryPoints());
         }
         [TestMethod]
         public void testCountVictoryPointsWhenCardsInHand()
@@ -685,13 +700,14 @@ namespace UnitTestProject
             List<Card> hand = new List<Card>();
             p1.setDeck(deck);
             p1.setHand(hand);
-            Assert.AreEqual(0, p1.countVictoryPoints());
+            endPhase.setEndPhase(p1);
+            Assert.AreEqual(0, endPhase.countVictoryPoints());
             deck.Push(new Estate());
-            Assert.AreEqual(1, p1.countVictoryPoints());
+            Assert.AreEqual(1, endPhase.countVictoryPoints());
             deck.Push(new Province());
-            Assert.AreEqual(7, p1.countVictoryPoints());
+            Assert.AreEqual(7, endPhase.countVictoryPoints());
             hand.Add(new Province());
-            Assert.AreEqual(13, p1.countVictoryPoints());
+            Assert.AreEqual(13, endPhase.countVictoryPoints());
         }
 
         [TestMethod]
@@ -702,7 +718,8 @@ namespace UnitTestProject
             p1.setHand(new List<Card>());
             deck.Push(new Gold());
             p1.setDeck(deck);
-            Assert.AreEqual(3, p1.getTotalMoney());
+            endPhase.setEndPhase(p1);
+            Assert.AreEqual(3, endPhase.getTotalMoney());
         }
 
         [TestMethod]
@@ -714,7 +731,8 @@ namespace UnitTestProject
             List<Card> discard = p1.getDiscard();
             discard.Add(new Gold());
             p1.setDeck(deck);
-            Assert.AreEqual(3, p1.getTotalMoney());
+            endPhase.setEndPhase(p1);
+            Assert.AreEqual(3, endPhase.getTotalMoney());
         }
         [TestMethod]
         public void HavingTreasureCardAddsMoney()

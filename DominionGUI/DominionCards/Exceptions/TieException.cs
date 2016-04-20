@@ -12,6 +12,7 @@ namespace DominionCards
 
         private ArrayList TiedPlayers = new ArrayList();
         private int VictoryPoints, Money;
+        private GamePhaseEnd endPhase = new GamePhaseEnd();
 
         public TieException(Player p1, Player p2, int VPs, int money) : base() 
         {
@@ -23,8 +24,9 @@ namespace DominionCards
 
         public bool BreaksTie(Player p)
         {
-            int playerVP = p.countVictoryPoints();
-            int playerMoney = p.getTotalMoney();
+            endPhase.setEndPhase(p);
+            int playerVP = endPhase.countVictoryPoints();
+            int playerMoney = endPhase.getTotalMoney();
             if(playerVP < this.VictoryPoints || 
                 playerVP == this.VictoryPoints && playerMoney <= this.Money)
             {
@@ -41,7 +43,8 @@ namespace DominionCards
         }
         public bool Ties(Player p)
         {
-            if (p.countVictoryPoints() == this.VictoryPoints && p.getTotalMoney() == this.Money)
+            endPhase.setEndPhase(p);
+            if (endPhase.countVictoryPoints() == this.VictoryPoints && endPhase.getTotalMoney() == this.Money)
             {
                 return true;
             }

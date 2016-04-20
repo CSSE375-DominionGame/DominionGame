@@ -10,6 +10,14 @@ namespace UnitTestProject
     [TestClass]
     public class UnitTestCard
     {
+        GamePhaseEnd endPhase;
+
+        [TestInitialize]
+        public void setupGameTest()
+        {
+            endPhase = new GamePhaseEnd();
+        }
+
         [TestMethod]
         public void TestCardDoesNotEqualNonCard()
         {
@@ -565,10 +573,11 @@ namespace UnitTestProject
             newHand.Add(c);
             p1.setHand(newHand);
             int cardsInHand = p1.getHand().Count;
-            int moneyInHand = p1.getTotalMoney();
+            endPhase.setEndPhase(p1);
+            int moneyInHand = endPhase.getTotalMoney();
             p1.playCard(c);
             Assert.IsTrue(p1.getHand().Contains(new Silver()));
-            Assert.AreEqual(moneyInHand + 1, p1.getTotalMoney());
+            Assert.AreEqual(moneyInHand + 1, endPhase.getTotalMoney());
             Assert.AreEqual(cardsInHand - 1, p1.getHand().Count);
         }
         //[TestMethod]
@@ -584,9 +593,10 @@ namespace UnitTestProject
             newHand.Add(c);
             p1.setHand(newHand);
             int cardsInHand = p1.getHand().Count;
-            int moneyInHand = p1.getTotalMoney();
+            endPhase.setEndPhase(p1);
+            int moneyInHand = endPhase.getTotalMoney();
             p1.playCard(c);
-            Assert.AreEqual(moneyInHand, p1.getTotalMoney());
+            Assert.AreEqual(moneyInHand, endPhase.getTotalMoney());
             Assert.AreEqual(cardsInHand - 1, p1.getHand().Count);
         }
 
@@ -680,10 +690,11 @@ namespace UnitTestProject
             newHand.Add(c);
             p1.setHand(newHand);
             int cardsInHand = p1.getHand().Count;
-            int moneyInHand = p1.getTotalMoney();
+            endPhase.setEndPhase(p1);
+            int moneyInHand = endPhase.getTotalMoney();
             p1.playCard(c);
             Assert.IsTrue(p1.getHand().Contains(new Gold()));
-            Assert.AreEqual(moneyInHand + 1, p1.getTotalMoney());
+            Assert.AreEqual(moneyInHand + 1, endPhase.getTotalMoney());
             Assert.AreEqual(cardsInHand - 1, p1.getHand().Count);
         }
 

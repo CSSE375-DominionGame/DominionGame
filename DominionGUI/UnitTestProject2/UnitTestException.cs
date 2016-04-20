@@ -8,6 +8,13 @@ namespace UnitTestProject
     [TestClass]
     public class UnitTestException
     {
+        GamePhaseEnd endPhase;
+
+        [TestInitialize]
+        public void setupGameTest()
+        {
+            endPhase = new GamePhaseEnd();
+        }
         [TestMethod]
         public void TieExceptionReturnsCorrectStringForTwoPlayers()
         {
@@ -25,7 +32,8 @@ namespace UnitTestProject
             Player p2 = new HumanPlayer();
             Player p3 = new HumanPlayer();
             p3.getDiscard().Add(new Province());
-            TieException exception = new TieException(p1, p2, p1.countVictoryPoints(), p1.getTotalMoney());
+            endPhase.setEndPhase(p1);
+            TieException exception = new TieException(p1, p2, endPhase.countVictoryPoints(), endPhase.getTotalMoney());
             Assert.IsTrue(exception.BreaksTie(p3));
         }
         [TestMethod]
@@ -36,7 +44,8 @@ namespace UnitTestProject
             Player p3 = new HumanPlayer();
             p1.getDiscard().Add(new Province());
             p2.getDiscard().Add(new Province());
-            TieException exception = new TieException(p1, p2, p1.countVictoryPoints(), p1.getTotalMoney());
+            endPhase.setEndPhase(p1);
+            TieException exception = new TieException(p1, p2, endPhase.countVictoryPoints(), endPhase.getTotalMoney());
             Assert.IsFalse(exception.BreaksTie(p3));
         }
 
@@ -48,7 +57,8 @@ namespace UnitTestProject
             Player p3 = new HumanPlayer();
             p1.getDiscard().Add(new Province());
             p2.getDiscard().Add(new Province());
-            TieException exception = new TieException(p1, p2, p1.countVictoryPoints(), p1.getTotalMoney());
+            endPhase.setEndPhase(p1);
+            TieException exception = new TieException(p1, p2, endPhase.countVictoryPoints(), endPhase.getTotalMoney());
             int arraySize = exception.getArraySize();
             exception.BreaksTie(p3);
             Assert.AreEqual(arraySize, exception.getArraySize());
