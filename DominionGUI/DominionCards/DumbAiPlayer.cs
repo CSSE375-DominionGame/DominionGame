@@ -11,10 +11,20 @@ namespace DominionCards
 {
     public class DumbAiPlayer : Player
     {
+        private int delay;
+
         public DumbAiPlayer(int playerNumber)
             : base()
         {
             setNumber(1);
+            this.delay = 500;
+        }
+
+        public DumbAiPlayer(int playerNumber, int delay)
+            : base()
+        {
+            setNumber(1);
+            this.delay = delay;
         }
 
         public override void actionPhase()
@@ -44,7 +54,7 @@ namespace DominionCards
             {
                 Card c = selectCardToBuy();
                 this.buyCard(c);
-                Thread.Sleep(500); // Give player time to see what AI is doing
+                Thread.Sleep(this.delay); // Give player time to see what AI is doing
             }
         }
 

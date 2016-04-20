@@ -415,6 +415,27 @@ namespace UnitTestProject
             Assert.AreEqual(3, p4.numbTimesCalled);
         }
 
+
+       // [TestMethod]
+        public void TestGameRunner()
+        {
+            GameBoard board = new GameBoard(GetTestCards());
+            board.GetCards()[new Province()] = 1;
+            Player p1 = new DumbAiPlayer(1,0);
+            Player p2 = new DumbAiPlayer(2,0);
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            try
+            {
+                board.GameRunner();
+            }
+            catch (TieException e)
+            {
+                Assert.Fail();
+                //exception notexpected
+            }
+        }
+
         public class SpecialPlayerMock : HumanPlayer
         {
             public int numbTimesCalled;
