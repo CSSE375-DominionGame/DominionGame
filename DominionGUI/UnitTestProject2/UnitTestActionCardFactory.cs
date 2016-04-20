@@ -178,7 +178,7 @@ namespace UnitTestProject
         public void TestcreateWorkshop()
         {
             ActionCard workshop = factory.createNewWorkshop();
-            player = new AiPlayer(0);
+            player = new DumbAiPlayer(0);
             Assert.AreEqual(3, workshop.getPrice());
             Assert.AreEqual(0, workshop.getVictoryPoints());
             Assert.AreEqual(0, workshop.actions);

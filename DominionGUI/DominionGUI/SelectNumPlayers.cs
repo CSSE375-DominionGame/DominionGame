@@ -20,7 +20,8 @@ namespace DominionGUI
         public static SelectNumPlayers INSTANCE = null;
         Label discarddeck = new Label();
         CheckBox lastChecked;
-        private int numberplayers = 2;
+        private int numPlayers = 2;
+        private int numAI = 0;
 
         public static SelectNumPlayers getInstance()
         {
@@ -61,45 +62,72 @@ namespace DominionGUI
 
         private void Playeroption(object sender, EventArgs e)
         {
-
-
-            if (checkBox1.Checked)
+            if (checkBox1.Checked && lastChecked != checkBox1)
             {
-                checkBox2.Enabled = false;
-                checkBox3.Enabled = false;
+                UncheckOtherButtons(checkBox1);
                 lastChecked = checkBox1;
-                numberplayers = 2;
+                numPlayers = 2;
+                numAI = 0;
             }
-            else if (checkBox2.Checked)
+            else if (checkBox2.Checked && lastChecked != checkBox2)
             {
-                checkBox1.Enabled = false;
-                checkBox3.Enabled = false;
+                UncheckOtherButtons(checkBox2);
                 lastChecked = checkBox2;
-                numberplayers = 3;
+                numPlayers = 3;
+                numAI = 0;
             }
-            else if (checkBox3.Checked)
+            else if (checkBox3.Checked && lastChecked != checkBox3)
             {
-                checkBox1.Enabled = false;
-                checkBox2.Enabled = false;
+                UncheckOtherButtons(checkBox3);
                 lastChecked = checkBox3;
-                numberplayers = 4;
+                numPlayers = 4;
+                numAI = 0;
             }
-            if (!lastChecked.Equals(null))
-                if (lastChecked.Equals(checkBox1) && !checkBox1.Checked)
+            else if (checkBox4.Checked && lastChecked != checkBox4)
+            {
+                UncheckOtherButtons(checkBox4);
+                lastChecked = checkBox4;
+                numPlayers = 1;
+                numAI = 1;
+            }
+            else if (checkBox5.Checked && lastChecked != checkBox5)
+            {
+                UncheckOtherButtons(checkBox5);
+                lastChecked = checkBox5;
+                numPlayers = 1;
+                numAI = 2;
+            }
+            else if (checkBox6.Checked && lastChecked != checkBox6)
+            {
+                UncheckOtherButtons(checkBox6);
+                lastChecked = checkBox6;
+                numPlayers = 1;
+                numAI = 3;
+            }
+            //if (lastChecked != null)
+            /*else
+            {
+                UncheckOtherButtons(null);
+                /*if (lastChecked.Equals(checkBox1) && !checkBox1.Checked)
                 {
                     checkBox2.Enabled = true;
                     checkBox3.Enabled = true;
+                }/
+            }*/
+        }
+
+        private void UncheckOtherButtons(CheckBox excluded)
+        {
+            CheckBox[] toUncheck = new CheckBox[] { checkBox1, checkBox2, checkBox3,
+                checkBox4, checkBox5, checkBox6 };
+            foreach (CheckBox button in toUncheck)
+            {
+                if (button != excluded)
+                {
+                    button.Checked = false;
                 }
-            if (lastChecked.Equals(checkBox2) && !checkBox2.Checked)
-            {
-                checkBox1.Enabled = true;
-                checkBox3.Enabled = true;
             }
-            if (lastChecked.Equals(checkBox3) && !checkBox3.Checked)
-            {
-                checkBox1.Enabled = true;
-                checkBox2.Enabled = true;
-            }
+            Refresh();
         }
 
         public DominionCards.GameBoard getboard()
@@ -109,7 +137,7 @@ namespace DominionGUI
 
         private void RunGame(object sender, EventArgs e)
         {
-            var myForm = new FormSupplySetup(this.numberplayers);
+            var myForm = new FormSupplySetup(this.numPlayers, this.numAI);
             myForm.Update();
             myForm.Show();
             this.Hide();

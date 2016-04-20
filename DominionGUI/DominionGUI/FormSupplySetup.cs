@@ -23,12 +23,13 @@ namespace DominionGUI
                 new Village(), new Witch(), new Woodcutter(), new Workshop()};
 
         private List<Card> supply = new List<Card>();
-        private int numPlayers;
+        private int humanPlayers, aiPlayers;
 
-        public FormSupplySetup(int numPlayers)
+        public FormSupplySetup(int numPlayers, int aiPlayers)
         {
             InitializeComponent();
-            this.numPlayers = numPlayers;
+            this.humanPlayers = numPlayers;
+            this.aiPlayers = aiPlayers;
             foreach (Card c in cards)
             {
                 ckls_cards.Items.Add(c.ToString());
@@ -64,7 +65,7 @@ namespace DominionGUI
             Console.WriteLine(supply.Count);
             Dictionary<Card, int> gameCards = makeCards();
             GameBoard board = new GameBoard(gameCards);
-            createplayers(this.numPlayers, board);
+            createplayers(board);
             var myform = GraphicsBoard.getinstance();
             GraphicsBoard.WaitToUpdateLabels();
             myform.Update();
@@ -77,17 +78,18 @@ namespace DominionGUI
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
             int numberOfVictoryCards;
             int numberOfCurses;
-            if (this.numPlayers == 2)
+            int numbPlayers = humanPlayers + aiPlayers;
+            if (numbPlayers == 2)
             {
                 numberOfVictoryCards = 8;
                 numberOfCurses = 10;
             }
-            else if (this.numPlayers == 3)
+            else if (numbPlayers == 3)
             {
                 numberOfVictoryCards = 12;
                 numberOfCurses = 20;
             }
-            else if (numPlayers == 4)
+            else if (numbPlayers == 4)
             {
                 numberOfVictoryCards = 12;
                 numberOfCurses = 30;
@@ -113,11 +115,19 @@ namespace DominionGUI
             return cards;
         }
 
-        public void createplayers(int numberplayer, GameBoard board)
+        public void createplayers(GameBoard board)
         {
-            for (int i = 0; i < numberplayer; i++)
+            int numPlayers = humanPlayers + aiPlayers;
+            for (int i = 0; i < numPlayers; i++)
             {
-                board.AddPlayer(new DominionCards.HumanPlayer(i + 1));
+                if (i < humanPlayers)
+                {
+                    board.AddPlayer(new HumanPlayer(i+1));
+                }
+                else
+                {
+                    board.AddPlayer(new DumbAiPlayer(i+1));
+                }
             }
         }
 
