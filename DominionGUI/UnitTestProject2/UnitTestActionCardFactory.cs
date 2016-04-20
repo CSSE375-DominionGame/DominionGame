@@ -20,43 +20,31 @@ namespace UnitTestProject
         [TestMethod]
         public void TestcreateCellar()
         {
-            Card cellar = factory.createNewCellar();
-            player = new HumanPlayer();
+            ActionCard cellar = factory.createNewCellar();
             Assert.AreEqual(2, cellar.getPrice());
             Assert.AreEqual(0, cellar.getVictoryPoints());
-            player.addCardToHand(cellar);
-            player.playCard(cellar);
-            Assert.AreEqual(1, player.actionsLeft());
-            Assert.AreEqual(1, player.buysLeft());
-            Assert.AreEqual(5, player.getHand().Count);
+            Assert.AreEqual(1, cellar.actions);
+            Assert.AreEqual(0, cellar.buys);
         }
 
         [TestMethod]
         public void TestcreateChancellor()
         {
-            Card chancellor = factory.createNewChancellor();
-            player = new HumanPlayer();
+            ActionCard chancellor = factory.createNewChancellor();
             Assert.AreEqual(3, chancellor.getPrice());
             Assert.AreEqual(0, chancellor.getVictoryPoints());
-            player.addCardToHand(chancellor);
-            player.playCard(chancellor);
-            Assert.AreEqual(0, player.actionsLeft());
-            Assert.AreEqual(1, player.buysLeft());
-            Assert.AreEqual(5, player.getHand().Count);
+            Assert.AreEqual(0, chancellor.actions);
+            Assert.AreEqual(0, chancellor.buys);
         }
 
         [TestMethod]
         public void TestcreateChapel()
         {
-            Card chapel = factory.createNewChapel();
-            player = new HumanPlayer();
+            ActionCard chapel = factory.createNewChapel();
             Assert.AreEqual(2, chapel.getPrice());
             Assert.AreEqual(0, chapel.getVictoryPoints());
-            player.addCardToHand(chapel);
-            player.playCard(chapel);
-            Assert.AreEqual(0, player.actionsLeft());
-            Assert.AreEqual(1, player.buysLeft());
-            Assert.AreEqual(5, player.getHand().Count);
+            Assert.AreEqual(0, chapel.actions);
+            Assert.AreEqual(0, chapel.buys);
         }
 
         [TestMethod]
@@ -68,15 +56,11 @@ namespace UnitTestProject
         [TestMethod]
         public void TestcreateFeast()
         {
-            Card Feast = factory.createNewFeast();
-            player = new HumanPlayer();
+            ActionCard Feast = factory.createNewFeast();
             Assert.AreEqual(4, Feast.getPrice());
             Assert.AreEqual(0, Feast.getVictoryPoints());
-            player.addCardToHand(Feast);
-            player.playCard(Feast);
-            Assert.AreEqual(0, player.actionsLeft());
-            Assert.AreEqual(1, player.buysLeft());
-            Assert.AreEqual(5, player.getHand().Count);
+            Assert.AreEqual(0, Feast.actions);
+            Assert.AreEqual(0, Feast.buys);
         }
 
         [TestMethod]
@@ -116,29 +100,21 @@ namespace UnitTestProject
         [TestMethod]
         public void TestcreateMarket()
         {
-            Card market = factory.createNewMarket();
-            player = new HumanPlayer();
+            ActionCard market = factory.createNewMarket();
             Assert.AreEqual(5, market.getPrice());
             Assert.AreEqual(0, market.getVictoryPoints());
-            player.addCardToHand(market);
-            player.playCard(market);
-            Assert.AreEqual(1, player.actionsLeft());
-            Assert.AreEqual(2, player.buysLeft());
-            Assert.AreEqual(6, player.getHand().Count);
+            Assert.AreEqual(1, market.actions);
+            Assert.AreEqual(1, market.buys);
         }
 
         [TestMethod]
         public void TestcreateMine()
         {
-            Card mine = factory.createNewMine();
-            player = new HumanPlayer();
+            ActionCard mine = factory.createNewMine();
             Assert.AreEqual(5, mine.getPrice());
             Assert.AreEqual(0, mine.getVictoryPoints());
-            player.addCardToHand(mine);
-            player.playCard(mine);
-            Assert.AreEqual(0, player.actionsLeft());
-            Assert.AreEqual(1, player.buysLeft());
-            Assert.AreEqual(5, player.getHand().Count);
+            Assert.AreEqual(0, mine.actions);
+            Assert.AreEqual(0, mine.buys);
         }
 
 
@@ -151,85 +127,62 @@ namespace UnitTestProject
         [TestMethod]
         public void TestcreateRemodel()
         {
-            Card remodel = factory.createNewRemodel();
-            player = new HumanPlayer();
+            ActionCard remodel = factory.createNewRemodel();
             Assert.AreEqual(4, remodel.getPrice());
             Assert.AreEqual(0, remodel.getVictoryPoints());
-            player.addCardToHand(remodel);
-            player.playCard(remodel);
-            Assert.AreEqual(0, player.actionsLeft());
-            Assert.AreEqual(1, player.buysLeft());
-            Assert.AreEqual(5, player.getHand().Count);
+            Assert.AreEqual(0, remodel.actions);
+            Assert.AreEqual(0, remodel.buys);
         }
 
         [TestMethod]
         public void TestcreateSmithy()
         {
-            Card smithy = factory.createNewSmithy();
-            player = new HumanPlayer();
+            ActionCard smithy = factory.createNewSmithy();
             Assert.AreEqual(4, smithy.getPrice());
             Assert.AreEqual(0, smithy.getVictoryPoints());
-            player.addCardToHand(smithy);
-            player.playCard(smithy);
-            Assert.AreEqual(0, player.actionsLeft());
-            Assert.AreEqual(1, player.buysLeft());
-            Assert.AreEqual(8, player.getHand().Count);
+            Assert.AreEqual(0, smithy.actions);
+            Assert.AreEqual(0, smithy.buys);
         }
 
         [TestMethod]
         public void TestcreateThroneRoom()
         {
-            Card throneRoom = factory.createNewThroneRoom();
-            player = new HumanPlayer();
+            ActionCard throneRoom = factory.createNewThroneRoom();
             Assert.AreEqual(4, throneRoom.getPrice());
             Assert.AreEqual(0, throneRoom.getVictoryPoints());
-            player.addCardToHand(throneRoom);
-            player.playCard(throneRoom);
-            Assert.AreEqual(0, player.actionsLeft());
-            Assert.AreEqual(1, player.buysLeft());
-            Assert.AreEqual(5, player.getHand().Count);
+            Assert.AreEqual(0, throneRoom.actions);
+            Assert.AreEqual(0, throneRoom.buys);
         }
 
         [TestMethod]
         public void TestcreateVillage()
         {
-            Card village = factory.createNewVillage();
-            player = new HumanPlayer();
+            ActionCard village = factory.createNewVillage();
             Assert.AreEqual(3, village.getPrice());
             Assert.AreEqual(0, village.getVictoryPoints());
-            player.addCardToHand(village);
-            player.playCard(village);
-            Assert.AreEqual(2, player.actionsLeft());
-            Assert.AreEqual(1, player.buysLeft());
-            Assert.AreEqual(6, player.getHand().Count);
+            Assert.AreEqual(2, village.actions);
+            Assert.AreEqual(0, village.buys);
         }
 
         [TestMethod]
         public void TestcreateWoodcutter()
         {
-            Card woodcutter = factory.createNewWoodcutter();
-            player = new HumanPlayer();
+            ActionCard woodcutter = factory.createNewWoodcutter();
             Assert.AreEqual(3, woodcutter.getPrice());
             Assert.AreEqual(0, woodcutter.getVictoryPoints());
-            player.addCardToHand(woodcutter);
-            player.playCard(woodcutter);
-            Assert.AreEqual(0, player.actionsLeft());
-            Assert.AreEqual(2, player.buysLeft());
-            Assert.AreEqual(5, player.getHand().Count);
+            Assert.AreEqual(0, woodcutter.actions);
+            Assert.AreEqual(1, woodcutter.buys);
         }
 
         [TestMethod]
         public void TestcreateWorkshop()
         {
-            Card workshop = factory.createNewWorkshop();
-            player = new HumanPlayer();
+            ActionCard workshop = factory.createNewWorkshop();
+            player = new AiPlayer(0);
             Assert.AreEqual(3, workshop.getPrice());
             Assert.AreEqual(0, workshop.getVictoryPoints());
-            player.addCardToHand(workshop);
-            player.playCard(workshop);
-            Assert.AreEqual(0, player.actionsLeft());
-            Assert.AreEqual(1, player.buysLeft());
-            Assert.AreEqual(5, player.getHand().Count);
+            Assert.AreEqual(0, workshop.actions);
+            Assert.AreEqual(0, workshop.buys);
         }
     }
 }
