@@ -52,7 +52,6 @@ namespace DominionGUI
                 Monitor.Wait(GameBoard.BuyPhaseLock);
             }
             GraphicsBoard.WaitToUpdateLabels();
-            //GraphicsBoard.getinstance().UpdateLabelsAndHand();
         }
 
         internal void PlayThisCard(object sender, EventArgs e)
