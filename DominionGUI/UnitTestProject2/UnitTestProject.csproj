@@ -78,6 +78,7 @@
     <Compile Include="Mocks\PlayerDecisionMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CompositeRemodelTests.cs" />
+    <Compile Include="AIPlayerTest.cs" />
     <Compile Include="UnitTestChancellor.cs" />
     <Compile Include="UnitTestActionCardFactory.cs" />
     <Compile Include="UnitTestMoat.cs" />

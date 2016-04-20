@@ -9,6 +9,7 @@ namespace DominionCards
 {
     public class ActionCardFactory
     {
+        private static readonly int COPPER_ID = 0;
         private static readonly int CELLAR_ID = 8;
         private static readonly int CHANCELLOR_ID = 9;
         private static readonly int CHAPEL_ID = 10;
@@ -62,6 +63,15 @@ namespace DominionCards
             return new ActionCard("Festival", 0, 2, 1, 2, 5, FESTIVAL_ID);
         }
 
+        public ActionCard createNewMoat()
+        {
+            return new Moat();
+        }
+        public TreasureCard createNewCopper()
+        {
+            return new Copper();
+        }
+
         public ActionCard createNewLaboratory()
         {
             return new ActionCard("Laboratory", 2, 0, 0, 1, 5, LABORATORY_ID);
@@ -80,6 +90,11 @@ namespace DominionCards
         public ActionCard createNewMine()
         {
             return new ActionCard("Mine", 0, 0, 0, 0, 5, MINE_ID);
+        }
+
+        public ActionCard createNewMilitia()
+        {
+            return new Militia();
         }
 
         public ActionCard createNewMoneyLender()
@@ -114,7 +129,7 @@ namespace DominionCards
 
         public ActionCard createNewWorkshop()
         {
-            return new ActionCard("Workshop", 0, 0, 0, 0, 3, WORKSHOP_ID);
+            return new Workshop(); // ActionCard("Workshop", 0, 0, 0, 0, 3, WORKSHOP_ID);
         }
     }
 }
