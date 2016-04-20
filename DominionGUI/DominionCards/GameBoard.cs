@@ -10,9 +10,9 @@ namespace DominionCards
 {
     public class GameBoard
     {
-        public static int gamePhase;
-        public static readonly int limboPhaseInt = 0;
-        public static Card lastCardPlayed, lastCardBought;
+        private static int gamePhase = 0;
+        private static readonly int limboPhaseInt = 0;
+        private static Card lastCardPlayed, lastCardBought;
         public static bool AbortPhase = false;
         public static bool AbortGame = false;
         private static GameBoard boardInstance = null;
@@ -28,6 +28,7 @@ namespace DominionCards
             turnOrder = new Queue<Player>();
             boardInstance = this;
         }
+
 
         public static void nullifyInstance()
         {
@@ -186,6 +187,37 @@ namespace DominionCards
                 throw new GameBoardInstanceIsNullException();
             }
             return boardInstance;
+        }
+
+
+        public static int getGamePhase()
+        {
+            return gamePhase;
+        }
+
+        public static void setGamePhase(int passedGamePhase)
+        {
+            gamePhase = passedGamePhase;
+        }
+
+        public static Card getLastCardPlayed()
+        {
+            return lastCardPlayed;
+        }
+
+        public static void setLastCardPlayed(Card passedLastCard)
+        {
+            lastCardPlayed = passedLastCard;
+        }
+
+        public static Card getLastCardBought()
+        {
+            return lastCardBought;
+        }
+
+        public static void setLastCardBought(Card passedBoughtCard)
+        {
+            lastCardBought = passedBoughtCard;
         }
     }
 }

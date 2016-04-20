@@ -171,11 +171,11 @@ namespace UnitTestProject
             p1.actions = 0;
             p1.addCardToHand(new Witch());
             p1.addCardToHand(new Copper());
-            GameBoard.lastCardPlayed = new Copper();
+            GameBoard.setLastCardPlayed(new Copper());
 
             Thread t = new Thread(p1.actionPhase);
             t.Start();
-            GameBoard.lastCardPlayed = new Witch();
+            GameBoard.setLastCardPlayed(new Witch());
 
             Assert.IsFalse(p2.getDiscard().Contains(new Witch()));
         }
@@ -190,7 +190,7 @@ namespace UnitTestProject
             Player p2 = new HumanPlayer(2);
             board.AddPlayer(p1);
             board.AddPlayer(p2);
-            GameBoard.lastCardPlayed = new Copper();
+            GameBoard.setLastCardPlayed(new Copper());
             Card witch = new Witch();
             p1.addCardToHand(witch);
             p1.addCardToHand(new Copper());
@@ -200,7 +200,7 @@ namespace UnitTestProject
             Console.WriteLine("TEST: thread launched successfully. Entering 5 second sleep.");
             Thread.Sleep(100);
             Console.WriteLine("TEST: woke up. Setting 'CardPlayed' to witch.");
-            GameBoard.lastCardPlayed = witch;
+            GameBoard.setLastCardPlayed(witch);
             Console.Write("about to enter sync block.....");
 
             lock (GameBoard.ActionPhaseLock)
@@ -226,7 +226,7 @@ namespace UnitTestProject
             int actionsBefore = p1.actionsLeft();
             board.AddPlayer(p1);
             board.AddPlayer(p2);
-            GameBoard.lastCardPlayed = new Copper();
+            GameBoard.setLastCardPlayed(new Copper());
             Card witch = new Witch();
             p1.addCardToHand(witch);
             p1.addCardToHand(new Copper());
@@ -257,13 +257,13 @@ namespace UnitTestProject
             int discardSize = p1.getDiscard().Count;
             int moneyLeft = p1.moneyLeft();
 
-            GameBoard.lastCardBought = new Copper();
+            GameBoard.setLastCardBought(new Copper());
 
             Thread t = new Thread(p1.buyPhase);
             t.Start();
 
             Thread.Sleep(100);
-            GameBoard.lastCardBought = new Estate();
+            GameBoard.setLastCardBought(new Estate());
             lock (GameBoard.BuyPhaseLock)
             {
                 Monitor.PulseAll(GameBoard.BuyPhaseLock);
@@ -286,13 +286,13 @@ namespace UnitTestProject
             int discardSize = p1.getDiscard().Count;
             int moneyLeft = p1.moneyLeft();
 
-            GameBoard.lastCardBought = new Copper();
+            GameBoard.setLastCardBought(new Copper());
 
             Thread t = new Thread(p1.buyPhase);
             t.Start();
 
             Thread.Sleep(100);
-            GameBoard.lastCardBought = new Province();
+            GameBoard.setLastCardBought(new Province());
             lock (GameBoard.BuyPhaseLock)
             {
                 Monitor.PulseAll(GameBoard.BuyPhaseLock);
@@ -316,13 +316,13 @@ namespace UnitTestProject
             int discardSize = p1.getDiscard().Count;
             int moneyLeft = p1.moneyLeft();
 
-            GameBoard.lastCardBought = new Copper();
+            GameBoard.setLastCardBought(new Copper());
 
             Thread t = new Thread(p1.buyPhase);
             t.Start();
 
             Thread.Sleep(100);
-            GameBoard.lastCardBought = new Estate();
+            GameBoard.setLastCardBought(new Estate());
             lock (GameBoard.BuyPhaseLock)
             {
                 Monitor.PulseAll(GameBoard.BuyPhaseLock);
@@ -346,7 +346,7 @@ namespace UnitTestProject
             int discardSize = p1.getDiscard().Count;
             int moneyLeft = p1.moneyLeft();
 
-            GameBoard.lastCardBought = new Copper();
+            GameBoard.setLastCardBought(new Copper());
 
             Thread t = new Thread(p1.buyPhase);
             t.Start();

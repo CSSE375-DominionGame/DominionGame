@@ -330,11 +330,11 @@ namespace DominionGUI
         }
         private string GetGamePhaseText()
         {
-            if (DominionCards.GameBoard.gamePhase == 0 || DominionCards.GameBoard.gamePhase == 1)
+            if (DominionCards.GameBoard.getGamePhase() == 0 || DominionCards.GameBoard.getGamePhase() == 1)
             {
                 return "Action Phase";
             }
-            else if (DominionCards.GameBoard.gamePhase == 2 || DominionCards.GameBoard.gamePhase == 3)
+            else if (DominionCards.GameBoard.getGamePhase() == 2 || DominionCards.GameBoard.getGamePhase() == 3)
             {
                 return "Buy Phase";
             }
@@ -360,8 +360,8 @@ namespace DominionGUI
         }
         private void SkipPhase(object sender, EventArgs e)
         {
-            
-            if (DominionCards.GameBoard.gamePhase == 1)
+
+            if (DominionCards.GameBoard.getGamePhase() == 1)
             {
                 lock (DominionCards.GameBoard.ActionPhaseLock)
                 {   
@@ -369,7 +369,7 @@ namespace DominionGUI
                     Monitor.PulseAll(DominionCards.GameBoard.ActionPhaseLock);
                 }
             }
-            if (DominionCards.GameBoard.gamePhase == 3)
+            if (DominionCards.GameBoard.getGamePhase() == 3)
             {
                 lock (DominionCards.GameBoard.BuyPhaseLock)
                 {
@@ -394,14 +394,14 @@ namespace DominionGUI
         private void EndGame()
         {
             DominionCards.GameBoard.AbortGame = true;
-            if (DominionCards.GameBoard.gamePhase == 1)
+            if (DominionCards.GameBoard.getGamePhase() == 1)
             {
                 lock (DominionCards.GameBoard.ActionPhaseLock)
                 {
                     Monitor.PulseAll(DominionCards.GameBoard.ActionPhaseLock);
                 }
             }
-            if (DominionCards.GameBoard.gamePhase == 3)
+            if (DominionCards.GameBoard.getGamePhase() == 3)
             {
                 lock (DominionCards.GameBoard.BuyPhaseLock)
                 {

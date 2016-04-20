@@ -38,14 +38,14 @@ namespace DominionGUI
 
         internal void BuyThisCard(object sender, EventArgs e)
         {
-            if (GameBoard.gamePhase != 3)
+            if (GameBoard.getGamePhase() != 3)
             {
-                Console.WriteLine("buy button ignored because game in wrong state (" + GameBoard.gamePhase + ")");
+                Console.WriteLine("buy button ignored because game in wrong state (" + GameBoard.getGamePhase() + ")");
                 return;
             }
             Console.WriteLine("\n                       BUTTON PUSH BUY!!!\n");
             Console.WriteLine("tried to buy a card with id " + card.getID());
-            GameBoard.lastCardBought = card;
+            GameBoard.setLastCardBought(card);
             lock (GameBoard.BuyPhaseLock)
             {
                 Monitor.PulseAll(GameBoard.BuyPhaseLock);
@@ -57,21 +57,20 @@ namespace DominionGUI
 
         internal void PlayThisCard(object sender, EventArgs e)
         {   
-            if (GameBoard.gamePhase != 1)
+            if (GameBoard.getGamePhase() != 1)
             {
-                Console.WriteLine("play button ignored because game in wrong state (" + GameBoard.gamePhase + ")");
+                Console.WriteLine("play button ignored because game in wrong state (" + GameBoard.getGamePhase() + ")");
                 return;
             }
             Console.WriteLine("\n                       BUTTON PUSH PLAY!!!\n");
             Console.WriteLine("in the player's hand");
-            GameBoard.lastCardPlayed = card;
+            GameBoard.setLastCardPlayed(card);
             lock (GameBoard.ActionPhaseLock)
             {
                 Monitor.PulseAll(GameBoard.ActionPhaseLock);
                 Monitor.Wait(GameBoard.ActionPhaseLock);
             }
             GraphicsBoard.WaitToUpdateLabels();
-            //GraphicsBoard.getinstance().UpdateLabelsAndHand();
         }
 
     }
