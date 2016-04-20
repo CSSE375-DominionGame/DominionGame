@@ -1,4 +1,3 @@
-﻿
 ﻿using System;
 using System.Collections;
 
@@ -62,7 +61,7 @@ namespace DominionCards
                     MessageBox.Show(e.Message);
                 }
                 Monitor.PulseAll(GameBoard.ActionPhaseLock);
-                }
+            }
         }
         public override void buyPhase()
         {
@@ -82,18 +81,7 @@ namespace DominionCards
                     }
                     if (!buyCard(cardBought))
                     {
-                        if (GameBoard.getInstance().getCardsLeft(cardBought) == 0)
-                        {
-                            MessageBox.Show("There are none left to buy!");
-                        }
-                        else if (moneyLeft() < cardBought.getPrice())
-                        {
-                            MessageBox.Show("You do not have enough money to buy that!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("You can't buy that!");
-                        }
+                        MessageBox.Show(cardBuyingFailureMessage(cardBought));
                     }
                 }
                 catch (Exception e)
@@ -101,9 +89,27 @@ namespace DominionCards
                     MessageBox.Show(e.Message);
                 }
                 Monitor.PulseAll(GameBoard.BuyPhaseLock);
-                
-                }
 
+            }
+
+        }
+
+        private string cardBuyingFailureMessage(Card cardBought)
+        {
+            string errMsg;
+            if (GameBoard.getInstance().getCardsLeft(cardBought) == 0)
+            {
+                errMsg = "There are none left to buy!";
+            }
+            else if (moneyLeft() < cardBought.getPrice())
+            {
+                errMsg = "You do not have enough money to buy that!";
+            }
+            else
+            {
+                errMsg = "You can't buy that!";
+            }
+            return errMsg;
         }
     }
 }
