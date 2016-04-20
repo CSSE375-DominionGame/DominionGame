@@ -139,6 +139,37 @@ namespace UnitTestProject
             board.AddPlayer(p1);
             Assert.IsFalse(p1.buyCard(new Silver()));
         }
+
+        [TestMethod]
+        public void BuyErrorMessageIfNoCardsLeftToBuy()
+        {
+            GameBoard board = new GameBoard(GetTestCards());
+            board.GetCards()[new Silver()] = 0;
+            HumanPlayer human = new HumanPlayer(2);
+            human.addCardToHand(new Gold());
+            Assert.AreEqual("There are none left to buy!", human.cardBuyingFailureMessage(new Silver()));
+        }
+
+        [TestMethod]
+        public void BuyErrorMessageIfNoMoneyToBuy()
+        {
+            GameBoard board = new GameBoard(GetTestCards());
+            board.GetCards()[new Silver()] = 1;
+            HumanPlayer human = new HumanPlayer(2);
+            human.addCardToHand(new Silver());
+            Assert.AreEqual("You do not have enough money to buy that!", human.cardBuyingFailureMessage(new Province()));
+        }
+
+        [TestMethod]
+        public void BuyErrorMessageOther()
+        {
+            GameBoard board = new GameBoard(GetTestCards());
+            board.GetCards()[new Silver()] = 1;
+            HumanPlayer human = new HumanPlayer(2);
+            human.addCardToHand(new Gold());
+            Assert.AreEqual("You can't buy that!", human.cardBuyingFailureMessage(new Silver()));
+        }
+
         [TestMethod]
         public void IntegrationFailsToBuyCardWithNoneLeft()
         {

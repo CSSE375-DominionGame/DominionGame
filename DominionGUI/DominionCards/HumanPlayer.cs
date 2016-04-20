@@ -94,7 +94,7 @@ namespace DominionCards
 
         }
 
-        private string cardBuyingFailureMessage(Card cardBought)
+        public string cardBuyingFailureMessage(Card cardBought)
         {
             string errMsg;
             if (GameBoard.getInstance().getCardsLeft(cardBought) == 0)
