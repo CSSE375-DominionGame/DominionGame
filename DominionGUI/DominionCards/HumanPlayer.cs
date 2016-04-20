@@ -39,25 +39,15 @@ namespace DominionCards
         {
             return decision.SelectByGraphic(this);
         }
-
-        private static List<Card> copyList(List<Card> list)
-        {
-            List<Card> copy = new List<Card>();
-            foreach (Card c in list)
-            {
-                copy.Add(c);
-            }
-            return copy;
-        }
         public override void actionPhase()
         {
             lock (GameBoard.ActionPhaseLock)
             {
-                GameBoard.lastCardPlayed = null;
-                GameBoard.gamePhase = actionPhaseInt;
+                GameBoard.setLastCardPlayed(null);
+                GameBoard.setGamePhase(actionPhaseInt);
                 Monitor.Wait(GameBoard.ActionPhaseLock);
-                GameBoard.gamePhase = buyPhaseInt;
-                Card cardPlayed = GameBoard.lastCardPlayed;
+                GameBoard.setGamePhase(buyPhaseInt);
+                Card cardPlayed = GameBoard.getLastCardPlayed();
                 try
                 {
                     if (cardPlayed == null)
@@ -76,13 +66,13 @@ namespace DominionCards
         }
         public override void buyPhase()
         {
-            GameBoard.lastCardBought = null;
+            GameBoard.setLastCardBought(null);
             lock (GameBoard.BuyPhaseLock)
             {
-                GameBoard.gamePhase = endPhaseInt;
+                GameBoard.setGamePhase(endPhaseInt);
                 Monitor.Wait(GameBoard.BuyPhaseLock);
-                GameBoard.gamePhase = limboPhaseInt;
-                Card cardBought = GameBoard.lastCardBought;
+                GameBoard.setGamePhase(limboPhaseInt);
+                Card cardBought = GameBoard.getLastCardBought();
                 try
                 {
                     if (cardBought == null)
