@@ -1028,6 +1028,7 @@ namespace UnitTestProject
         [TestMethod]
         public void buyingAddsCardToDiscard()
         {
+            GameBoard board = new GameBoard(GetTestCards());
             Player p1 = new HumanPlayer();
             List<Card> discard = new List<Card>();
             p1.setDiscard(discard);
