@@ -68,7 +68,7 @@ namespace DominionCards
             //
             this.button1 = new System.Windows.Forms.Button();
             this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(120, 510);
+            this.button1.Location = new System.Drawing.Point(120, 60 + checkboxes.Count * 25); //510);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(10, 30);
             this.button1.TabIndex = 2;
@@ -79,7 +79,7 @@ namespace DominionCards
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 550);
+            this.ClientSize = new System.Drawing.Size(300, 100 + checkboxes.Count * 25);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             for (int i = 0; i < checkboxes.Count; i++)
