@@ -240,10 +240,12 @@ namespace DominionCards
                 actionPhase();
                 GameBoard.SignalToUpdateGraphics();
             }
-            while (IsBuyPhase())
+            bool buyPhaseTemp = IsBuyPhase();
+            while (buyPhaseTemp)
             {
                 buyPhase();
-                if (IsBuyPhase()) // If it's still the buy phase, immediately update graphics, otherwise, wait for the next player to load.
+                buyPhaseTemp = IsBuyPhase();
+                if (buyPhaseTemp) // If it's still the buy phase, immediately update graphics, otherwise, wait for the next player to load.
                 {
                     GameBoard.SignalToUpdateGraphics();
                 }
