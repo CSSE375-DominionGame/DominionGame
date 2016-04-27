@@ -20,7 +20,7 @@ namespace DominionCards.Decisions
             Dictionary<Card, int> dict = GameBoard.getInstance().cards;
             foreach (Card c in dict.Keys)
             {
-                if (dict[c] > 0) {
+                if (dict[c] > 0 && c.getPrice() < 6) {
                     list.Add(c);
                 }
             }
