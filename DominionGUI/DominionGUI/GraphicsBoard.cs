@@ -360,7 +360,7 @@ namespace DominionGUI
         }
         private void SkipPhase(object sender, EventArgs e)
         {
-
+            //Action phase
             if (DominionCards.GameBoard.getGamePhase() == 1)
             {
                 lock (DominionCards.GameBoard.ActionPhaseLock)
@@ -369,7 +369,8 @@ namespace DominionGUI
                     Monitor.PulseAll(DominionCards.GameBoard.ActionPhaseLock);
                 }
             }
-            if (DominionCards.GameBoard.getGamePhase() == 3)
+            //Buy phase
+            else if (DominionCards.GameBoard.getGamePhase() == 3)
             {
                 lock (DominionCards.GameBoard.BuyPhaseLock)
                 {
@@ -377,15 +378,14 @@ namespace DominionGUI
                     Monitor.PulseAll(DominionCards.GameBoard.BuyPhaseLock);
                 }
             }
+            Thread.Sleep(500);
             lock (DominionCards.GameBoard.UpdateGraphicsLock)
                 {
-                    DominionCards.GameBoard.AbortPhase = true;
+                    //DominionCards.GameBoard.AbortPhase = true;
                     Monitor.PulseAll(DominionCards.GameBoard.UpdateGraphicsLock);
                 }
 
-            Thread.Sleep(500);
-            UpdateLabelsAndHand();
-            
+            UpdateLabelsAndHand(); //Buy Phase Currently
         }
         private void exitButtonClick(object sender, EventArgs e)
         {
@@ -394,6 +394,7 @@ namespace DominionGUI
         private void EndGame()
         {
             DominionCards.GameBoard.AbortGame = true;
+            //Action Phase
             if (DominionCards.GameBoard.getGamePhase() == 1)
             {
                 lock (DominionCards.GameBoard.ActionPhaseLock)
@@ -401,6 +402,7 @@ namespace DominionGUI
                     Monitor.PulseAll(DominionCards.GameBoard.ActionPhaseLock);
                 }
             }
+            //Buy Phase
             if (DominionCards.GameBoard.getGamePhase() == 3)
             {
                 lock (DominionCards.GameBoard.BuyPhaseLock)
@@ -408,6 +410,7 @@ namespace DominionGUI
                     Monitor.PulseAll(DominionCards.GameBoard.BuyPhaseLock);
                 }
             }
+
             Thread.Sleep(250);
             lock (DominionCards.GameBoard.UpdateGraphicsLock)
             {

@@ -45,6 +45,7 @@ namespace DominionCards
             {
                 GameBoard.setLastCardPlayed(nullCard);
                 GameBoard.setGamePhase(actionPhaseInt);
+
                 Monitor.Wait(GameBoard.ActionPhaseLock);
                 GameBoard.setGamePhase(buyPhaseInt);
                 Card cardPlayed = GameBoard.getLastCardPlayed();

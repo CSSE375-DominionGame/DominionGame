@@ -78,7 +78,7 @@
             this.skipTurnButton.Font = new System.Drawing.Font("Times New Roman", 14, System.Drawing.FontStyle.Regular);
             this.skipTurnButton.Text = "End Phase";
             this.skipTurnButton.Click += new System.EventHandler(this.SkipPhase);
-            this.skipTurnButton.Enabled = false;
+            this.skipTurnButton.Enabled = true;
 
             // 
             // pictureBox1
