@@ -13,7 +13,7 @@ using DominionGUI.Properties;
 using DominionCards;
 namespace DominionGUI
 {
-    public partial class GraphicsBoard : Form
+    public partial class GraphicsBoard : Form, IObservable<Player>, IObservable<GameBoard>
     {
         private static GraphicsBoard instance;
         public DominionCards.GameBoard board;
@@ -22,6 +22,8 @@ namespace DominionGUI
         private System.Type[] basiccard;
 
         private Dictionary<DominionCards.Card, System.Drawing.Bitmap> cardImages;
+
+        private List<IDisposable> unsubscribers;
 
         private CardButton[] firstRow = new CardButton[7];
         private CardButton[] secondRow = new CardButton[5];
@@ -419,6 +421,53 @@ namespace DominionGUI
 
             Close();
             SelectNumPlayers.getInstance().Dispose();
+        }
+        // observer code
+
+        public virtual void Subscribe(IObservable<GameBoard> provider)
+        {
+            unsubscribers.Add(provider.Subscribe((IObserver<GameBoard>) this));
+        }
+        public virtual void Subscribe(IObservable<Player> provider)
+        {
+            unsubscribers.Add(provider.Subscribe((IObserver<Player>)this));
+        }
+        public virtual void Unsubscribe() {
+            foreach (IDisposable current in unsubscribers) {
+                current.Dispose();
+            }
+        }
+
+        public void OnCompleted()
+        {
+            Refresh();
+        }
+
+        public void OnError(Exception error)
+        {
+            // do nothing
+            // throw new NotImplementedException();
+        }
+
+        public void OnNext(Player value)
+        {
+            // TODO
+            throw new NotImplementedException();
+        }
+
+        public void OnNext(GameBoard value)
+        {
+            throw new NotImplementedException();
+        }
+        
+        public IDisposable Subscribe(IObserver<Player> observer)
+        {
+ 	        throw new NotImplementedException();
+        }
+
+        public IDisposable Subscribe(IObserver<GameBoard> observer)
+        {
+ 	        throw new NotImplementedException();
         }
     }
 }
