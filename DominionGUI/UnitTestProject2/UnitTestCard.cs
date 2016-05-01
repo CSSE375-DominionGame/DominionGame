@@ -147,6 +147,19 @@ namespace UnitTestProject
             c.Play(p);
             Assert.AreEqual(count + 2, p.getHand().Count);
         }
+
+        [TestMethod]
+        public void testThatAdventurerDoesntTrashCards()
+        {
+            Card c = new Adventurer();
+            Player p = new HumanPlayer();
+            p.addCardToHand(c);
+            p.drawHand();
+            int count = p.getHand().Count + p.getDeck().Count + p.getDiscard().Count;
+            c.Play(p);
+            Assert.AreEqual(count, p.getHand().Count + p.getDeck().Count + p.getDiscard().Count);
+        }
+
         [TestMethod]
         public void testTreasureReturnsNoVP()
         {
