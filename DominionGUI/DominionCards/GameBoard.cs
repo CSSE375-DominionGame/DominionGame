@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace DominionCards
 {
-    public class GameBoard
+    public class GameBoard : IObservable<GameBoard>, IDisposable
     {
         private static int gamePhase = 0;
         private static readonly int limboPhaseInt = 0;
@@ -23,6 +23,9 @@ namespace DominionCards
 
         public Queue<Player> turnOrder;
         public Dictionary<Card, int> cards;
+
+        private IObserver<GameBoard> observer;
+
         public GameBoard(Dictionary<Card, int> cards)
         {
             this.cards = cards;
@@ -229,6 +232,22 @@ namespace DominionCards
         public static void setLastCardBought(Card passedBoughtCard)
         {
             lastCardBought = passedBoughtCard;
+        }
+
+        public void Update()
+        {
+            observer.OnNext(this);
+        }
+
+        public IDisposable Subscribe(IObserver<GameBoard> observer)
+        {
+            this.observer = observer;
+            return this;
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }
