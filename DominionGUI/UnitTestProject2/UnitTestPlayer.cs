@@ -1032,10 +1032,11 @@ namespace UnitTestProject
             Player p1 = new HumanPlayer();
             List<Card> discard = new List<Card>();
             p1.setDiscard(discard);
-            Card laboratory = new Laboratory();
+            p1.addCardToHand(new Gold());
+            Card laboratory = new Market();
             int discardSize = discard.Count;
             p1.buyCard(laboratory);
-            Assert.AreEqual(discardSize, p1.getDiscard().Count);
+            Assert.AreEqual(discardSize + 1, p1.getDiscard().Count);
         }
 
         [TestMethod]
