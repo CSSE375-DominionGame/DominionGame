@@ -330,7 +330,8 @@ namespace DominionGUI
             this.moneyleft.Text = "Money: " + current.moneyLeft();
             this.decksize.Text = "Deck Size: " + current.getDeck().Count;
             this.discardsize.Text = "Discard Size: " + current.getDiscard().Count;
-            this.playerLabel.Text = "It is player " + current.getNumber() + "'s turn. -- " + GetGamePhaseText() + "round " + GameBoard.getInstance().GetTurnNumber();
+            this.playerLabel.Text = "It is player " + current.getNumber() + "'s turn. -- "
+                + GetGamePhaseText() + " -- Round " + GameBoard.getInstance().GetTurnNumber();
         }
         private string GetGamePhaseText()
         {
