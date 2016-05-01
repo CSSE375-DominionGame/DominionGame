@@ -67,7 +67,7 @@ namespace DominionGUI
             GameBoard board = new GameBoard(gameCards);
             createplayers(board);
             var myform = GraphicsBoard.getinstance();
-            GraphicsBoard.WaitToUpdateLabels();
+            //GraphicsBoard.WaitToUpdateLabels();
             myform.Update();
             myform.Show();
             this.Hide();
