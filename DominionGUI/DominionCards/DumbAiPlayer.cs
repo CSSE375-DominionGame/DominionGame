@@ -16,14 +16,14 @@ namespace DominionCards
         public DumbAiPlayer(int playerNumber)
             : base()
         {
-            setNumber(1);
+            setNumber(playerNumber);
             this.delay = 500;
         }
 
         public DumbAiPlayer(int playerNumber, int delay)
             : base()
         {
-            setNumber(1);
+            setNumber(playerNumber);
             this.delay = delay;
         }
 

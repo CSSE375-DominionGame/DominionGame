@@ -14,6 +14,8 @@ namespace DominionGUI
 {
     public partial class FormSupplySetup : Form
     {
+        private static readonly int DEFAULT_MOVE_DELAY = 1000;
+
         private List<Card> cards = new List<Card>() {
                 new Adventurer(), new Bureaucrat(), new Cellar(), new Chancellor(), new Chapel(), 
                 new CouncilRoom(), new Feast(), new Festival(), new Gardens(), 
@@ -126,7 +128,7 @@ namespace DominionGUI
                 }
                 else
                 {
-                    board.AddPlayer(new DumbAiPlayer(i+1));
+                    board.AddPlayer(new DumbAiPlayer(i+1, DEFAULT_MOVE_DELAY));
                 }
             }
         }
