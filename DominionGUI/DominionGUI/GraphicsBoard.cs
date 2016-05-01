@@ -13,7 +13,7 @@ using DominionGUI.Properties;
 using DominionCards;
 namespace DominionGUI
 {
-    public partial class GraphicsBoard : Form, IObservable<Player>, IObservable<GameBoard>
+    public partial class GraphicsBoard : Form, IObserver<GameBoard>
     {
         private static GraphicsBoard instance;
         public DominionCards.GameBoard board;
@@ -23,7 +23,7 @@ namespace DominionGUI
 
         private Dictionary<DominionCards.Card, System.Drawing.Bitmap> cardImages;
 
-        private List<IDisposable> unsubscribers;
+        private IDisposable unsubscriber;
 
         private CardButton[] firstRow = new CardButton[7];
         private CardButton[] secondRow = new CardButton[5];
@@ -40,6 +40,7 @@ namespace DominionGUI
             InitializeComponent();
             //drawCorrectImage(exitButton);
             board = DominionCards.GameBoard.getInstance();
+            Subscribe(board);
             Console.WriteLine("\nTHE NUMBER OF PLAYERS IN THIS GAME IS: " + board.turnOrder.Count + "\n");
             SetUpImagesDictionary();
 
@@ -165,20 +166,17 @@ namespace DominionGUI
             int startingX = xValue;
             int numberColumns = 6;
             int xIncriment = 220;
-            for (int i = 0; i < currentHand.Count; i++)
+            foreach (CardButton c in currentHand)
             {
-                currentHand[i].Height = 155;
-                currentHand[i].Width = 200;
-                currentHand[i].Location = new Point(xValue, yValue);
-
-                currentHand[i].BackgroundImage = new System.Drawing.Bitmap(cardImages[currentHand[i].card]);
-                currentHand[i].BackgroundImageLayout = ImageLayout.Stretch;
-                currentHand[i].Parent = this;
-                currentHand[i].InitializeEventHandler();
-                Controls.Add(currentHand[i]);
-
-               //currentHand.Add(buttons[i]);
-
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(new Action(() => { addACard(c, xValue, yValue); }));
+                }
+                else
+                {
+                    addACard(c, xValue, yValue);
+                }
+                //currentHand.Add(buttons[i]);
                 xValue += xIncriment;
                 if (xValue > startingX + (xIncriment * (numberColumns-1)))
                 {
@@ -186,6 +184,19 @@ namespace DominionGUI
                     yValue += 165;
                 }
             }
+        }
+
+        private void addACard(CardButton c, int xValue, int yValue)
+        {
+                c.Height = 155;
+                c.Width = 200;
+                c.Location = new Point(xValue, yValue);
+
+                c.BackgroundImage = new System.Drawing.Bitmap(cardImages[c.card]);
+                c.BackgroundImageLayout = ImageLayout.Stretch;
+                c.Parent = this;
+                c.InitializeEventHandler();
+                Controls.Add(c);
         }
 
         public void addbasiccards()
@@ -300,35 +311,61 @@ namespace DominionGUI
 
         public void UpdateLabelsAndHand()
         {
-            UpdateCardLabelsHelper(firstRow, firstRowLabels);
-            UpdateCardLabelsHelper(secondRow, secondRowLabels);
-            UpdateCardLabelsHelper(thirdRow, thirdRowLabels);
-            UpdateMiscLabels();
-            UpdateHand();
-            this.Update();
+                UpdateCardLabelsHelper(firstRow, firstRowLabels);
+                UpdateCardLabelsHelper(secondRow, secondRowLabels);
+                UpdateCardLabelsHelper(thirdRow, thirdRowLabels);
+                UpdateMiscLabels();
+                UpdateHand();
+                
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(new Action(() => { this.Update(); }));
+                }
+                else
+                {
+                    this.Update();
+                }
         }
         private void UpdateHand()
         {
-            int i;
             Console.WriteLine();
-            for (i = 0; i < currentHand.Count; i++)
-            {
-                Console.WriteLine(currentHand[i] + " was removed!");
-                this.Controls.Remove(currentHand[i]);
-            }
+            RemoveHand();
             Console.WriteLine();
             DrawHand();
         }
 
+        private void RemoveHand()
+        {
+            foreach (CardButton c in currentHand)
+            {
+                // TODO make this thread safe
+                this.Invoke(new Action(() => { RemoveCard(c);}));
+            }
+        }
+
+        private void RemoveCard(CardButton c)
+        {
+            this.Controls.Remove(c);
+        }
+
+        /*private void RemoveHand()
+        {
+            foreach (CardButton c in currentHand)
+            {
+                this.Controls.Remove(c);
+            }
+
+        }*/
+
         private void UpdateMiscLabels()
         {
             DominionCards.Player current = board.turnOrder.Peek();
-            this.actionleft.Text = "Actions: " + current.actionsLeft();
-            this.buyleft.Text = "Buys: " + current.buysLeft();
-            this.moneyleft.Text = "Money: " + current.moneyLeft();
-            this.decksize.Text = "Deck Size: " + current.getDeck().Count;
-            this.discardsize.Text = "Discard Size: " + current.getDiscard().Count;
-            this.playerLabel.Text = "It is player " + current.getNumber() + "'s turn. -- " + GetGamePhaseText();
+            ChangeLabelText(this.actionleft, "Actions: " + current.actionsLeft());
+            ChangeLabelText(this.buyleft, "Buys: " + current.buysLeft());
+            ChangeLabelText(this.moneyleft, "Money: " + current.moneyLeft());
+            ChangeLabelText(this.decksize, "Deck Size: " + current.getDeck().Count);
+            ChangeLabelText(this.discardsize, "Discard Size: " + current.getDiscard().Count);
+            ChangeLabelText(this.playerLabel, "It is player " + current.getNumber() + "'s turn. -- " + GetGamePhaseText());
         }
         private string GetGamePhaseText()
         {
@@ -353,9 +390,39 @@ namespace DominionGUI
             for (int i = 0; i < cardButtons.Length; i++)
             {
                 int cardsLeft = dict[cardButtons[i].card];
-                labels[i].Text = "Cards Left: " + cardsLeft;
+                ChangeLabelText(labels[i], "Cards Left: " + cardsLeft);
             }
         }
+
+        delegate void SetTextCallback(string text);
+        private Label labelToChange;
+
+        private void ChangeLabelText(Label label, string newText)
+        {
+             labelToChange = label;
+             ChangeLabelText(newText);
+        }
+
+        private void ChangeLabelText(string newText)
+        {
+            try
+            {
+                if (labelToChange.InvokeRequired)
+                {
+                    SetTextCallback d = new SetTextCallback(ChangeLabelText);
+                    this.Invoke(d, new object[] { newText });
+                }
+                else
+                {
+                    labelToChange.Text = newText;
+                }
+            }
+            catch (ObjectDisposedException e)
+            {
+                // do nothing
+            }
+        }
+
         private void MainBoard_Load(object sender, EventArgs e)
         {
 
@@ -426,16 +493,11 @@ namespace DominionGUI
 
         public virtual void Subscribe(IObservable<GameBoard> provider)
         {
-            unsubscribers.Add(provider.Subscribe((IObserver<GameBoard>) this));
+            unsubscriber = provider.Subscribe((IObserver<GameBoard>) this);
         }
-        public virtual void Subscribe(IObservable<Player> provider)
-        {
-            unsubscribers.Add(provider.Subscribe((IObserver<Player>)this));
-        }
+
         public virtual void Unsubscribe() {
-            foreach (IDisposable current in unsubscribers) {
-                current.Dispose();
-            }
+            unsubscriber.Dispose();
         }
 
         public void OnCompleted()
@@ -449,25 +511,9 @@ namespace DominionGUI
             // throw new NotImplementedException();
         }
 
-        public void OnNext(Player value)
-        {
-            // TODO
-            throw new NotImplementedException();
-        }
-
         public void OnNext(GameBoard value)
         {
-            throw new NotImplementedException();
-        }
-        
-        public IDisposable Subscribe(IObserver<Player> observer)
-        {
- 	        throw new NotImplementedException();
-        }
-
-        public IDisposable Subscribe(IObserver<GameBoard> observer)
-        {
- 	        throw new NotImplementedException();
+            UpdateLabelsAndHand();
         }
     }
 }

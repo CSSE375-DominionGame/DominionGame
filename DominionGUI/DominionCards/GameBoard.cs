@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace DominionCards
 {
-    public class GameBoard
+    public class GameBoard : IObservable<GameBoard>, IDisposable
     {
         private static int gamePhase = 0;
         private static readonly int limboPhaseInt = 0;
@@ -21,6 +21,8 @@ namespace DominionCards
         public static Object BuyPhaseLock = new Object();
         private GamePhaseEnd endPhase = new GamePhaseEnd();
 
+        private IObserver<GameBoard> graphics;
+
         public Queue<Player> turnOrder;
         public Dictionary<Card, int> cards;
         public GameBoard(Dictionary<Card, int> cards)
@@ -29,7 +31,6 @@ namespace DominionCards
             turnOrder = new Queue<Player>();
             boardInstance = this;
         }
-
 
         public static void nullifyInstance()
         {
@@ -71,6 +72,18 @@ namespace DominionCards
             toDisplay = getVictoryMessage();
             System.Windows.Forms.MessageBox.Show(toDisplay);
         }
+        
+        public bool CanBuyCards()
+        {
+            Player p = turnOrder.Peek();
+            return (!p.IsActionPhase()) && p.IsBuyPhase();
+        }
+
+        public bool CanPlayCards()
+        {
+            Player p = turnOrder.Peek();
+            return p.IsActionPhase() && (!p.IsBuyPhase());
+        }
 
         private string getVictoryMessage()
         {
@@ -94,6 +107,7 @@ namespace DominionCards
                 gamePhase = limboPhaseInt;
                 turnOrder.Peek().TakeTurn();
                 NextPlayer();
+                Update();
             }
             return FindWinningPlayer();
         }
@@ -229,6 +243,22 @@ namespace DominionCards
         public static void setLastCardBought(Card passedBoughtCard)
         {
             lastCardBought = passedBoughtCard;
+        }
+
+        public void Update()
+        {
+            graphics.OnNext(this);
+        }
+
+        public IDisposable Subscribe(IObserver<GameBoard> observer)
+        {
+            graphics = observer;
+            return this;
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -234,11 +234,12 @@ namespace DominionCards
             {
                 GameBoard.setGamePhase(2);
             }
-            GameBoard.SignalToUpdateGraphics();
+            //GameBoard.SignalToUpdateGraphics();
             while (IsActionPhase())
             {
                 actionPhase();
-                GameBoard.SignalToUpdateGraphics();
+                Update();
+                //GameBoard.SignalToUpdateGraphics();
             }
             bool buyPhaseTemp = IsBuyPhase();
             while (buyPhaseTemp)
@@ -247,7 +248,8 @@ namespace DominionCards
                 buyPhaseTemp = IsBuyPhase();
                 if (buyPhaseTemp) // If it's still the buy phase, immediately update graphics, otherwise, wait for the next player to load.
                 {
-                    GameBoard.SignalToUpdateGraphics();
+                    Update();
+                    //GameBoard.SignalToUpdateGraphics();
                 }
             }
             EndTurn();
@@ -308,5 +310,9 @@ namespace DominionCards
             return toReturn;
         }
 
+        private void Update()
+        {
+            GameBoard.getInstance().Update();
+        }
     }
 }
