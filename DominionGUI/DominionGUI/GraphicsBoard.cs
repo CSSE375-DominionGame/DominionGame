@@ -29,6 +29,7 @@ namespace DominionGUI
         private CardButton[] secondRow = new CardButton[5];
         private CardButton[] thirdRow = new CardButton[5];
         private List<CardButton> currentHand = new List<CardButton>();
+
         //private List<CardButton> currentHand = new List<CardButton>(10);
         private Label[] firstRowLabels = new Label[7];
         private Label[] secondRowLabels = new Label[5];
@@ -329,7 +330,7 @@ namespace DominionGUI
             this.moneyleft.Text = "Money: " + current.moneyLeft();
             this.decksize.Text = "Deck Size: " + current.getDeck().Count;
             this.discardsize.Text = "Discard Size: " + current.getDiscard().Count;
-            this.playerLabel.Text = "It is player " + current.getNumber() + "'s turn. -- " + GetGamePhaseText();
+            this.playerLabel.Text = "It is player " + current.getNumber() + "'s turn. -- " + GetGamePhaseText() + "round " + GameBoard.getInstance().GetTurnNumber();
         }
         private string GetGamePhaseText()
         {
@@ -438,14 +439,14 @@ namespace DominionGUI
 
         public void OnNext(GameBoard value)
         {
-            /*if (this.InvokeRequired)
+            if (this.InvokeRequired)
             {
                 this.Invoke(new Action(() => { UpdateLabelsAndHand(); }));
             }
             else
             {
                 UpdateLabelsAndHand();
-            }*/
+            }
         }
     }
 }

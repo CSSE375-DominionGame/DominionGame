@@ -21,6 +21,8 @@ namespace DominionCards
         public static Object BuyPhaseLock = new Object();
         private GamePhaseEnd endPhase = new GamePhaseEnd();
 
+        private int turnNumber;
+
         public Queue<Player> turnOrder;
         public Dictionary<Card, int> cards;
 
@@ -92,8 +94,14 @@ namespace DominionCards
 
         public virtual Player PlayGame()
         {
+            turnNumber = 0;
+            Player firstPlayer = turnOrder.Peek();
             while (!GameIsOver())
             {
+                if (turnOrder.Peek() == firstPlayer)
+                {
+                    turnNumber++;
+                }
                 gamePhase = limboPhaseInt;
                 turnOrder.Peek().TakeTurn();
                 NextPlayer();
@@ -188,6 +196,11 @@ namespace DominionCards
                 return true;
             }
             return false;
+        }
+
+        public int GetTurnNumber()
+        {
+            return turnNumber;
         }
         public Dictionary<Card, int> GetCards()
         {
