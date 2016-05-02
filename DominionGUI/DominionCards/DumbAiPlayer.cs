@@ -31,7 +31,9 @@ namespace DominionCards
         {
             while (IsActionPhase())
             {
-                Card toPlay = selectCardToBuy();
+                Console.WriteLine("AI action phase step....");
+                Card toPlay = selectCardToPlay();
+                Console.WriteLine("Playing card: " + toPlay);
                 playCard(toPlay);
             }
         }
@@ -52,7 +54,9 @@ namespace DominionCards
         {
             while (IsBuyPhase())
             {
+                Console.WriteLine("buy phase step...");
                 Card c = selectCardToBuy();
+                Console.WriteLine("buying card " + c + ", there are " + GameBoard.getInstance().getCardsLeft(c) + " left");
                 this.buyCard(c);
                 Thread.Sleep(this.delay); // Give player time to see what AI is doing
             }
@@ -77,7 +81,7 @@ namespace DominionCards
             // TODO make this smarter
             foreach (Card c in GameBoard.getInstance().cards.Keys)
             {
-                if (c.getPrice() == price)
+                if (c.getPrice() == price && GameBoard.getInstance().getCardsLeft(c) > 0)
                 {
                     return c;
                 }
