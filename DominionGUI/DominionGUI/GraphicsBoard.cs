@@ -285,19 +285,32 @@ namespace DominionGUI
             foreach (DominionCards.Card card in DominionCards.GameBoard.getInstance().GetCards().Keys)
             {
                 Dictionary<DominionCards.Card, int> dict = DominionCards.GameBoard.getInstance().GetCards();
-                if (count < 7) updateCardAmountLabels(dict, count, firstRow, firstRowLabels, card);
-                else if (count < 12) updateCardAmountLabels(dict, count-7, secondRow, secondRowLabels, card);
-                else updateCardAmountLabels(dict, count-12, thirdRow, thirdRowLabels, card);
+                if (count < 7)
+                {
+                    int index = count;
+                    firstRow[index] = new CardButton(card);
+                    Label newLabel = new Label();
+                    newLabel.Text = "Cards Left: " + dict[card];
+                    firstRowLabels[index] = newLabel;
+                }
+                else if (count < 12)
+                {
+                    int index = count - 7;
+                    secondRow[index] = new CardButton(card);
+                    Label newLabel = new Label();
+                    newLabel.Text = "Cards Left: " + dict[card];
+                    secondRowLabels[index] = newLabel;
+                }
+                else
+                {
+                    int index = count - 12;
+                    thirdRow[index] = new CardButton(card);
+                    Label newLabel = new Label();
+                    newLabel.Text = "Cards Left: " + dict[card];
+                    thirdRowLabels[index] = newLabel;
+                }
                 count++;
             }
-        }
-
-        private void updateCardAmountLabels (Dictionary<DominionCards.Card, int> dict, int index, CardButton[] row, Label[] label, Card card)
-        {
-            row[index] = new CardButton(card);
-            Label newLabel = new Label();
-            newLabel.Text = "Cards Left: " + dict[card];
-            label[index] = newLabel;
         }
 
         public void UpdateLabelsAndHand()
