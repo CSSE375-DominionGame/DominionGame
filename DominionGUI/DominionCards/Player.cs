@@ -229,27 +229,32 @@ namespace DominionCards
         }
         public virtual void TakeTurn()
         {
+            Console.WriteLine("beginning turn for player " + getNumber());
             ProcessAttacks();
             if (!IsActionPhase())
             {
                 GameBoard.setGamePhase(2);
             }
-            GameBoard.SignalToUpdateGraphics();
+            else { Console.WriteLine("begin action phase"); }
+            GameBoard.getInstance().Update(); //GameBoard.SignalToUpdateGraphics();
             while (IsActionPhase())
             {
                 actionPhase();
-                GameBoard.SignalToUpdateGraphics();
+                GameBoard.getInstance().Update(); //GameBoard.SignalToUpdateGraphics();
             }
             bool buyPhaseTemp = IsBuyPhase();
+            Console.WriteLine("Begin buy phase");
             while (buyPhaseTemp)
             {
                 buyPhase();
                 buyPhaseTemp = IsBuyPhase();
                 if (buyPhaseTemp) // If it's still the buy phase, immediately update graphics, otherwise, wait for the next player to load.
                 {
-                    GameBoard.SignalToUpdateGraphics();
+                    GameBoard.getInstance().Update(); //GameBoard.SignalToUpdateGraphics();
                 }
             }
+            Console.WriteLine("ending turn for player " + getNumber());
+            Console.WriteLine();
             EndTurn();
         }
         public override string ToString()

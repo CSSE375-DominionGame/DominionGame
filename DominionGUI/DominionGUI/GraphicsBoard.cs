@@ -13,7 +13,7 @@ using DominionGUI.Properties;
 using DominionCards;
 namespace DominionGUI
 {
-    public partial class GraphicsBoard : Form, IObservable<Player>, IObservable<GameBoard>
+    public partial class GraphicsBoard : Form, IObserver<GameBoard>
     {
         private static GraphicsBoard instance;
         public DominionCards.GameBoard board;
@@ -29,6 +29,7 @@ namespace DominionGUI
         private CardButton[] secondRow = new CardButton[5];
         private CardButton[] thirdRow = new CardButton[5];
         private List<CardButton> currentHand = new List<CardButton>();
+
         //private List<CardButton> currentHand = new List<CardButton>(10);
         private Label[] firstRowLabels = new Label[7];
         private Label[] secondRowLabels = new Label[5];
@@ -40,6 +41,7 @@ namespace DominionGUI
             InitializeComponent();
             //drawCorrectImage(exitButton);
             board = DominionCards.GameBoard.getInstance();
+            board.Subscribe(this);
             Console.WriteLine("\nTHE NUMBER OF PLAYERS IN THIS GAME IS: " + board.turnOrder.Count + "\n");
             SetUpImagesDictionary();
 
@@ -328,7 +330,8 @@ namespace DominionGUI
             this.moneyleft.Text = "Money: " + current.moneyLeft();
             this.decksize.Text = "Deck Size: " + current.getDeck().Count;
             this.discardsize.Text = "Discard Size: " + current.getDiscard().Count;
-            this.playerLabel.Text = "It is player " + current.getNumber() + "'s turn. -- " + GetGamePhaseText();
+            this.playerLabel.Text = "It is player " + current.getNumber() + "'s turn. -- "
+                + GetGamePhaseText() + " -- Round " + GameBoard.getInstance().GetTurnNumber();
         }
         private string GetGamePhaseText()
         {
@@ -424,50 +427,27 @@ namespace DominionGUI
         }
         // observer code
 
-        public virtual void Subscribe(IObservable<GameBoard> provider)
-        {
-            unsubscribers.Add(provider.Subscribe((IObserver<GameBoard>) this));
-        }
-        public virtual void Subscribe(IObservable<Player> provider)
-        {
-            unsubscribers.Add(provider.Subscribe((IObserver<Player>)this));
-        }
-        public virtual void Unsubscribe() {
-            foreach (IDisposable current in unsubscribers) {
-                current.Dispose();
-            }
-        }
 
         public void OnCompleted()
         {
-            Refresh();
+            throw new NotImplementedException();
         }
 
         public void OnError(Exception error)
         {
-            // do nothing
-            // throw new NotImplementedException();
-        }
-
-        public void OnNext(Player value)
-        {
-            // TODO
             throw new NotImplementedException();
         }
 
         public void OnNext(GameBoard value)
         {
-            throw new NotImplementedException();
-        }
-        
-        public IDisposable Subscribe(IObserver<Player> observer)
-        {
- 	        throw new NotImplementedException();
-        }
-
-        public IDisposable Subscribe(IObserver<GameBoard> observer)
-        {
- 	        throw new NotImplementedException();
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() => { UpdateLabelsAndHand(); }));
+            }
+            else
+            {
+                UpdateLabelsAndHand();
+            }
         }
     }
 }
