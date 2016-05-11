@@ -17,8 +17,7 @@ namespace DominionCards.KingdomCards
         }
         public override void MakeDelayedAttack(Player playerAttacked)
         {
-            MessageBox.Show("You have been cursed by a witch!!");
-            Console.WriteLine("Curse debug: top discard " + playerAttacked.getDiscard()[playerAttacked.getDiscard().Count - 1]);
+            // do nothing
         }
 
         public override void MakeImmediateAttack(Player playerAttacked)
