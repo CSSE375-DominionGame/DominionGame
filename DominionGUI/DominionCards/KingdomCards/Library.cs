@@ -19,23 +19,5 @@ namespace DominionCards.KingdomCards
         {
             return "Library";
         }
-        /*public override void Play(Player player)
-        {
-            int handSize = player.getHand().Count;
-            while (handSize < 7)
-            {
-                Card c = player.GetNextCard();
-                if (c.getID() == 0 || c.getID() == 1 || c.getID() == 2 || c.getID() == 3 || c.getID() == 4 || c.getID() == 5 || c.getID() == 32)
-                {
-                    player.addCardToHand(c);
-                    handSize++;
-                }
-                else
-                {
-                    player.getDiscard().Add(c);
-                }
-            }
-
-        }*/
     }
 }

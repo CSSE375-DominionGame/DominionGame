@@ -15,7 +15,6 @@ namespace DominionCards
             : base(name, extraCards, extraMoney, extraBuys, extraActions, price, idNumb)
         {
             attackDecision = new NullDecision();
-            // TODO implement this class
         }
         public virtual void MakeDelayedAttack(Player playerAttacked)
         {
@@ -54,20 +53,6 @@ namespace DominionCards
                     target.getAttacks().Enqueue(this);
                 }
             }
-            /*board.NextPlayer();
-            while (board.turnOrder.Peek() != p){
-                Player current = board.NextPlayer();
-                if (!current.getHand().Contains(new KingdomCards.Moat()))
-                {
-                    MakeImmediateAttack(current);
-                    current.getAttacks().Enqueue(this);
-                }
-                else
-                {
-                    System.Windows.Forms.MessageBox.Show("Your attack was blocked by player " + p.getNumber() + "'s moat!");
-                    current.getAttacks().Enqueue(new KingdomCards.Moat());
-                }
-            } */
         }
 
         public override void Play(Player player)

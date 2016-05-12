@@ -21,23 +21,5 @@ namespace DominionCards.KingdomCards
         {
             return "Chancellor";
         }
-        /*public override void Play(Player player)
-        {
-            DialogResult result1 = MessageBox.Show("You played a chancellor. Would you like to discard your hand now?",
-                "You played a Chancellor",
-                MessageBoxButtons.YesNo);
-            string result = result1.ToString();
-            Console.WriteLine(result);
-
-            if (result.ToLower().Equals("yes"))
-            {
-                Stack<Card> deck = player.getDeck();
-                List<Card> discard = player.getDiscard();
-                while (deck.Count > 0)
-                {
-                    discard.Add(deck.Pop());
-                }
-            }
-        }*/
-    }
+     }
 }

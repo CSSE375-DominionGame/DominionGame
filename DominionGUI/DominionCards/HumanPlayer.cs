@@ -18,18 +18,12 @@ namespace DominionCards
         public static readonly int endPhaseInt = 3;
         public static NullCard nullCard = new NullCard();
 
-        /*public override List<Card> SelectCards(IDecision decision, List<Card> choices)
-        {
-            SelectCardsForm form = new SelectCardsForm(choices, decision.getText(), decision.getMaxCards());
-            form.GetSelection(); // this must mutate choices
-            return choices;
-        }*/
         public HumanPlayer()
             : base()
         {
             setNumber(1);
-            // TODO implement
         }
+
         public HumanPlayer(int playerNumber)
             : base()
         {

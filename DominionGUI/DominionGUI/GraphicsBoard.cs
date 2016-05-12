@@ -207,38 +207,6 @@ namespace DominionGUI
             
         }
 
-        /*public void addRandomtencards()
-        {
-            List<int> numList = new List<int>();
-            numList = RandomGenerateCards.GenerateRandom.GenerateRandomList(25, 10);
-            int xValue = 220;
-            int yValue = 300;
-            for (int i = 0; i < 25; i++)
-            {
-                if (numList.Contains(i))
-                {
-                    CardButton newButton = new CardButton((DominionCards.Card)Activator.CreateInstance(cardsadd[i]));
-                    newButton.BackgroundImage = imageadd[i];
-                    board.addCard((DominionCards.Card)Activator.CreateInstance(cardsadd[i]));
-                    newButton.Click += new EventHandler(this.gameplay);
-                    newButton.BackgroundImageLayout = ImageLayout.Stretch;
-                    newButton.Height = 155;
-                    newButton.Width = 200;
-
-                    if (xValue > 1300)
-                    {
-                        xValue = 220;
-                        yValue = 500;
-                    }
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue = xValue + 256;
-                    Controls.Add(newButton);
-                    newButton.Parent = this;
-                    this.Update();
-                    this.Show();
-                }
-            }
-        }*/
         public void DrawHand()
         {
             SetCurrentPlayerHand();
@@ -425,8 +393,6 @@ namespace DominionGUI
             Close();
             SelectNumPlayers.getInstance().Dispose();
         }
-        // observer code
-
 
         public void OnCompleted()
         {

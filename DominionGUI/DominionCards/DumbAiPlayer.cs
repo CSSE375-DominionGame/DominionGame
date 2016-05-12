@@ -78,7 +78,6 @@ namespace DominionCards
 
         protected virtual Card findCardToBuyAt(int price)
         {
-            // TODO make this smarter
             foreach (Card c in GameBoard.getInstance().cards.Keys)
             {
                 if (c.getPrice() == price && GameBoard.getInstance().getCardsLeft(c) > 0)
@@ -103,8 +102,6 @@ namespace DominionCards
             {
                 return DecideDefault((DefaultDecision)decision);
             }
-
-            // throw new NotImplementedException();
         }
 
         protected virtual List<Card> DecideYesNo(YesNoDecision decision)

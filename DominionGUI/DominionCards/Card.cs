@@ -16,10 +16,6 @@ namespace DominionCards
             this.price = price;
             id = idNumb;
         }
-        /*public string GetName()
-        {
-            return ActionCardFactory.getCardName(id);
-        }*/
 
         public int getPrice()
         {

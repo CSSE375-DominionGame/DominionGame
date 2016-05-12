@@ -10,11 +10,7 @@ namespace DominionCards.KingdomCards
     {
         private static int ID = 14;
         public Gardens()
-            : base(0, 4, ID)
-        {
-            // Uses VictoryCard Constructor
-            // implemented in countVictoryPoints() in Player
-        }
+            : base(0, 4, ID) {}
         public override String ToString()
         {
             return "Gardens";

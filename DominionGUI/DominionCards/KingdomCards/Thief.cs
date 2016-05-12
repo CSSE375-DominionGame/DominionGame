@@ -18,26 +18,7 @@ namespace DominionCards.KingdomCards
             // Uses AttackCard Constructor
             cardsTrashed = new List<Card>(); //Keeps track of this card's own trash
         }
-        /*public override void Play(Player player)
-        {
-            base.Play(player); // resolves attacks on other players.
-
-            if (cardsTrashed.Count == 0)
-            {
-                MessageBox.Show("You have no cards to keep from the thief!");
-                return;
-            }
-            //List<Card> cards = player.SelectCards(cardsTrashed, "Choose card(s) to keep", cardsTrashed.Count);
-            List<Card> cards = player.SelectCards(this.decision);
-
-            for (int i = 0; i < cards.Count; i++)
-            {
-                List<Card> currentDiscard = player.getDiscard();
-                currentDiscard.Add(cards[i]);
-                player.setDiscard(currentDiscard);
-            }
-        }*/
-
+        
         public override void MakeImmediateAttack(Player playerAttacked)
         {
             List<Card> cards = new List<Card>();
