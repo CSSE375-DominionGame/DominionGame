@@ -22,15 +22,12 @@ namespace DominionGUI
         private System.Type[] basiccard;
 
         private Dictionary<DominionCards.Card, System.Drawing.Bitmap> cardImages;
-
-        private List<IDisposable> unsubscribers;
-
+        
         private CardButton[] firstRow = new CardButton[7];
         private CardButton[] secondRow = new CardButton[5];
         private CardButton[] thirdRow = new CardButton[5];
         private List<CardButton> currentHand = new List<CardButton>();
 
-        //private List<CardButton> currentHand = new List<CardButton>(10);
         private Label[] firstRowLabels = new Label[7];
         private Label[] secondRowLabels = new Label[5];
         private Label[] thirdRowLabels = new Label[5];
@@ -39,7 +36,6 @@ namespace DominionGUI
         public GraphicsBoard()
         {
             InitializeComponent();
-            //drawCorrectImage(exitButton);
             board = DominionCards.GameBoard.getInstance();
             board.Subscribe(this);
             Console.WriteLine("\nTHE NUMBER OF PLAYERS IN THIS GAME IS: " + board.turnOrder.Count + "\n");
@@ -48,7 +44,6 @@ namespace DominionGUI
             imageadd = new System.Drawing.Bitmap[] { DominionGUI.Properties.Resources.WorkshopHalf, DominionGUI.Properties.Resources.AdventurerHalfNew, DominionGUI.Properties.Resources.BureaucratHalf, DominionGUI.Properties.Resources.CellarHalf, DominionGUI.Properties.Resources.ChancellorHalf, DominionGUI.Properties.Resources.ChapelHalf, DominionGUI.Properties.Resources.CouncilroomHalf, DominionGUI.Properties.Resources.FeastHalf, DominionGUI.Properties.Resources.FestivalHalf, DominionGUI.Properties.Resources.GardensHalf, DominionGUI.Properties.Resources.LaboratoryHalf, DominionGUI.Properties.Resources.LibraryHalf, DominionGUI.Properties.Resources.MarketHalf, DominionGUI.Properties.Resources.MilitiaHalf, DominionGUI.Properties.Resources.MineHalf, DominionGUI.Properties.Resources.MoatHalf, DominionGUI.Properties.Resources.MoneylenderHalf, DominionGUI.Properties.Resources.RemodelHalf, DominionGUI.Properties.Resources.SmithyHalf, DominionGUI.Properties.Resources.SpyHalf, DominionGUI.Properties.Resources.ThiefHalf, DominionGUI.Properties.Resources.ThroneroomHalf, DominionGUI.Properties.Resources.VillageHalf, DominionGUI.Properties.Resources.WitchHalf, DominionGUI.Properties.Resources.WoodcutterHalf };
             cardsadd = new System.Type[] { typeof(DominionCards.KingdomCards.Workshop),typeof(DominionCards.KingdomCards.Adventurer),typeof(DominionCards.KingdomCards.Bureaucrat),typeof(DominionCards.KingdomCards.Cellar),typeof(DominionCards.KingdomCards.Chancellor),typeof(DominionCards.KingdomCards.Chapel),typeof(DominionCards.KingdomCards.CouncilRoom),typeof(DominionCards.KingdomCards.Feast),typeof(DominionCards.KingdomCards.Festival),typeof(DominionCards.KingdomCards.Gardens),typeof(DominionCards.KingdomCards.Laboratory),typeof(DominionCards.KingdomCards.Library),typeof(DominionCards.KingdomCards.Market),typeof(DominionCards.KingdomCards.Militia),typeof(DominionCards.KingdomCards.Mine),typeof(DominionCards.KingdomCards.Moat),typeof(DominionCards.KingdomCards.MoneyLender),typeof(DominionCards.KingdomCards.Remodel),typeof(DominionCards.KingdomCards.Smithy),typeof(DominionCards.KingdomCards.Spy),typeof(DominionCards.KingdomCards.Thief),typeof(DominionCards.KingdomCards.ThroneRoom),typeof(DominionCards.KingdomCards.Village),typeof(DominionCards.KingdomCards.Witch),typeof(DominionCards.KingdomCards.Woodcutter)};
             basiccard = new System.Type[] { typeof(DominionCards.KingdomCards.Gold), typeof(DominionCards.KingdomCards.Silver), typeof(DominionCards.KingdomCards.Copper) ,typeof(DominionCards.KingdomCards.Province),typeof(DominionCards.KingdomCards.Duchy),typeof(DominionCards.KingdomCards.Estate),typeof(DominionCards.KingdomCards.Curse)};
-            //addRandomtencards();
             SetBuyableCards();
             DrawBuyableCards();
             UpdateLabelsAndHand();
@@ -178,8 +173,6 @@ namespace DominionGUI
                 currentHand[i].Parent = this;
                 currentHand[i].InitializeEventHandler();
                 Controls.Add(currentHand[i]);
-
-               //currentHand.Add(buttons[i]);
 
                 xValue += xIncriment;
                 if (xValue > startingX + (xIncriment * (numberColumns-1)))
@@ -354,7 +347,6 @@ namespace DominionGUI
             Thread.Sleep(500);
             lock (DominionCards.GameBoard.UpdateGraphicsLock)
                 {
-                    //DominionCards.GameBoard.AbortPhase = true;
                     Monitor.PulseAll(DominionCards.GameBoard.UpdateGraphicsLock);
                 }
 

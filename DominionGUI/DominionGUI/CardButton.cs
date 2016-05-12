@@ -51,7 +51,6 @@ namespace DominionGUI
                 Monitor.PulseAll(GameBoard.BuyPhaseLock);
                 Monitor.Wait(GameBoard.BuyPhaseLock);
             }
-            //GraphicsBoard.WaitToUpdateLabels();
         }
 
         internal void PlayThisCard(object sender, EventArgs e)
@@ -69,7 +68,6 @@ namespace DominionGUI
                 Monitor.PulseAll(GameBoard.ActionPhaseLock);
                 Monitor.Wait(GameBoard.ActionPhaseLock);
             }
-            //GraphicsBoard.WaitToUpdateLabels();
         }
 
     }

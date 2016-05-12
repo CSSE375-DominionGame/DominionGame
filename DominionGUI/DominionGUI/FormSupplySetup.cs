@@ -69,7 +69,6 @@ namespace DominionGUI
             GameBoard board = new GameBoard(gameCards);
             createplayers(board);
             var myform = GraphicsBoard.getinstance();
-            //GraphicsBoard.WaitToUpdateLabels();
             myform.Update();
             myform.Show();
             this.Hide();
@@ -186,11 +185,6 @@ namespace DominionGUI
                 ckls_cards.SetItemChecked(uncheckedIndices[ck], true);
                 uncheckedIndices.RemoveAt(ck);
             }
-            /*
-            FormGame game = new FormGame();
-            game.setPlayerCount(numPlayers);
-            game.Show();
-            */
         }
     }
 }

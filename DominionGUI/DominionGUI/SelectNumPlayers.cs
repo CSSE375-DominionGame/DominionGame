@@ -27,7 +27,6 @@ namespace DominionGUI
         {
             if (INSTANCE == null)
             {
-                // sets this to INSTANCE in constructor
                 new SelectNumPlayers();
             }
             return INSTANCE;
@@ -104,16 +103,6 @@ namespace DominionGUI
                 numPlayers = 1;
                 numAI = 3;
             }
-            //if (lastChecked != null)
-            /*else
-            {
-                UncheckOtherButtons(null);
-                /*if (lastChecked.Equals(checkBox1) && !checkBox1.Checked)
-                {
-                    checkBox2.Enabled = true;
-                    checkBox3.Enabled = true;
-                }/
-            }*/
         }
 
         private void UncheckOtherButtons(CheckBox excluded)
